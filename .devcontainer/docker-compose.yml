@@ -1,0 +1,13 @@
+version: "3"
+services:
+  dev:
+    build:
+      context: ./
+      args:
+        # For Linux, Change the permission by specifying UID / GID.
+        "USER_UID": "1000"
+        "USER_GID": "1000"
+    tty: true
+    volumes: 
+      - ..:/workspaces/examples-dotnet
+    working_dir: /workspaces/examples-dotnet
