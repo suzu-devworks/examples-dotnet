@@ -8,6 +8,6 @@ services:
         "USER_UID": "1000"
         "USER_GID": "1000"
     tty: true
-    volumes: 
+    volumes:
       - ..:/workspaces/examples-dotnet
     working_dir: /workspaces/examples-dotnet
