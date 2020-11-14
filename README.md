@@ -10,14 +10,18 @@ cd examples-dotnet
 
 dotnet new sln -o .
 dotnet new console -o src/Examples
-dotnet sln add ./src/Examples/Examples.csproj
+dotnet sln add src/Examples/Examples.csproj
 dotnet new xunit -o test/Examples.Tests
-dotnet sln add ./test/Examples.Tests/Examples.Tests.csproj
-dotnet add ./test/Examples.Tests/Examples.Tests.csproj reference ./src/Examples/Examples.csproj
+dotnet sln add test/Examples.Tests/Examples.Tests.csproj
+dotnet add test/Examples.Tests/Examples.Tests.csproj reference src/Examples/Examples.csproj
 
+## clear newline(CR).
 find . -type d -name '.git' -prune -o -type f -print | xargs sed -i 's/\r//g'
+## clear BOM(UTF-8).
+find . -type d -name '.git' -prune -o -type f -print | xargs sed -i -s -e '1s/^\xef\xbb\xbf//'
 
-dotnet build
+dotnet clean
+dotnet test
 ```
 
 ### Referenced.
