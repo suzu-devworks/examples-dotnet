@@ -19,6 +19,8 @@ RUN set -x \
     && apt-get install -y sudo \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
     && chmod 0440 /etc/sudoers.d/$USERNAME \
+    # Add Additional packages
+    && apt-get install -y openssh-client \
     #
     # Clean up
     && apt-get autoremove -y \
