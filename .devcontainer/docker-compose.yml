@@ -7,10 +7,7 @@ services:
         # For Linux, Change the permission by specifying UID / GID.
         "USER_UID": ${VSCODE_UID:-1000}
         "USER_GID": ${VSCODE_GID:-1000}
-    environment:
-      SSH_AUTH_SOCK: $SSH_AUTH_SOCK
     tty: true
     volumes:
       - ..:/workspaces/examples-dotnet
-      - $SSH_AUTH_SOCK:$SSH_AUTH_SOCK
     working_dir: /workspaces/examples-dotnet
