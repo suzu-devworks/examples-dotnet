@@ -20,6 +20,11 @@ find . -type d -name '.git' -prune -o -type f -print | xargs sed -i 's/\r//g'
 ## clear BOM(UTF-8).
 find . -type d -name '.git' -prune -o -type f -print | xargs sed -i -s -e '1s/^\xef\xbb\xbf//'
 
+## Package
+dotnet add src/Examples package System.Text.Encoding.CodePages
+dotnet add test/Examples.Tests package Moq
+dotnet add test/Examples.Tests package ChainingAssertion.Core.Xunit
+
 dotnet clean
 dotnet test
 ```

@@ -11,7 +11,10 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"ms-dotnettools.csharp"
+		"ms-ceintl.vscode-language-pack-ja",
+		"ms-dotnettools.csharp",
+		"gaoshan0621.csharp-format-usings",
+		"k--kato.docomment"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
