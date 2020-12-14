@@ -1,4 +1,5 @@
 using System;
+using Examples.Hosting.Executor;
 
 namespace Examples
 {
@@ -7,6 +8,16 @@ namespace Examples
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            new ExecutorBuilder()
+                .UseExcludeAttribute<ExcludeAttribute>()
+                .MeasureTimes(true)
+                .MeasureRamUsage(true)
+                .AddRunner<IRunner>(x => x.Run())
+                .Build()
+                .Run();
+
+            return;
         }
     }
 }
