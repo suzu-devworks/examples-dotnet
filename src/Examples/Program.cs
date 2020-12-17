@@ -12,7 +12,7 @@ namespace Examples
             new ExecutorBuilder()
                 .UseExcludeAttribute<ExcludeAttribute>()
                 .MeasureTimes(true)
-                .MeasureRamUsage(true)
+                .MeasureRamUsage(false)
                 .AddRunner<IRunner>(x => x.Run())
                 .Build()
                 .Run();
