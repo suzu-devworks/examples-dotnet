@@ -4,6 +4,7 @@ using Examples.Utilities;
 
 namespace Examples.Measurements
 {
+    [Exclude]
     class StringConcatMeasurement : IRunner
     {
         public void Run()
