@@ -20,9 +20,9 @@ namespace Examples.Measurements
             var result4 = FunctionMeasurer.As("StringBuilder.Append()").Run(() =>
             {
                 var aggregates = new StringBuilder();
-                each.Aggregate((a, b) =>
+                _ = each.Aggregate((a, b) =>
                 {
-                    if (aggregates.Length > 0) { aggregates.Append(","); }
+                    if (aggregates.Length > 0) { aggregates.Append(','); }
                     aggregates.Append(b);
                     return null;
                 });

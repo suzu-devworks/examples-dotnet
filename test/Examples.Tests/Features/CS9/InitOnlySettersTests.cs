@@ -1,5 +1,7 @@
 using Xunit;
 
+#pragma warning disable IDE0051
+
 namespace Examples.Features.CS9
 {
     public class InitOnlySetterTests
@@ -34,19 +36,19 @@ namespace Examples.Features.CS9
         }
 
         [Fact]
-        public void Test()
+        void Test()
         {
-            var o = new OldStyleClass();
+            _ = new OldStyleClass();
             //#CS0272 o.Code = "123";
             //#CS0272 o = new OldStyleClass() { Code = "123", Name = "HOGE" };
 
-            var a = new AutoPropertyClass();
+            _ = new AutoPropertyClass();
             //#CS8852 a.Code = "123";
-            a = new AutoPropertyClass() { Code = "123", Name = "HOGE" };
+            _ = new AutoPropertyClass() { Code = "123", Name = "HOGE" };
 
-            var m = new ManualPropertyClass();
+            _ = new ManualPropertyClass();
             //#CS8852 m.Code = "123";
-            m = new ManualPropertyClass() { Code = "123", Name = "HOGE" };
+            _ = new ManualPropertyClass() { Code = "123", Name = "HOGE" };
 
             return;
         }

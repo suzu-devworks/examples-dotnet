@@ -2,6 +2,8 @@ using System;
 using Moq;
 using Xunit;
 
+#pragma warning disable IDE0051
+
 namespace Examples.Core
 {
     public class DisposableTest
@@ -15,9 +17,9 @@ namespace Examples.Core
         private class DelivedDisposable : DisposableObject
 
         {
-            private string Name;
+            private readonly string Name;
 
-            private IVerifyer Verifyer;
+            private readonly IVerifyer Verifyer;
 
             private bool disposed;
 
@@ -70,7 +72,8 @@ namespace Examples.Core
             mock.Setup(x => x.Call(true));
             mock.Setup(x => x.Call(false));
 
-            Action action = () => { var obj = new DelivedDisposable("Use Action.", mock.Object); };
+            //Action action = () => { var obj = new DelivedDisposable("Use Action.", mock.Object); };
+            void action() { var obj = new DelivedDisposable("Use Action.", mock.Object); };
             action();
 
             GC.Collect();

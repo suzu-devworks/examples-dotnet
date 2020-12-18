@@ -9,23 +9,23 @@ namespace Examples.Core
     public class DisposableWithSafeHandleTest
     {
 
-        public interface IVerifyer 
+        public interface IVerifyer
         {
             void Call(bool disposing);
         }
-        
+
         private class DelivedDisposable : DisposableObject
 
         {
-            private string Name;
+            private readonly string Name;
 
-            private IVerifyer Verifyer;
+            private readonly IVerifyer Verifyer;
 
             private bool disposed;
 
-            private SafeHandle MySafeHandle  = new SafeFileHandle(IntPtr.Zero, true);
+            private readonly SafeHandle MySafeHandle = new SafeFileHandle(IntPtr.Zero, true);
 
-            public DelivedDisposable(string name, IVerifyer verifyer) 
+            public DelivedDisposable(string name, IVerifyer verifyer)
                 => (Name, Verifyer) = (name, verifyer);
 
             //~DelivedDisposable() => Dispose(false);
@@ -33,13 +33,13 @@ namespace Examples.Core
             protected override void Dispose(bool disposing)
             {
                 base.Dispose(disposing);
-                
+
                 if (disposed)
                 {
                     return;
                 }
 
-                if (disposing) 
+                if (disposing)
                 {
                     MySafeHandle?.Dispose();
                 }
@@ -79,7 +79,8 @@ namespace Examples.Core
             mock.Setup(x => x.Call(true));
             mock.Setup(x => x.Call(false));
 
-            Action action = () => { var obj = new DelivedDisposable("Use Action.", mock.Object); };
+            //Action action = () => { var obj = new DelivedDisposable("Use Action.", mock.Object); };
+            void action() { var obj = new DelivedDisposable("Use Action.", mock.Object); };
             action();
 
             GC.Collect();
@@ -89,7 +90,7 @@ namespace Examples.Core
             mock.Verify(x => x.Call(true), Times.Never());
             mock.Verify(x => x.Call(false), Times.Once());
             mock.VerifyNoOtherCalls();
-       } 
+        }
 
     }
 }

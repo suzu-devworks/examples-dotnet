@@ -20,7 +20,7 @@ find . -type d -name '.git' -prune -o -type f -print | xargs sed -i 's/\r//g'
 ## clear BOM(UTF-8).
 find . -type d -name '.git' -prune -o -type f -print | xargs sed -i -s -e '1s/^\xef\xbb\xbf//'
 
-## Package
+## Packages
 dotnet add src/Examples package System.Text.Encoding.CodePages
 dotnet add src/Examples package Mono.TextTemplating
 
@@ -29,10 +29,10 @@ dotnet add test/Examples.Tests package ChainingAssertion.Core.Xunit
 
 dotnet restore
 
-# Tool
+# Tools
 dotnet new tool-manifest
-dotnet tool install dotnet-t4 --version 2.2.0
-dotnet tool restore 
+dotnet tool install dotnet-t4
+dotnet tool restore
 
 dotnet clean
 dotnet build
