@@ -2,6 +2,7 @@ using System;
 
 namespace Examples.Codegen.T4
 {
+    [Exclude]
     public class Generator : IRunner
     {
         public void Run()

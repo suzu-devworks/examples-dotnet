@@ -8,7 +8,9 @@
   <ItemGroup>
     <PackageReference Include="Mono.TextTemplating" Version="2.2.0" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
+  </ItemGroup>
 
+  <ItemGroup>
     <TextTemplate Include="**\*.tt" />
     <Generated Include="**\*.Generated.cs" />
   </ItemGroup>

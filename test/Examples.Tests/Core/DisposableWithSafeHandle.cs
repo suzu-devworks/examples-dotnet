@@ -4,6 +4,9 @@ using Microsoft.Win32.SafeHandles;
 using Moq;
 using Xunit;
 
+#pragma warning disable IDE0051
+#pragma warning disable IDE0052
+
 namespace Examples.Core
 {
     public class DisposableWithSafeHandleTest
@@ -45,7 +48,7 @@ namespace Examples.Core
                 }
 
                 Verifyer?.Call(disposing);
-                Console.WriteLine($"Called Dispose({disposing}) in {Name}");
+                //Console.WriteLine($"Called Dispose({disposing}) in {Name}");
 
                 disposed = true;
 
@@ -64,7 +67,7 @@ namespace Examples.Core
             }
 
             GC.Collect();
-            Console.WriteLine($"Called GC.Collect in {nameof(TestUsingDisposed)}");
+            //Console.WriteLine($"Called GC.Collect in {nameof(TestUsingDisposed)}");
             GC.WaitForPendingFinalizers();
 
             mock.Verify(x => x.Call(true), Times.Once());
@@ -84,7 +87,7 @@ namespace Examples.Core
             action();
 
             GC.Collect();
-            Console.WriteLine($"Called GC.Collect in {nameof(TestDestructorDisposed)}");
+            //Console.WriteLine($"Called GC.Collect in {nameof(TestDestructorDisposed)}");
             GC.WaitForPendingFinalizers();
 
             mock.Verify(x => x.Call(true), Times.Never());
