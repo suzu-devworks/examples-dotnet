@@ -4,27 +4,43 @@ using Xunit;
 
 #pragma warning disable IDE0051
 
-namespace Examples.DI.Core
+namespace Examples.DependencyInjections.Core
 {
-    public class GenericsContainerTests
+    public class CoreGenericsContainerTests
     {
+        class Provider
+        { }
+
+        interface IThing<T>
+        {
+            string Name { get; }
+        }
+
         class GenericThing<T> : IThing<T>
         {
-            public GenericThing()
+            public GenericThing() : this(null, null)
+            { }
+
+            public GenericThing(Provider provider) : this(provider, null)
+            { }
+
+            public GenericThing(Provider provider, string _)
             {
                 Name = typeof(T).Name;
-                Default = default;
+                Provider = provider;
             }
 
             public string Name { get; }
 
-            public T Default { get; }
+            public Provider Provider { get; }
+
         }
 
         [Fact]
-        void TestWithGeneric()
+        void TestWithOpenGeneric()
         {
             var services = new ServiceCollection();
+            services.AddSingleton(typeof(Provider));
             services.AddSingleton(typeof(IThing<>), typeof(GenericThing<>));
 
             using var provider = services.BuildServiceProvider();

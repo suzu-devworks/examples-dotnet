@@ -1,14 +1,28 @@
 using System;
-using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 #pragma warning disable IDE0051
 
-namespace Examples.DI.Core
+namespace Examples.DependencyInjections.Core
 {
     public class CoreContainerTests
     {
+        interface IMessagePrinter
+        {
+            void Print(string message);
+        }
+        interface IMessageGenerator
+        {
+            string Generate();
+        }
+
+        interface IMyService
+        {
+            void Greet();
+        }
+
         class ConsoleMessagePrinter : IMessagePrinter
         {
             public void Print(string message) => Console.WriteLine(message);
@@ -63,9 +77,10 @@ namespace Examples.DI.Core
             var service = provider.GetService<IMyService>();
             service.Greet();
 
+            Console.WriteLine("Transient");
             var other = provider.GetService<IMyService>();
-            Console.WriteLine($"service = [{service.GetHashCode(),10}]");
-            Console.WriteLine($"other   = [{other.GetHashCode(),10}]");
+            //Console.WriteLine($"service = [{service.GetHashCode(),10}]");
+            //Console.WriteLine($"other   = [{other.GetHashCode(),10}]");
             Assert.NotSame(service, other);
 
             return;
@@ -81,7 +96,7 @@ namespace Examples.DI.Core
 
             using var provider = services.BuildServiceProvider();
 
-            IMyService service1;
+            IMyService service1 = null;
             Console.WriteLine("Scope1");
             using (var scope = provider.CreateScope())
             {
@@ -89,13 +104,13 @@ namespace Examples.DI.Core
                 service.Greet();
 
                 var other = scope.ServiceProvider.GetService<IMyService>();
-                Console.WriteLine($"service = [{service.GetHashCode(),10}]");
-                Console.WriteLine($"other   = [{other.GetHashCode(),10}]");
+                //Console.WriteLine($"service = [{service.GetHashCode(),10}]");
+                //Console.WriteLine($"other   = [{other.GetHashCode(),10}]");
                 Assert.Same(service, other);
                 service1 = service;
             }
 
-            IMyService service2;
+            IMyService service2 = null;
             Console.WriteLine("Scope2");
             using (var scope = provider.CreateScope())
             {
@@ -103,8 +118,8 @@ namespace Examples.DI.Core
                 service.Greet();
 
                 var other = scope.ServiceProvider.GetService<IMyService>();
-                Console.WriteLine($"service = [{service.GetHashCode(),10}]");
-                Console.WriteLine($"other   = [{other.GetHashCode(),10}]");
+                //Console.WriteLine($"service = [{service.GetHashCode(),10}]");
+                //Console.WriteLine($"other   = [{other.GetHashCode(),10}]");
                 Assert.Same(service, other);
                 service2 = service;
             }
