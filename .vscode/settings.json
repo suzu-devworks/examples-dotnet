@@ -1,3 +1,5 @@
 {
-    "csharpFormatUsings.splitGroups": false
+    "csharpFormatUsings.splitGroups": false,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "dotnet-test-explorer.testProjectPath": "**/*Tests.csproj"
 }

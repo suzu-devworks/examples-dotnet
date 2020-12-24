@@ -5,7 +5,7 @@ namespace Examples
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] _)
         {
             Console.WriteLine("Hello World!");
 

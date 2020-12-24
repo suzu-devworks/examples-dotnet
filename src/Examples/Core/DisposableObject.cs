@@ -5,7 +5,7 @@ namespace Examples.Core
     public abstract class DisposableObject : IDisposable
     {
 
-#region VSCode Auto generated Code
+        #region VSCode Auto generated Code
 
         private bool disposedValue;
 
@@ -38,9 +38,9 @@ namespace Examples.Core
             GC.SuppressFinalize(this);
         }
 
-#endregion VSCode Auto generated Code
+        #endregion VSCode Auto generated Code
 
-        ~DisposableObject() 
+        ~DisposableObject()
             => Dispose(disposing: false);
 
     }

@@ -2,6 +2,8 @@ using System;
 using Xunit;
 using ChainingAssertion;
 
+#pragma warning disable IDE0051
+
 namespace Examples.Extensions
 {
     public class DeepCopyExtensionTests
@@ -10,7 +12,7 @@ namespace Examples.Extensions
         [Serializable]
         private class FatClass : ICloneable
         {
-            //ICloneable is considered a bad API now, since it does not specify whether the result is a deep or a shallow copy. 
+            //ICloneable is considered a bad API now, since it does not specify whether the result is a deep or a shallow copy.
             // I think this is why they do not improve this interface.
 
             public string Code { get; set; }

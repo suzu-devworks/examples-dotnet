@@ -5,10 +5,10 @@ namespace Examples.Utilities
 {
     public class FunctionMeasurer
     {
-        private FunctionMeasurer() {}
+        private FunctionMeasurer() { }
 
-        public String Name {get; init;}
-    
+        public string Name { get; init; }
+
         public static FunctionMeasurer As(string name)
         {
             return new FunctionMeasurer() { Name = name };

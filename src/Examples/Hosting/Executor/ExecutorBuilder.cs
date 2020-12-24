@@ -68,9 +68,9 @@ namespace Examples.Hosting.Executor
             return this;
         }
 
-        private List<Tuple<Type, Action<object>>> Runners = new();
+        private readonly List<Tuple<Type, Action<object>>> Runners = new();
 
-        private Dictionary<object, object> Properties = new();
+        private readonly Dictionary<object, object> Properties = new();
 
     }
 }

@@ -2,6 +2,7 @@ using System;
 
 namespace Examples.Codegen.T4
 {
+    [Exclude]
     public class Generator : IRunner
     {
         public void Run()
@@ -12,7 +13,7 @@ namespace Examples.Codegen.T4
             return;
         }
 
-        private void GenerateHelloWorld()
+        private static void GenerateHelloWorld()
         {
             // Run using "dynamic", but slow.
             dynamic template = Activator.CreateInstance(Type.GetType("Examples.HelloWorld"));
@@ -24,11 +25,13 @@ namespace Examples.Codegen.T4
             return;
         }
 
-        private void GenerateSampleTemplating()
+        private static void GenerateSampleTemplating()
         {
             // Create a default implementation of the TransformText () in Interface.
-            var template = new SampleTemplating();
-            template.Value = "hoge";
+            var template = new SampleTemplating
+            {
+                Value = "hoge"
+            };
             Console.WriteLine((template as ITemplate)?.TransformText());
 
             return;

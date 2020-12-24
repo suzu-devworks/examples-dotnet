@@ -89,10 +89,10 @@ namespace Examples.Hosting.Executor
         {
             return (this.Properties.ContainsKey(key))
                 ? (T)this.Properties[key]
-                : default(T);
+                : default;
         }
 
-        private Action<object> DoMeasureTimes(Action<object> action)
+        private static Action<object> DoMeasureTimes(Action<object> action)
         {
             return o =>
             {
@@ -106,7 +106,7 @@ namespace Examples.Hosting.Executor
             };
         }
 
-        private Action<object> DoMeasureRamUsage(Action<object> action)
+        private static Action<object> DoMeasureRamUsage(Action<object> action)
         {
             return o =>
             {

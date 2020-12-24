@@ -20,25 +20,14 @@ find . -type d -name '.git' -prune -o -type f -print | xargs sed -i 's/\r//g'
 ## clear BOM(UTF-8).
 find . -type d -name '.git' -prune -o -type f -print | xargs sed -i -s -e '1s/^\xef\xbb\xbf//'
 
-## Package
-dotnet add src/Examples package System.Text.Encoding.CodePages
-dotnet add src/Examples package Mono.TextTemplating
-
+## Packages
 dotnet add test/Examples.Tests package Moq
 dotnet add test/Examples.Tests package ChainingAssertion.Core.Xunit
-
 dotnet restore
 
-# Tool
-dotnet new tool-manifest
-dotnet tool install dotnet-t4 --version 2.2.0
-dotnet tool restore 
-
-dotnet clean
-dotnet build
 ```
 
-### Referenced.
+### References.
 
 * https://docs.microsoft.com/ja-jp/dotnet/core/testing/unit-testing-with-dotnet-test
 

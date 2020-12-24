@@ -2,6 +2,9 @@ using System;
 using Moq;
 using Xunit;
 
+#pragma warning disable IDE0051
+#pragma warning disable IDE0052
+
 namespace Examples.Core
 {
     public class DisposableTest
@@ -15,9 +18,9 @@ namespace Examples.Core
         private class DelivedDisposable : DisposableObject
 
         {
-            private string Name;
+            private readonly string Name;
 
-            private IVerifyer Verifyer;
+            private readonly IVerifyer Verifyer;
 
             private bool disposed;
 
@@ -36,7 +39,7 @@ namespace Examples.Core
                 }
 
                 Verifyer?.Call(disposing);
-                Console.WriteLine($"Called Dispose({disposing}) in {Name}");
+                //Console.WriteLine($"Called Dispose({disposing}) in {Name}");
 
                 disposed = true;
 
@@ -55,7 +58,7 @@ namespace Examples.Core
             }
 
             GC.Collect();
-            Console.WriteLine($"Called GC.Collect in {nameof(TestUsingDisposed)}");
+            //Console.WriteLine($"Called GC.Collect in {nameof(TestUsingDisposed)}");
             GC.WaitForPendingFinalizers();
 
             mock.Verify(x => x.Call(true), Times.Once());
@@ -70,11 +73,12 @@ namespace Examples.Core
             mock.Setup(x => x.Call(true));
             mock.Setup(x => x.Call(false));
 
-            Action action = () => { var obj = new DelivedDisposable("Use Action.", mock.Object); };
+            //Action action = () => { var obj = new DelivedDisposable("Use Action.", mock.Object); };
+            void action() { var obj = new DelivedDisposable("Use Action.", mock.Object); };
             action();
 
             GC.Collect();
-            Console.WriteLine($"Called GC.Collect in {nameof(TestDestructorDisposed)}");
+            //Console.WriteLine($"Called GC.Collect in {nameof(TestDestructorDisposed)}");
             GC.WaitForPendingFinalizers();
 
             mock.Verify(x => x.Call(true), Times.Never());
@@ -95,7 +99,7 @@ namespace Examples.Core
             }
 
             GC.Collect();
-            Console.WriteLine($"Called GC.Collect in {nameof(TestScopedUsingDisposed)}");
+            //Console.WriteLine($"Called GC.Collect in {nameof(TestScopedUsingDisposed)}");
             GC.WaitForPendingFinalizers();
 
             mock.Verify(x => x.Call(true), Times.Once());

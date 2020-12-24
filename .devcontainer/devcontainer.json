@@ -13,8 +13,11 @@
 	"extensions": [
 		"ms-ceintl.vscode-language-pack-ja",
 		"ms-dotnettools.csharp",
+		"editorconfig.editorconfig",
 		"gaoshan0621.csharp-format-usings",
-		"k--kato.docomment"
+		"k--kato.docomment",
+		"dominicvonk.vscode-resx-editor",
+		"formulahendry.dotnet-test-explorer"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
