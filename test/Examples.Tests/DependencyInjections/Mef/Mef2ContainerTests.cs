@@ -9,7 +9,7 @@ using Xunit;
 
 #pragma warning disable IDE0051
 
-namespace Examples.DependencyInjections.Core
+namespace Examples.DependencyInjections.Mef
 {
     public class Mef2ContainerTests
     {

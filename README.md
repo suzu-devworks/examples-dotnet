@@ -21,24 +21,13 @@ find . -type d -name '.git' -prune -o -type f -print | xargs sed -i 's/\r//g'
 find . -type d -name '.git' -prune -o -type f -print | xargs sed -i -s -e '1s/^\xef\xbb\xbf//'
 
 ## Packages
-dotnet add src/Examples package System.Text.Encoding.CodePages
-dotnet add src/Examples package Mono.TextTemplating
-
 dotnet add test/Examples.Tests package Moq
 dotnet add test/Examples.Tests package ChainingAssertion.Core.Xunit
-
 dotnet restore
 
-# Tools
-dotnet new tool-manifest
-dotnet tool install dotnet-t4
-dotnet tool restore
-
-dotnet clean
-dotnet build
 ```
 
-### Referenced.
+### References.
 
 * https://docs.microsoft.com/ja-jp/dotnet/core/testing/unit-testing-with-dotnet-test
 
