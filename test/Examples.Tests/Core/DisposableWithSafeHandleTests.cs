@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Examples.Core
 {
-    public class DisposableWithSafeHandleTest
+    public class DisposableWithSafeHandleTests
     {
 
         public interface IVerifyer

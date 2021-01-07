@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Examples.Core
 {
-    public class DisposableTest
+    public class DisposableTests
     {
 
         public interface IVerifyer
