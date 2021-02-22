@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+#pragma warning disable IDE0005
 using Examples.A;
 using Examples.Extensions.A;
 using Xunit;
