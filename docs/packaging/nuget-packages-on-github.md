@@ -17,7 +17,7 @@
     <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet-packages</PackageProjectUrl>
     <PackageTags>local;learning</PackageTags>
     <Description>
-      SuzuDevworks.Examples.Core is Libraries for learning dotnet programming.
+      Libraries for learning dotnet programming.
     </Description>
   </PropertyGroup>
 ```
