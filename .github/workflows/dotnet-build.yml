@@ -1,10 +1,10 @@
 name: build
 
 on:
-  #push:
+  # push:
   #  branches: [ "main" ]
-  #pull_request:
-  #  branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
   workflow_dispatch:
 
 env:
@@ -22,7 +22,7 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Install dependencies
+      - name: Install dependencies 
         run: dotnet restore
         
       - name: Build
