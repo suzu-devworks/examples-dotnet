@@ -11,11 +11,11 @@
   <PropertyGroup>
     <!-- Properties related to NuGet packaging: -->
     <IsPackable>True</IsPackable>
-    <PackageId>SuzuDevworks.Examples.DependencyInjection</PackageId>
+    <PackageId>SW.Examples.DependencyInjection</PackageId>
     <Authors>akira suzuki</Authors>
     <Company>suzu-devworks</Company>
     <Version>1.0.0</Version>
-    <Product>SuzuDevworks.Examples.local</Product>
+    <Product>SW.Examples.local</Product>
     <RepositoryUrl>https://github.com/suzu-devworks/examples-dotnet-packages</RepositoryUrl>
     <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet-packages</PackageProjectUrl>
     <PackageTags>local;learning</PackageTags>
