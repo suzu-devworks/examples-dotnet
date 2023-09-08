@@ -2,13 +2,15 @@
   "omnisharp.enableEditorConfigSupport": true,
   "omnisharp.enableAsyncCompletion": true,
   "omnisharp.enableMsBuildLoadProjectsOnDemand": true,
+  "csharpFormatUsings.sortOrder": "System Microsoft",
   "csharpFormatUsings.splitGroups": false,
   "csharpFormatUsings.removeUnnecessaryUsings": true,
   "csharpextensions.privateMemberPrefix": "_",
   "csharpextensions.useFileScopedNamespace": true,
   "files.associations": {
+    ".dockerignore": "ignore",
     "appsettings*.json": "jsonc",
-    ".dockerignore": "ignore"
+    "web.config": "xml",
   },
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
