@@ -8,11 +8,11 @@
   <PropertyGroup>
     <!-- Properties related to NuGet packaging: -->
     <IsPackable>True</IsPackable>
-    <PackageId>SuzuDevworks.Examples.Core</PackageId>
+    <PackageId>SW.Examples.Core</PackageId>
     <Authors>akira suzuki</Authors>
     <Company>suzu-devworks</Company>
     <Version>1.0.0-alpha</Version>
-    <Product>SuzuDevworks.Examples.local</Product>
+    <Product>SW.Examples.local</Product>
     <RepositoryUrl>https://github.com/suzu-devworks/examples-dotnet-packages</RepositoryUrl>
     <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet-packages</PackageProjectUrl>
     <PackageTags>local;learning</PackageTags>
@@ -59,7 +59,7 @@ dotnet new nugetconfig
 ### 3. Push package
 
 ```shell
-dotnet nuget push "src/Examples.Core/bin/Release/SuzuDevworks.Examples.Core.1.0.0-alpha.nupkg"  --api-key YOUR_PERSONAL_ACCESS_TOKEN --source "github"
+dotnet nuget push "src/Examples.Core/bin/Release/SW.Examples.Core.1.0.0-alpha.nupkg"  --api-key YOUR_PERSONAL_ACCESS_TOKEN --source "github"
 ```
 
 ## Publishing and installing a package with GitHub Actions
