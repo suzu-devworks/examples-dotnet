@@ -10,23 +10,39 @@ cd examples-dotnet
 
 dotnet new sln -o .
 
+#dotnet nuget update source github --username suzu-devworks --password "{parsonal access token}" --store-password-in-clear-text
+
 ## Examples.DependencyInjection
 dotnet new classlib -o src/Examples.DependencyInjection
+dotnet sln add src/Examples.DependencyInjection/
 cd src/Examples.DependencyInjection
 dotnet add package Microsoft.Extensions.DependencyInjection
 dotnet add package Microsoft.Extensions.Logging.Abstractions
 cd ../../
-dotnet sln add src/Examples.DependencyInjection/
 
 ## Examples.DependencyInjection.Tests
 dotnet new xunit -o src/Examples.DependencyInjection.Tests
+dotnet sln add src/Examples.DependencyInjection.Tests/
 cd src/Examples.DependencyInjection.Tests
 dotnet add reference ../Examples.DependencyInjection
 dotnet add package Moq
 dotnet add package ChainingAssertion.Core.Xunit
 cd ../../
-dotnet sln add src/Examples.DependencyInjection.Tests/
 
+## Examples.Hosting
+dotnet new classlib -o src/Examples.Hosting
+dotnet sln add src/Examples.Hosting/
+cd src/Examples.Hosting
+dotnet add package Microsoft.Extensions.Hosting.Abstractions
+dotnet add package Microsoft.Extensions.Logging.Abstractions
+cd ../../
+
+## Examples.Hosting.Workers
+dotnet new worker -o src/Examples.Hosting.Workers
+dotnet sln add src/Examples.Hosting.Workers/
+cd src/Examples.Hosting.Workers
+dotnet add reference ../Examples.Hosting
+cd ../../
 
 dotnet build
 
