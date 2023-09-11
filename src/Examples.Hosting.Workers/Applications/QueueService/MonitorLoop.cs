@@ -1,6 +1,6 @@
-using Examples.Hosting.Queueing;
+using Examples.Hosting.QueueService;
 
-namespace Examples.Hosting.Workers.Applications.Queueing;
+namespace Examples.Hosting.Workers.Applications.QueueService;
 
 public sealed class MonitorLoop
 {
