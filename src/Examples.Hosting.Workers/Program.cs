@@ -1,12 +1,12 @@
 using Examples.Hosting.Workers;
-using Examples.Hosting.Workers.Applications.Queueing;
+using Examples.Hosting.Workers.Applications.QueueService;
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((context, services) =>
     {
         services.AddHostedService<Worker>();
 
-        services.AddQueueingApplications(context.Configuration);
+        services.AddQueueServiceApplications(context.Configuration);
     })
     .Build();
 
