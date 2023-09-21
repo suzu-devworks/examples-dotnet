@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <MyTargetFramework>net6.0</MyTargetFramework>
+    <MyTargetFrameworks>net6.0</MyTargetFrameworks>
+    <MyTestingFrameworks>net6.0</MyTestingFrameworks>
+  </PropertyGroup>
+</Project>
