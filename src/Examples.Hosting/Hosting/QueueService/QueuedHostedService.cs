@@ -24,11 +24,17 @@ public class QueuedHostedService : BackgroundService
         (_taskQueue, _logger) = (taskQueue, logger);
 
     /// <inheritdoc/>
-    protected override Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _logger.LogInformation("{name} is running.", nameof(QueuedHostedService));
+        int maxConcurrency = 2;
+        _logger.LogInformation("{name} is running with concurrency {num}.",
+            nameof(QueuedHostedService), maxConcurrency);
 
-        return ProcessTaskQueueAsync(stoppingToken);
+        IEnumerable<Task> tasks = Enumerable.Range(0, maxConcurrency)
+            .Select(async _ => await ProcessTaskQueueAsync(stoppingToken));
+
+        await Task.WhenAll(tasks);
+        return;
     }
 
     private async Task ProcessTaskQueueAsync(CancellationToken stoppingToken)
