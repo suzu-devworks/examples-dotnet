@@ -62,11 +62,16 @@ dotnet new nugetconfig
 dotnet nuget push "src/Examples.Core/bin/Release/SuzuDevworks.Examples.Core.1.0.0-alpha.nupkg"  --api-key YOUR_PERSONAL_ACCESS_TOKEN --source "github"
 ```
 
-## Github Action workflow publish package.
+## Publishing and installing a package with GitHub Actions
 
-### 1. Edit `.github/workflows/dotnet-publish.yml`
+### 1. Edit `.github/workflows/dotnet-package.yml`
 
-- [see...](/.github/workflows/dotnet-publish.yml)
+- [see...](/.github/workflows/dotnet-package.yml)
+
+### 2. Setting `GITHUB_TOKEN`
+
+- Repository settings > Actions > Workflow permissions
+- Select "Read and write permissions"
 
 ## References
 
