@@ -1,4 +1,4 @@
-namespace Examples.Hosting.Queueing;
+namespace Examples.Hosting.QueueService;
 
 /// <summary>
 /// Provides an interface for queue used by background service.

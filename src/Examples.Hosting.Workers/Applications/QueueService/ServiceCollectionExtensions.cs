@@ -1,10 +1,10 @@
-using Examples.Hosting.Queueing;
+using Examples.Hosting.QueueService;
 
-namespace Examples.Hosting.Workers.Applications.Queueing;
+namespace Examples.Hosting.Workers.Applications.QueueService;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddQueueingApplications(this IServiceCollection services,
+    public static IServiceCollection AddQueueServiceApplications(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddSingleton<MonitorLoop>();

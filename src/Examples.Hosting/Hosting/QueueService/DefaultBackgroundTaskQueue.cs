@@ -1,6 +1,6 @@
 using System.Threading.Channels;
 
-namespace Examples.Hosting.Queueing;
+namespace Examples.Hosting.QueueService;
 
 /// <summary>
 /// Default implementation of <see cref="IBackgroundTaskQueue"/>
@@ -10,7 +10,10 @@ public sealed class DefaultBackgroundTaskQueue : IBackgroundTaskQueue
 {
     private readonly Channel<Func<CancellationToken, ValueTask>> _queue;
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Creates a new instance of the <see cref="DefaultBackgroundTaskQueue"/>.
+    /// </summary>
+    /// <param name="capacity"></param>
     public DefaultBackgroundTaskQueue(int capacity)
     {
         BoundedChannelOptions options = new(capacity)
