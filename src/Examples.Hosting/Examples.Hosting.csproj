@@ -14,11 +14,11 @@
   <PropertyGroup>
     <!-- Properties related to NuGet packaging: -->
     <IsPackable>True</IsPackable>
-    <PackageId>Sw.Examples.Hosting</PackageId>
+    <PackageId>SWX.Examples.Hosting</PackageId>
     <Authors>akira suzuki</Authors>
     <Company>suzu-devworks</Company>
-    <Version>1.0.0</Version>
-    <Product>Sw.Examples.local</Product>
+    <Version>1.0.0-alpha.1</Version>
+    <Product>SWX.Examples.local</Product>
     <RepositoryUrl>https://github.com/suzu-devworks/examples-dotnet</RepositoryUrl>
     <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
