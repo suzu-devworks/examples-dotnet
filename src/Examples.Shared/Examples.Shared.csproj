@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>$(MyTargetFrameworks)</TargetFrameworks>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Examples</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn)</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Properties related to NuGet packaging: -->
+    <IsPackable>True</IsPackable>
+    <PackageId>SWX.Examples.Shared</PackageId>
+    <Authors>akira suzuki</Authors>
+    <Company>suzu-devworks</Company>
+    <Version>1.0.0-alpha.1</Version>
+    <Product>SWX.Examples.local</Product>
+    <RepositoryUrl>https://github.com/suzu-devworks/examples-dotnet</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>local;learning</PackageTags>
+    <Description>
+      Libraries for learning dotnet programming.
+    </Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+</Project>

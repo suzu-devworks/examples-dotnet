@@ -12,6 +12,21 @@ dotnet new sln -o .
 
 #dotnet nuget update source github --username suzu-devworks --password "{parsonal access token}" --store-password-in-clear-text
 
+## Examples.Shared
+dotnet new classlib -o src/Examples.Shared
+dotnet sln add src/Examples.Shared/
+cd src/Examples.Shared
+cd ../../
+
+## Examples.Shared.Tests
+dotnet new xunit -o src/Examples.Shared.Tests
+dotnet sln add src/Examples.Shared.Tests/
+cd src/Examples.Shared.Tests
+dotnet add reference ../Examples.Shared
+dotnet add package Moq
+dotnet add package ChainingAssertion.Core.Xunit
+cd ../../
+
 ## Examples.DependencyInjection
 dotnet new classlib -o src/Examples.DependencyInjection
 dotnet sln add src/Examples.DependencyInjection/
