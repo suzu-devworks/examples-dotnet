@@ -1,6 +1,6 @@
-using Examples.Extensions;
+using Examples.Fluency;
 
-namespace Examples.Tests.Extensions;
+namespace Examples.Tests.Fluency;
 
 public class DateTimeExtensionsTests
 {

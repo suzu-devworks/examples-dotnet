@@ -2,7 +2,7 @@ using System;
 
 #nullable enable
 
-namespace Examples.Extensions;
+namespace Examples.Fluency;
 
 /// <summary>
 /// Extension methods for <see cref="DateTime" /> and <see cref="DateTimeOffset" />.

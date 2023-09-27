@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Text;
 
@@ -6,7 +7,7 @@ using System.Text;
 namespace Examples.Fluency;
 
 /// <summary>
-/// Extension methods for code related to <see cref="Encoding" />.
+/// Extension methods for values related to <see cref="Encoding" />.
 /// </summary>
 public static class EncodingExtensions
 {
@@ -21,7 +22,7 @@ public static class EncodingExtensions
         encoding ??= Encoding.UTF8;
 
         var bom = encoding.GetPreamble();
-        if (source[..bom.Length].SequenceEqual(bom))
+        if (source.AsSpan()[..bom.Length].SequenceEqual(bom))
         {
             return source[bom.Length..];
         }
