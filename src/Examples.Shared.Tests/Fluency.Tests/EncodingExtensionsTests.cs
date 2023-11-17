@@ -1,7 +1,6 @@
 using System.Text;
-using Examples.Fluency;
 
-namespace Examples.Tests.Fluency;
+namespace Examples.Fluency.Tests;
 
 public class EncodingExtensionsTests
 {
