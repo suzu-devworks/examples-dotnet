@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples.DependencyInjectio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples.Serialization.Tests", "tests\Examples.Serialization.Tests\Examples.Serialization.Tests.csproj", "{895B3609-04DF-4B81-BB08-BFE81048F589}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples.Benchmark", "src\Examples.Benchmark\Examples.Benchmark.csproj", "{5D796455-18AF-40C3-A8F6-41EA8B153B7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{895B3609-04DF-4B81-BB08-BFE81048F589}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{895B3609-04DF-4B81-BB08-BFE81048F589}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{895B3609-04DF-4B81-BB08-BFE81048F589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D796455-18AF-40C3-A8F6-41EA8B153B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D796455-18AF-40C3-A8F6-41EA8B153B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D796455-18AF-40C3-A8F6-41EA8B153B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D796455-18AF-40C3-A8F6-41EA8B153B7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EE9F1374-8C7A-4349-94B7-FC75608A0290} = {A0AADF66-7DED-4364-BDB1-C032AB8BE322}
@@ -74,5 +80,6 @@ Global
 		{B03F2CBC-9FF7-429B-BCE6-71C4BD3B17B9} = {A0AADF66-7DED-4364-BDB1-C032AB8BE322}
 		{655A2850-3512-4B60-9E77-93ACB02AD832} = {78A0AEBB-9B5D-462F-A79D-0F2293310642}
 		{895B3609-04DF-4B81-BB08-BFE81048F589} = {78A0AEBB-9B5D-462F-A79D-0F2293310642}
+		{5D796455-18AF-40C3-A8F6-41EA8B153B7F} = {A0AADF66-7DED-4364-BDB1-C032AB8BE322}
 	EndGlobalSection
 EndGlobal
