@@ -11,9 +11,9 @@ public class HelloWorldRunner : IRunner
         _logger = logger;
     }
 
-    public Task RunAsync(string[] args, CancellationToken cancelToken = default)
+    public Task RunAsync(string param, CancellationToken cancelToken = default)
     {
-        _logger.LogInformation("Hello world.");
+        _logger.LogInformation($"Hello {param}.");
 
         return Task.CompletedTask;
     }

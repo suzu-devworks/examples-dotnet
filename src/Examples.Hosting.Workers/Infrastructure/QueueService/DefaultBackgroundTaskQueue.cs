@@ -1,6 +1,6 @@
 using System.Threading.Channels;
 
-namespace Examples.Hosting.QueueService;
+namespace Examples.Hosting.Infrastructure.QueueService;
 
 /// <summary>
 /// Default implementation of <see cref="IBackgroundTaskQueue"/>

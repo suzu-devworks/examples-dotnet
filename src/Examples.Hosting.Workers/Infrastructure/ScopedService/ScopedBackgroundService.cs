@@ -1,8 +1,4 @@
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-
-namespace Examples.Hosting.ScopedService;
+namespace Examples.Hosting.Infrastructure.ScopedService;
 
 /// <summary>
 /// Provides a background service that internally creates explicit scopes and resolves dependencies.

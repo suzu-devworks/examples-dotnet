@@ -1,4 +1,4 @@
-namespace Examples.Hosting.ScopedService;
+namespace Examples.Hosting.Infrastructure.ScopedService;
 
 /// <summary>
 /// Provides an interface for scoped services used by background services.

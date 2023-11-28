@@ -1,6 +1,6 @@
-using Examples.Hosting.ScopedService;
+using Examples.Hosting.Infrastructure.ScopedService;
 
-namespace Examples.Hosting.Workers.Applications.ScopedService;
+namespace Examples.Hosting.Applications.ScopedService;
 
 public static class ServiceCollectionExtensions
 {

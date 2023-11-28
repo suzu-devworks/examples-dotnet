@@ -7,18 +7,15 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 var rootCommand = new RootCommand("Hosting example app")
-    .AddHandler(async () =>
+    .AddCommand(new Command("used", "used Microsoft.Extensions.Hosting example."), async () =>
     {
         using IHost host = Host.CreateDefaultBuilder(args)
-            .ConfigureServices(services =>
-            {
-                services.AddTransient<IRunner, HelloWorldRunner>();
-            })
+            .ConfigureServices(services => services.AddTransient<IRunner, HelloWorldRunner>())
             .Build();
 
         using var scope = host.Services.CreateScope();
         var runner = scope.ServiceProvider.GetRequiredService<IRunner>();
-        await runner.RunAsync(args);
+        await runner.RunAsync("Hosting");
     })
     .AddCommand(new Command("unused", "unused Microsoft.Extensions.Hosting example."), async () =>
     {
@@ -41,7 +38,7 @@ var rootCommand = new RootCommand("Hosting example app")
 
         using var scope = provider.CreateScope();
         var runner = scope.ServiceProvider.GetRequiredService<IRunner>();
-        await runner.RunAsync(args);
+        await runner.RunAsync("ServiceProvider");
     });
 
 await rootCommand.InvokeAsync(args);

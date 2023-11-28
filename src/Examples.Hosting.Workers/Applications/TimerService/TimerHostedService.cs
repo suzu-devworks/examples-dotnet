@@ -1,4 +1,4 @@
-namespace Examples.Hosting.Workers.Applications.TimerService;
+namespace Examples.Hosting.Applications.TimerService;
 
 /// <summary>
 /// Provides background services triggered by timers.

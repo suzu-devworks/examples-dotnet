@@ -1,7 +1,4 @@
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-
-namespace Examples.Hosting.QueueService;
+namespace Examples.Hosting.Infrastructure.QueueService;
 
 /// <summary>
 /// Provides a background service that runs thought a Queue.

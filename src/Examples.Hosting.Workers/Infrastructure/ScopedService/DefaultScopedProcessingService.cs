@@ -1,6 +1,4 @@
-using Microsoft.Extensions.Logging;
-
-namespace Examples.Hosting.ScopedService;
+namespace Examples.Hosting.Infrastructure.ScopedService;
 
 /// <summary>
 /// Default implementation of <see cref="IScopedProcessingService"/>
