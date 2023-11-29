@@ -22,5 +22,8 @@
   },
   "[razor]": {
     "editor.defaultFormatter": "ms-dotnettools.csharp"
-  }
+  },
+  "cSpell.words": [
+    "Autofac"
+  ]
 }
