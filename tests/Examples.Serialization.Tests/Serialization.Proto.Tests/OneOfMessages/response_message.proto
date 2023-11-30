@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "Examples.Serialization.Proto.OneOfMessages";
+
+message Person {
+    string name = 1;
+    string email = 2;
+}
+
+message Error {
+    string text = 1;
+}
+
+message ResponseMessage {
+  oneof result {
+    Error error = 1;
+    Person person = 2;
+  }
+}

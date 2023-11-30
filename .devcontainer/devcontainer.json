@@ -19,10 +19,10 @@
         "ms-ceintl.vscode-language-pack-ja",
         "ms-dotnettools.csdevkit",
         "editorconfig.editorconfig",
-        "editorconfig.editorconfig",
-        "kreativ-software.csharpextensions",
         "gaoshan0621.csharp-format-usings",
         "k--kato.docomment",
+        "zxh404.vscode-proto3",
+        "DotJoshJohnson.xml"
       ]
     }
   },
