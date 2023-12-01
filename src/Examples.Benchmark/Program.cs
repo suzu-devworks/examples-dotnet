@@ -1,2 +1,5 @@
-// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+using BenchmarkDotNet.Running;
+
+Console.WriteLine("Start Benchmark");
+BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
+Console.WriteLine("Finished.");
