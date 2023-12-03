@@ -1,4 +1,4 @@
-namespace Examples.Hosting.Workers.Applications.TimerService;
+namespace Examples.Hosting.Applications.TimerService;
 
 public static class ServiceCollectionExtensions
 {

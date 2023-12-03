@@ -5,8 +5,6 @@
   "csharpFormatUsings.sortOrder": "System Microsoft",
   "csharpFormatUsings.splitGroups": false,
   "csharpFormatUsings.removeUnnecessaryUsings": true,
-  "csharpextensions.privateMemberPrefix": "_",
-  "csharpextensions.useFileScopedNamespace": true,
   "files.associations": {
     ".dockerignore": "ignore",
     "appsettings*.json": "jsonc",
@@ -22,5 +20,8 @@
   },
   "[razor]": {
     "editor.defaultFormatter": "ms-dotnettools.csharp"
-  }
+  },
+  "cSpell.words": [
+    "Autofac"
+  ]
 }
