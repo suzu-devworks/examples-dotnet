@@ -1,0 +1,4 @@
+<#@ template language="C#" inherits="SharedFragments" #>
+begin 1
+   <# SharedText(2); #>
+end 1

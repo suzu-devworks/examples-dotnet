@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+using System.Reflection;
+using Examples.T4.CodeGenerator.RunTimeTemplates;
+
+Assembly.GetExecutingAssembly().RunTemplateGeneratorSelector(args);

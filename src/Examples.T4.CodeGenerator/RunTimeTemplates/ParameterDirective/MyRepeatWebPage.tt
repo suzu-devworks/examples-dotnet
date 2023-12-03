@@ -1,0 +1,13 @@
+<#@ template language="C#" #>
+<#@ parameter type="System.Int32" name="TimesToRepeat" #>
+<html><body>
+<h1>Sales for Previous Month</h1>
+<table>
+<#  for (int i = 1; i <= TimesToRepeat; i++)
+    { #>
+    <tr><td>Test name <#= i #> </td>
+        <td>Test value <#= i * i #> </td> </tr>
+<#  } #>
+</table>
+This report is Company Confidential.
+</body></html>
