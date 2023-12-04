@@ -7,6 +7,12 @@
       "commands": [
         "coverlet"
       ]
+    },
+    "dotnet-t4": {
+      "version": "2.3.1",
+      "commands": [
+        "t4"
+      ]
     }
   }
 }

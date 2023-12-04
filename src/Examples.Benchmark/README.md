@@ -8,7 +8,7 @@
 ## Solution
 dotnet new sln -o .
 
-## Examples.Hosting.Console
+## Examples.Benchmark
 dotnet new console -o src/Examples.Benchmark
 dotnet sln add src/Examples.Benchmark/
 cd src/Examples.Benchmark

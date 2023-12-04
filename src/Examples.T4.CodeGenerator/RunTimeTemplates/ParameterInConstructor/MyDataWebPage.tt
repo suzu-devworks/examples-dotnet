@@ -1,0 +1,14 @@
+<#@ template language="C#" #>
+<html><body>
+<h1>Sales for January</h1>
+<h2>Sales figures</h2>
+<table>
+<# foreach (MyDataItem item in _data.Items)
+   // m_data is declared in MyWebPageCode.cs
+   { #>
+   <tr><td> <#= item.Name #> </td>
+      <td> <#= item.Value #> </td></tr>
+<# } // end of foreach
+#>
+</table>
+</body></html>
