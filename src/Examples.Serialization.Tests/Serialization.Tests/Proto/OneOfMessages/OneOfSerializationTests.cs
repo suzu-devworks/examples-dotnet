@@ -2,7 +2,7 @@ using Google.Protobuf;
 
 using static Examples.Serialization.Proto.OneOfMessages.ResponseMessage;
 
-namespace Examples.Serialization.Proto.OneOfMessages;
+namespace Examples.Serialization.Proto.OneOfMessages.Tests;
 
 /// <summary>
 /// Tests for OneOf types.

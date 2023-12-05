@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Examples.Text;
+namespace Examples.Serialization.Text;
 
 /// <summary>
 /// Converts a <see cref="string"/> to or from some types.

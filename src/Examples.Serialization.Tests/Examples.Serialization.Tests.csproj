@@ -34,4 +34,8 @@
     <Protobuf Include="**/*.proto" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Examples.Serialization\Examples.Serialization.csproj" />
+  </ItemGroup>
+
 </Project>

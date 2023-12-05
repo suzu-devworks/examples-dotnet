@@ -1,7 +1,7 @@
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 
-namespace Examples.Serialization.Proto.Tests.ProtocolBufferBasics;
+namespace Examples.Serialization.Proto.ProtocolBufferBasics.Tests;
 
 /// <summary>
 /// Tests for Google Protocol buffer Serialize.

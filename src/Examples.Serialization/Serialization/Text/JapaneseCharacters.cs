@@ -1,4 +1,4 @@
-namespace Examples.Text;
+namespace Examples.Serialization.Text;
 
 /// <summary>
 /// A utility for handling Japanese characters.
@@ -13,8 +13,8 @@ public static class JapaneseCharacters
     /// Indicates whether the specified Unicode character is Japanese Hiragana.
     /// </summary>
     /// <param name="char">The character to test.</param>
-    /// <returns><see cref="true" /> if the character is Japanese Hiragana;
-    ///     otherwise <see cref="false" />.</returns>
+    /// <returns><c>true</c> if the character is Japanese Hiragana;
+    ///     otherwise <c>false</c>.</returns>
     public static bool IsHiragana(char @char)
         => @char is >= '\u3040' and <= '\u309F';
 
@@ -22,8 +22,8 @@ public static class JapaneseCharacters
     /// Indicates whether the specified Unicode character is Japanese Full width Katakana.
     /// </summary>
     /// <param name="char">The character to test.</param>
-    /// <returns><see cref="true" /> if the character is Japanese Full width Katakana;
-    ///     otherwise <see cref="false" />.</returns>
+    /// <returns><c>true</c> if the character is Japanese Full width Katakana;
+    ///     otherwise <c>false</c>.</returns>
     public static bool IsFullWidthKatakana(char @char)
         => @char is >= '\u30A0' and <= '\u30FF';
 
@@ -31,8 +31,8 @@ public static class JapaneseCharacters
     /// Indicates whether the specified Unicode character is Japanese Half width Katakana.
     /// </summary>
     /// <param name="char">The character to test.</param>
-    /// <returns><see cref="true" /> if the character is Japanese Half width Katakana;
-    ///     otherwise <see cref="false" />.</returns>
+    /// <returns><c>true</c> if the character is Japanese Half width Katakana;
+    ///     otherwise <c>false</c>.</returns>
     public static bool IsHalfWidthKatakana(char @char)
         => @char is >= '\uFF61' and <= '\uFF9F';
 

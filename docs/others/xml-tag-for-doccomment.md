@@ -21,7 +21,7 @@
   * Returns a value ...
 
 * return comment
-  * (bool) `<see cref="true" />` if ...; otherwise,  `<see cref="false" />`.
+  * (bool) `<c>true</c>` if ...; otherwise,  `<c>false</c>`.
 
 
 ## Tags

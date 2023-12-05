@@ -1,4 +1,4 @@
-namespace Examples.Text.Tests;
+namespace Examples.Serialization.Text.Tests;
 
 /// <summary>
 /// Tests <see cref="StringConverter" /> methods.

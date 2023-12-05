@@ -1,4 +1,4 @@
-namespace Examples.Text.Tests;
+namespace Examples.Serialization.Text.Tests;
 
 internal static class CharacterGenerator
 {

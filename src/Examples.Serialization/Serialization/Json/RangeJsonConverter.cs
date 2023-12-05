@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Examples.Text;
+using Examples.Serialization.Text;
 
 namespace Examples.Serialization.Json;
 

@@ -1,4 +1,4 @@
-using Examples.Text;
+using Examples.Serialization.Text;
 
 namespace Examples.Serialization.Xml;
 
