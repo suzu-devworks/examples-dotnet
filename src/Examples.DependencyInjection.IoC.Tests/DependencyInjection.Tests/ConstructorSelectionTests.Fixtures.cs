@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Examples.DependencyInjection.Tests;
 
-partial class ConstructorSelectionTests
+public partial class ConstructorSelectionTests
 {
 
     private class ClassWithMultipleConstructors
