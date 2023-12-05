@@ -1,12 +1,12 @@
-namespace Examples.Serialization.Text;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Examples.Text;
 
 /// <summary>
 /// A utility for handling Japanese characters.
 /// </summary>
-/// <seealso href="https://stackoverflow.com/questions/19899554/unicode-range-for-japanese" />
-/// <seealso href="https://www.unicode.org/charts/PDF/U3040.pdf" />
-/// <seealso href="https://www.unicode.org/charts/PDF/U30A0.pdf" />
-/// <seealso href="https://www.unicode.org/charts/PDF/UFF00.pdf" />
 public static class JapaneseCharacters
 {
     /// <summary>
@@ -36,4 +36,32 @@ public static class JapaneseCharacters
     public static bool IsHalfWidthKatakana(char @char)
         => @char is >= '\uFF61' and <= '\uFF9F';
 
+    /// <summary>
+    /// Returns an enumerable collection of Japanese Hiragana.
+    /// </summary>
+    /// <returns>An enumerable collection of Japanese Hiragana.</returns>
+    public static IEnumerable<char> EnumerateHiragana()
+        => EnumerateCharacters('\u3041', '\u309F');
+
+    /// <summary>
+    /// Returns an enumerable collection of Japanese Full width Katakana.
+    /// </summary>
+    /// <returns>An enumerable collection of Japanese Full width Katakana.</returns>
+    public static IEnumerable<char> EnumerateFullWidthKatakana()
+        => EnumerateCharacters('\u30A0', '\u30FF');
+
+    /// <summary>
+    /// Returns an enumerable collection of Japanese Half width Katakana.
+    /// </summary>
+    /// <returns>An enumerable collection of Japanese Half width Katakana.</returns>
+    public static IEnumerable<char> EnumerateHalfWidthKatakana()
+        => EnumerateCharacters('\uFF61', '\uFF9F');
+
+    private static IEnumerable<char> EnumerateCharacters(char start, char end)
+    {
+        foreach (var c in Enumerable.Range((int)start, (int)end - (int)start + 1))
+        {
+            yield return Convert.ToChar(c);
+        }
+    }
 }

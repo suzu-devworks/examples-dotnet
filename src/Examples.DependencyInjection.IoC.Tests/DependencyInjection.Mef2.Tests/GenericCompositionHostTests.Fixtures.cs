@@ -52,8 +52,8 @@ public partial class GenericCompositionHostTests
 
         public void Exec(T2 element)
         {
-            _verifier.Called(this.Name);
-            _verifier.Called($"Value is {this.Value}.");
+            _verifier.Called(Name);
+            _verifier.Called($"Value is {Value}.");
             return;
         }
     }

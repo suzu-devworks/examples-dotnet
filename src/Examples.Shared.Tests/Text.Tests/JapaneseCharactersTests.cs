@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Examples.Serialization.Text.Tests;
+namespace Examples.Text.Tests;
 
 /// <summary>
 /// Tests <see cref="JapaneseCharacters" /> methods.
@@ -11,7 +11,7 @@ public class JapaneseCharactersTests
     [Fact]
     public void WhenCallingIsHiragana_WithValidValues_ReturnsTrue()
     {
-        foreach (var input in CharacterGenerator.EnumerateHiragana())
+        foreach (var input in JapaneseCharacters.EnumerateHiragana())
         {
             DebugWrite(input);
             JapaneseCharacters.IsHiragana(input).IsTrue();
@@ -36,7 +36,7 @@ public class JapaneseCharactersTests
     [Fact]
     public void WhenCallingIsFullWidthKatakana_WithValidValues_ReturnsTrue()
     {
-        foreach (var input in CharacterGenerator.EnumerateFullWidthKatakana())
+        foreach (var input in JapaneseCharacters.EnumerateFullWidthKatakana())
         {
             DebugWrite(input);
             JapaneseCharacters.IsFullWidthKatakana(input).IsTrue();
@@ -61,7 +61,7 @@ public class JapaneseCharactersTests
     [Fact]
     public void WhenCallingIsHalfWidthKatakana_WithValidValues_ReturnsTrue()
     {
-        foreach (var input in CharacterGenerator.EnumerateHalfWidthKatakana())
+        foreach (var input in JapaneseCharacters.EnumerateHalfWidthKatakana())
         {
             DebugWrite(input);
             JapaneseCharacters.IsHalfWidthKatakana(input).IsTrue();

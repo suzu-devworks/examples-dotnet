@@ -9,7 +9,7 @@ public class DateTimeExtensionsTests
     [InlineData("2023-01-02T12:34:56.7891234Z", "2023-01-02T12:34:00.0000000Z", TimeSpan.TicksPerMinute)]
     [InlineData("2023-01-02T12:34:56.7891234Z", "2023-01-02T12:00:00.0000000Z", TimeSpan.TicksPerHour)]
     [InlineData("2023-01-02T12:34:56.7891234Z", "2023-01-02T00:00:00.0000000Z", TimeSpan.TicksPerDay)]
-    public void WhenCallingTruncate_ReturnsExpected(string input, string expected, long tickSpan)
+    public void WhenCallingTruncate_ReturnsAsExpected(string input, string expected, long tickSpan)
     {
         DateTime.Parse(input).Truncate(tickSpan).Is(DateTime.Parse(expected));
         DateTimeOffset.Parse(input).Truncate(tickSpan).Is(DateTimeOffset.Parse(expected));

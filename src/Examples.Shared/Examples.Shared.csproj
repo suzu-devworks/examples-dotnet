@@ -19,7 +19,7 @@
     <PackageId>Suzu.Examples.Shared</PackageId>
     <Authors>akira suzuki</Authors>
     <Company>suzu-devworks</Company>
-    <Version>1.0.0-alpha.1</Version>
+    <Version>1.0.0-alpha.2</Version>
     <Product>Suzu.Examples.NET</Product>
     <RepositoryUrl>https://github.com/suzu-devworks/examples-dotnet</RepositoryUrl>
     <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet/tree/main/src/Examples.Shared</PackageProjectUrl>
@@ -33,5 +33,5 @@
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
-  
+
 </Project>
