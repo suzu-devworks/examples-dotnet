@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples.T4.CodeGenerator",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples.Various.Tests", "src\Examples.Various.Tests\Examples.Various.Tests.csproj", "{E74CA1BB-E709-433B-A12A-9C442FA907D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples.Metaprogramming.Tests", "src\Examples.Metaprogramming.Tests\Examples.Metaprogramming.Tests.csproj", "{283EA675-8B59-4141-A7F3-90CFADAC33A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +82,10 @@ Global
 		{E74CA1BB-E709-433B-A12A-9C442FA907D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E74CA1BB-E709-433B-A12A-9C442FA907D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E74CA1BB-E709-433B-A12A-9C442FA907D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{283EA675-8B59-4141-A7F3-90CFADAC33A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{283EA675-8B59-4141-A7F3-90CFADAC33A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{283EA675-8B59-4141-A7F3-90CFADAC33A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{283EA675-8B59-4141-A7F3-90CFADAC33A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CAE56FA8-47C5-4B1F-AB39-2F7D046A9021} = {016D6892-C42E-41BB-92C0-10AFDD607B64}
@@ -93,5 +99,6 @@ Global
 		{9B313CBF-F9BC-478A-9ECA-8D2438DDA48F} = {016D6892-C42E-41BB-92C0-10AFDD607B64}
 		{4F3C0096-DF64-40F1-97CB-E14AAD1D5C16} = {016D6892-C42E-41BB-92C0-10AFDD607B64}
 		{E74CA1BB-E709-433B-A12A-9C442FA907D6} = {016D6892-C42E-41BB-92C0-10AFDD607B64}
+		{283EA675-8B59-4141-A7F3-90CFADAC33A8} = {016D6892-C42E-41BB-92C0-10AFDD607B64}
 	EndGlobalSection
 EndGlobal
