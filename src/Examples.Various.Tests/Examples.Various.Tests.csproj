@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Examples.Various\Examples.Various.csproj" />
+    <ProjectReference Include="..\Examples.Shared\Examples.Shared.csproj" />
   </ItemGroup>
 
 </Project>

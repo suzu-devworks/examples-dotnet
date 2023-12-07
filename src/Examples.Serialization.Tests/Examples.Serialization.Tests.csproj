@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Examples.Serialization\Examples.Serialization.csproj" />
+    <ProjectReference Include="..\Examples.Shared\Examples.Shared.csproj" />
   </ItemGroup>
 
 </Project>
