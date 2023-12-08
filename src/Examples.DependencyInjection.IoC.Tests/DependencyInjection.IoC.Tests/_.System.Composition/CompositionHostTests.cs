@@ -1,9 +1,8 @@
 using System.Composition.Convention;
 using System.Composition.Hosting;
 using System.Reflection;
-using Examples.DependencyInjection.IoC.Tests;
 
-namespace Examples.DependencyInjection.Mef2.Tests;
+namespace Examples.DependencyInjection.IoC.Tests._.System.Composition;
 
 /// <summary>
 /// Tests to study dependency injection using MEF 2 (<see cref="System.Composition" />).

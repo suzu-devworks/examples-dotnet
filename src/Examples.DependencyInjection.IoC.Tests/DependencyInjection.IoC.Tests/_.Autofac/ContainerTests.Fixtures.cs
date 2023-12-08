@@ -1,6 +1,4 @@
-using Examples.DependencyInjection.IoC.Tests;
-
-namespace Examples.DependencyInjection.Autofac.Tests;
+namespace Examples.DependencyInjection.IoC.Tests._.Autofac;
 
 public partial class ContainerTests
 {

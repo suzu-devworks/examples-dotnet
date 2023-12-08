@@ -2,7 +2,7 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Reflection;
 
-namespace Examples.DependencyInjection.Mef1.Tests;
+namespace Examples.DependencyInjection.IoC.Tests._.System.ComponentModel.Composition;
 
 /// <summary>
 /// Tests to study dependency injection using MEF 4.0 (<see cref="System.ComponentModel.Composition" />).

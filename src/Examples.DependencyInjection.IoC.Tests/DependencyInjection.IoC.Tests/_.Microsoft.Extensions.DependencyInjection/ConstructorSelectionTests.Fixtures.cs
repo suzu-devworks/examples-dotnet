@@ -1,7 +1,6 @@
-using Examples.DependencyInjection.IoC.Tests;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Examples.DependencyInjection.Tests;
+namespace Examples.DependencyInjection.IoC.Tests._.Microsoft.Extensions.DependencyInjection;
 
 public partial class ConstructorSelectionTests
 {

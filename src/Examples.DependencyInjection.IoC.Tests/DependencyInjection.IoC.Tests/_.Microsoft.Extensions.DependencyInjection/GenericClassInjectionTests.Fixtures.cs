@@ -1,6 +1,4 @@
-using Examples.DependencyInjection.IoC.Tests;
-
-namespace Examples.DependencyInjection.Tests;
+namespace Examples.DependencyInjection.IoC.Tests._.Microsoft.Extensions.DependencyInjection;
 
 public partial class GenericClassInjectionTests
 {

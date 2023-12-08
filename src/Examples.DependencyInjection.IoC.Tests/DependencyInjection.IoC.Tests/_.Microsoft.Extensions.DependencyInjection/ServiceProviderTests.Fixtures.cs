@@ -1,23 +1,21 @@
-using Examples.DependencyInjection.IoC.Tests;
+namespace Examples.DependencyInjection.IoC.Tests._.Microsoft.Extensions.DependencyInjection;
 
-namespace Examples.DependencyInjection.Mef2.Tests;
-
-public partial class CompositionHostTests
+public partial class ServiceProviderTests
 {
 
-    private class MyMessageGenerator1 : IMessageGenerator
+    private class MyMessageGenerator : IMessageGenerator
     {
-        public string Generate() => "Hello MEF'' DI world 1st.";
+        public string Generate() => "Hello DI world.";
     }
 
     private class MyMessageGenerator2 : IMessageGenerator
     {
-        public string Generate() => "Hello MEF'' DI world 2nd.";
+        public string Generate() => "Hello DI world 2nd.";
     }
 
     private class MyMessageGenerator3 : IMessageGenerator
     {
-        public string Generate() => "Hello MEF'' DI world 3rd.";
+        public string Generate() => "Hello DI world 3rd.";
     }
 
     private class MyService : IMyService
@@ -41,6 +39,5 @@ public partial class CompositionHostTests
             }
         }
     }
-
 }
 
