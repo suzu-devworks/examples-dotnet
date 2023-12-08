@@ -1,6 +1,4 @@
-using Examples.DependencyInjection.IoC.Tests;
-
-namespace Examples.DependencyInjection.Mef2.Tests;
+namespace Examples.DependencyInjection.IoC.Tests._.System.Composition;
 
 public partial class GenericCompositionHostTests
 {

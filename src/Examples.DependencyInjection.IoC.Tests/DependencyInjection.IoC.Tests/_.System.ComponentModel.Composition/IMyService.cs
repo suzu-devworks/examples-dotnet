@@ -1,4 +1,4 @@
-namespace Examples.DependencyInjection.Mef1.Tests;
+namespace Examples.DependencyInjection.IoC.Tests._.System.ComponentModel.Composition;
 
 public interface IMessagePrinter
 {

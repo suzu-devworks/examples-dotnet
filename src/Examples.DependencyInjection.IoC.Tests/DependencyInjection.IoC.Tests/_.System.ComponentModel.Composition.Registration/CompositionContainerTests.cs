@@ -3,7 +3,7 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Registration;
 using System.Reflection;
 
-namespace Examples.DependencyInjection.Mef1.Registration.Tests;
+namespace Examples.DependencyInjection.IoC.Tests._.System.ComponentModel.Composition.Registration;
 
 /// <summary>
 /// Tests to study dependency injection using MEF 4.5 (<see cref="System.ComponentModel.Composition.Registration" />).
