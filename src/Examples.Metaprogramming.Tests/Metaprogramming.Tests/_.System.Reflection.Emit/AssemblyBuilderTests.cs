@@ -1,3 +1,5 @@
+using Examples.Xunit;
+
 namespace Examples.Metaprogramming.Tests._.System.Reflection.Emit;
 
 public class AssemblyBuilderTests
@@ -9,7 +11,7 @@ public class AssemblyBuilderTests
         mock.Setup(x => x.WriteLine((object)"Hello Reflection.Emit World."));
 
         Type programClass = ProgramClassBuilder.Build();
-        MockConsoleHelper.RunTest(mock.Object, ()
+        ConsoleHelper.RunWith(mock.Object, ()
             => programClass.GetMethod("Main")!.Invoke(null, null));
 
         mock.Verify(x => x.WriteLine((object)"Hello Reflection.Emit World."), Times.Exactly(1));
