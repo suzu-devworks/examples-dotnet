@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Reflection;
-using Examples.Reflection;
+using Examples.Xunit;
 
 namespace System.Runtime.Caching;
 
@@ -22,7 +22,7 @@ public static class RuntimeMemoryCacheExtensions
             ?? throw new InvalidOperationException($"GetEntry({key}) is null.");
 
         // Set value to internal UtcAbsExp property.
-        entry.SetNonPublicPropertyValue(entry.GetType(), "UtcAbsExp", limit);
+        entry.SetPropertyValueAs(entry.GetType(), "UtcAbsExp", limit);
 
         return;
     }
@@ -34,7 +34,7 @@ public static class RuntimeMemoryCacheExtensions
             ?? throw new InvalidOperationException($"GetEntry({key}) is null.");
 
         // Get value to internal UtcAbsExp property.
-        var value = entry.GetNonPublicPropertyValue(entry.GetType(), "UtcAbsExp");
+        var value = entry.GetPropertyValueAs(entry.GetType(), "UtcAbsExp");
 
         return (DateTime?)value;
     }
@@ -56,10 +56,10 @@ public static class RuntimeMemoryCacheExtensions
             null)
             ?? throw new InvalidOperationException($"`System.Runtime.Caching.MemoryCacheKey` is null.");
 
-        var store = cache.InvokeNonPublic("GetStore", keyInstance)
+        var store = cache.InvokeAs("GetStore", keyInstance)
             ?? throw new InvalidOperationException($"`GetStore( {key} )` is null.");
 
-        var entries = (Hashtable?)store.GetNonPublicFieldValue(store.GetType(), "_entries");
+        var entries = (Hashtable?)store.GetFieldValueAs(store.GetType(), "_entries");
 
         var entry = entries?[keyInstance];
 

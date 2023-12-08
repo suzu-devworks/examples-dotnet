@@ -1,4 +1,5 @@
 using System.Runtime.Caching;
+using Xunit.Abstractions;
 
 namespace Examples.Caching.Tests._.System.Runtime.Caching;
 

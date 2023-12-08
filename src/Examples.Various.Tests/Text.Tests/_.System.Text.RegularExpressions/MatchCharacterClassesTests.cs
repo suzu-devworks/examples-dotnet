@@ -1,6 +1,5 @@
 using System.Text;
 using System.Text.RegularExpressions;
-using Examples.Text;
 
 namespace Examples.Text.Tests._.System.Text.RegularExpressions;
 

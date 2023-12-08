@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Examples.Shared\Examples.Shared.csproj" />
+    <ProjectReference Include="..\Examples.Xunit\Examples.Xunit.csproj" />
   </ItemGroup>
 
 </Project>
