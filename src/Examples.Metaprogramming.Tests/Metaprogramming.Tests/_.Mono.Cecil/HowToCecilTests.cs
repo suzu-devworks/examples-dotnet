@@ -123,10 +123,8 @@ public partial class HowToCecilTests(ITestOutputHelper output)
 
         Modify(method);
 
-        var newPath = Path.Combine(
-            Path.GetDirectoryName(path)!,
-            "out",
-            $"{Path.GetFileNameWithoutExtension(path)}.{nameof(HowToCecilTests)}.dll");
+        var newPath = TestPathUtils.GetOutPath(
+            $"{Path.GetFileNameWithoutExtension(path)}.${nameof(HowToCecilTests)}.dll");
         Directory.CreateDirectory(Path.GetDirectoryName(newPath)!);
         File.Delete(newPath);
         assembly.Write(newPath);

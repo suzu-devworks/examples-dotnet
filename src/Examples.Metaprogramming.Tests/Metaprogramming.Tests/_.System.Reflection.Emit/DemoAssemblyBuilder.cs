@@ -7,9 +7,16 @@ namespace Examples.Metaprogramming.Tests._.System.Reflection.Emit;
 /// Dynamic assembly builder described in Microsoft docs.
 /// </summary>
 /// <see href="https://learn.microsoft.com/en-us/dotnet/api/system.reflection.emit.assemblybuilder?view=net-8.0"/>
-public static class DemoAssemblyBuilder
+public sealed class DemoAssemblyBuilder
 {
-    public static Type Build()
+    private readonly string _appName;
+
+    public DemoAssemblyBuilder(string appName = "DynamicAssemblyExample")
+    {
+        _appName = appName;
+    }
+
+    public Type Build()
     {
         // This code creates an assembly that contains one type,
         // named "MyDynamicType", that has a private field, a property
@@ -41,7 +48,7 @@ public static class DemoAssemblyBuilder
         }
         */
 
-        var appName = new AssemblyName("DynamicAssemblyExample");
+        var appName = new AssemblyName(_appName);
         AssemblyBuilder assembly =
             AssemblyBuilder.DefineDynamicAssembly(
                 appName,
@@ -49,7 +56,7 @@ public static class DemoAssemblyBuilder
 
         // The module name is usually the same as the assembly name.
         ModuleBuilder module = assembly.DefineDynamicModule(
-            appName.Name ?? "DynamicAssemblyExample");
+            appName.Name!);
 
         TypeBuilder typeBuilder = module.DefineType(
             "MyDynamicType",

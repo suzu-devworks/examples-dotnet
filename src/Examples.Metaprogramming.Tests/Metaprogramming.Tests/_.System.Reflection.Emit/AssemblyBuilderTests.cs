@@ -10,7 +10,7 @@ public class AssemblyBuilderTests
         var mock = new Mock<TextWriter>();
         mock.Setup(x => x.WriteLine((object)"Hello Reflection.Emit World."));
 
-        Type programClass = ProgramClassBuilder.Build();
+        Type programClass = new ProgramClassBuilder().Build();
         ConsoleHelper.RunWith(mock.Object, ()
             => programClass.GetMethod("Main")!.Invoke(null, null));
 
@@ -22,7 +22,7 @@ public class AssemblyBuilderTests
     [Fact]
     public void WhenUseMyDynamicType_WithDefaultConstructor_ReturnAsExpected()
     {
-        Type myDynamicTypeClass = DemoAssemblyBuilder.Build();
+        Type myDynamicTypeClass = new DemoAssemblyBuilder().Build();
 
         // Create an instance of MyDynamicType using the default
         // constructor.
@@ -51,7 +51,7 @@ public class AssemblyBuilderTests
     [Fact]
     public void WhenUseMyDynamicType_WithParamConstructor_ReturnAsExpected()
     {
-        Type myDynamicTypeClass = DemoAssemblyBuilder.Build();
+        Type myDynamicTypeClass = new DemoAssemblyBuilder().Build();
 
         // Create an instance of MyDynamicType using the constructor
         // that specifies m_Number. The constructor is identified by
