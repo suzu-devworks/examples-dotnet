@@ -14,22 +14,28 @@ public class ConsoleHelper
     public static void RunWith(TextWriter writer, Action runnable)
     {
         TextWriter stdout = Console.Out;
-        try
+        // TextWriter stdout = new StreamWriter(Console.OpenStandardOutput())
+        // {
+        //     AutoFlush = true
+        // };
+
+        lock (UseConsoleLocked)
         {
-            Console.SetOut(writer);
-            runnable.Invoke();
-        }
-        finally
-        {
-            // Recover the standard output stream so that a
-            // completion message can be displayed.
-            // var stdout = new StreamWriter(Console.OpenStandardOutput())
-            // {
-            //     AutoFlush = true
-            // };
-            Console.SetOut(stdout);
+            try
+            {
+                Console.SetOut(writer);
+                runnable.Invoke();
+            }
+            finally
+            {
+                // Recover the standard output stream so that a
+                // completion message can be displayed.
+                Console.SetOut(stdout);
+            }
         }
     }
+    private static readonly object UseConsoleLocked = new();
+
 
 }
 
