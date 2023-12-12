@@ -1,33 +1,90 @@
-
+using Examples.Metaprogramming.Runtime.Loader;
+using Examples.Xunit;
 using Mono.Cecil;
+using Xunit.Abstractions;
 
 namespace Examples.Metaprogramming.Tests._.Mono.Cecil;
 
-public class AssemblyDefinitionTests
+public class AssemblyDefinitionTests(ITestOutputHelper output)
 {
     [Fact]
-    public void WhenCallingProgramMain_OutToConsole()
+    public void WhenCallingGeneratedHelloWorldProgram_OutToConsoleAsExpected()
     {
-        ModuleDefinition module = new ProgramClassBuilder().Build();
+        var path = typeof(AssemblyDefinitionTests).Assembly.GetOutPath(
+            $"{Path.GetFileNameWithoutExtension(typeof(AssemblyDefinitionTests).Assembly.Location)}.$HelloWorld.dll");
 
-        var path = typeof(AssemblyDefinitionTests).Assembly.Location;
-        var newPath = TestPathUtils.GetOutPath(
-            $"{Path.GetFileNameWithoutExtension(path)}.${nameof(AssemblyDefinitionTests)}.dll");
+        // Write new console module.
+        ModuleDefinition module = new HelloWorldBuilder().Build();
+        module.WriteFixture(path);
+        output.WriteLine($"Wrote assembly is is: \"{path}\"");
 
-        Directory.CreateDirectory(Path.GetDirectoryName(newPath)!);
-        File.Delete(newPath);
-        module.Write(newPath);
+        // Run new assembly(module).
+        var mock = new Mock<TextWriter>();
+        mock.Setup(x => x.WriteLine((object)"Hello Mono.Cecil World."));
 
-        // var mock = new Mock<TextWriter>();
-        // mock.Setup(x => x.WriteLine((object)"Hello Mono.Cecil World."));
+        using (var context = new DisposableAssemblyLoadContext(nameof(AssemblyDefinitionTests)))
+        {
+            var assembly = context.LoadFromAssemblyPath(path);
+            var type = assembly.GetType("MonoCecilExample.Program");
 
-        // // ConsoleHelper.RunWith(mock.Object, ()
-        // //     => programClass.GetMethod("Main")!.Invoke(null, null));
+            ConsoleHelper.RunWith(mock.Object, ()
+                => assembly.EntryPoint!.Invoke(null, null));
+        }
 
-        // mock.Verify(x => x.WriteLine((object)"Hello Mono.Cecil."), Times.Exactly(1));
-        // mock.VerifyNoOtherCalls();
+        mock.Verify(x => x.WriteLine((object)"Hello Mono.Cecil World."), Times.Exactly(1));
+        mock.VerifyNoOtherCalls();
+
         return;
     }
+
+    [Fact]
+    public void WhenUsingGeneratedTypes_WithDefaultConstructor_WorksAsExpected()
+    {
+        var path = typeof(AssemblyDefinitionTests).Assembly.GetOutPath(
+            $"{Path.GetFileNameWithoutExtension(typeof(AssemblyDefinitionTests).Assembly.Location)}.$MyDynamicType.dll");
+
+        // Write new console module.
+        ModuleDefinition module = new DemoAssemblyBuilder().Build();
+        module.WriteFixture(path);
+        output.WriteLine($"Wrote assembly is: \"{path}\"");
+
+        // Run new assembly(module).
+        int? before = null;
+        int? after = null;
+        int? multiplied = null;
+        using (var context = new DisposableAssemblyLoadContext(nameof(AssemblyDefinitionTests)))
+        {
+            var assembly = context.LoadFromAssemblyPath(path);
+            var type = assembly.GetType("DynamicAssemblyExample.MyDynamicType");
+
+            // Create an instance of MyDynamicType using the default
+            // constructor.
+            dynamic instance = Activator.CreateInstance(type!)!;
+
+            // Display the value of the property, then change it to 127 and
+            // display it again. Use null to indicate that the property
+            // has no index.
+            before = instance.Number;
+            instance.Number = 127;
+            after = instance.Number;
+
+            // Call MyMethod, passing 22, and display the return value, 22
+            // times 127. Arguments must be passed as an array, even when
+            // there is only one.
+            multiplied = instance.MyMethod(22);
+        }
+
+        // assert.
+        before.Is(42);
+        after.Is(127);
+        multiplied.Is(127 * 22);
+
+        return;
+    }
+
+
+
+
 
 }
 

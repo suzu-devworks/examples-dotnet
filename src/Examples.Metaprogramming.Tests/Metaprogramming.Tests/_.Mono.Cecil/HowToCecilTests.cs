@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using Examples.Metaprogramming.Runtime.Loader;
 using Examples.Xunit;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
@@ -22,7 +23,6 @@ public partial class HowToCecilTests(ITestOutputHelper output)
     {
         var runtimeDir = RuntimeEnvironment.GetRuntimeDirectory();
         var path = Path.Combine(runtimeDir, "System.Threading.dll");
-
         output.WriteLine($"Types in \"{path}\" is :");
 
         var mock = new Mock<TextWriter>();
@@ -68,6 +68,7 @@ public partial class HowToCecilTests(ITestOutputHelper output)
         output.WriteLine($"Read assembly is: \"{path}\"");
 
         using AssemblyDefinition assembly = AssemblyDefinition.ReadAssembly(path);
+
         TypeDefinition typeDef = assembly.MainModule.GetType(typeof(HowToCecilTests).FullName)
             .NestedTypes.FirstOrDefault(t => t.FullName == typeof(Fixture).FullName!.Replace("+", "/"))
                 ?? throw new XunitException("Type not found.");
@@ -113,6 +114,7 @@ public partial class HowToCecilTests(ITestOutputHelper output)
         output.WriteLine($"Read assembly is: \"{path}\"");
 
         using AssemblyDefinition assembly = AssemblyDefinition.ReadAssembly(path);
+
         TypeDefinition typeDef = assembly.MainModule.GetType(typeof(HowToCecilTests).FullName)
             .NestedTypes.FirstOrDefault(t => t.FullName == typeof(Fixture).FullName!.Replace("+", "/"))
                 ?? throw new XunitException("Type not found.");
@@ -121,17 +123,30 @@ public partial class HowToCecilTests(ITestOutputHelper output)
             .Methods.FirstOrDefault(x => x.Name == "Sum")
                 ?? throw new XunitException("Method not found.");
 
+        var original = new Fixture(10).Sum(10);
+
+        // Modify module.
+        method.Body.Instructions.Count.Is(9);
         Modify(method);
-
-        var newPath = TestPathUtils.GetOutPath(
-            $"{Path.GetFileNameWithoutExtension(path)}.${nameof(HowToCecilTests)}.dll");
-        Directory.CreateDirectory(Path.GetDirectoryName(newPath)!);
-        File.Delete(newPath);
-        assembly.Write(newPath);
-
-        // TODO Modified method run...
-
         method.Body.Instructions.Count.Is(11);
+
+        // write copy module.
+        var outPath = typeof(HowToCecilTests).Assembly.GetOutPath(
+             $"{Path.GetFileNameWithoutExtension(typeof(HowToCecilTests).Assembly.Location)}.$HowTo.dll");
+        assembly.MainModule.WriteFixture(outPath);
+
+        // Run new assembly(module).
+        int newValue = 0;
+        using (var context = new DisposableAssemblyLoadContext(nameof(HowToCecilTests)))
+        {
+            var newAssembly = context.LoadFromAssemblyPath(outPath);
+            var type = newAssembly.GetType(typeof(Fixture).FullName!);
+            dynamic newInstance = Activator.CreateInstance(type!, 10)!;
+            newValue = newInstance.Sum(10);
+        }
+
+        original.Is(20);
+        newValue.Is(20 * 2);
 
         return;
 
@@ -165,5 +180,6 @@ public partial class HowToCecilTests(ITestOutputHelper output)
             return;
         }
     }
+
 
 }

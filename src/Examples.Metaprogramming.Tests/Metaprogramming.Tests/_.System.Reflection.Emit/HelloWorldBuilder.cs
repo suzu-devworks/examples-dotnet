@@ -3,15 +3,11 @@ using System.Reflection.Emit;
 
 namespace Examples.Metaprogramming.Tests._.System.Reflection.Emit;
 
-public sealed class ProgramClassBuilder
+/// <summary>
+/// Simple hello world assembly builder.
+/// </summary>
+public sealed class HelloWorldBuilder(string appName = "DynamicAssemblyExample")
 {
-    private readonly string _appName;
-
-    public ProgramClassBuilder(string appName = "DynamicAssemblyExample")
-    {
-        _appName = appName;
-    }
-
     public Type Build()
     {
         // This code creates an assembly containing a program with one main function.
@@ -25,13 +21,14 @@ public sealed class ProgramClassBuilder
         }
         */
 
-        AssemblyName appName = new(_appName);
+        AssemblyName asmName = new(appName);
+
         AssemblyBuilder assembly = AssemblyBuilder.DefineDynamicAssembly(
-            appName,
+            asmName,
             AssemblyBuilderAccess.Run); //RunAndSave Not Found.
 
         ModuleBuilder module = assembly.DefineDynamicModule(
-            appName.Name!);
+            asmName.Name!);
 
         TypeBuilder type = module.DefineType(
             "Program",

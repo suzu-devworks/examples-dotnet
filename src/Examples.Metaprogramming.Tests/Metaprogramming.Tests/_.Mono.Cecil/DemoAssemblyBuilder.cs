@@ -1,22 +1,15 @@
-using System.Reflection;
-using System.Reflection.Emit;
+using Mono.Cecil;
+using Mono.Cecil.Cil;
 
-namespace Examples.Metaprogramming.Tests._.System.Reflection.Emit;
+namespace Examples.Metaprogramming.Tests._.Mono.Cecil;
 
 /// <summary>
 /// Dynamic assembly builder described in Microsoft docs.
 /// </summary>
-/// <see href="https://learn.microsoft.com/en-us/dotnet/api/system.reflection.emit.assemblybuilder?view=net-8.0"/>
-public sealed class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample")
+public class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample", string typeName = "MyDynamicType")
 {
-    public Type Build()
+    public ModuleDefinition Build()
     {
-        // This code creates an assembly that contains one type,
-        // named "MyDynamicType", that has a private field, a property
-        // that gets and sets the private field, constructors that
-        // initialize the private field, and a method that multiplies
-        // a user-supplied number by the private field value and returns
-        // the result. In C# the type might look like this:
         /*
         public class MyDynamicType
         {
@@ -41,70 +34,86 @@ public sealed class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample
         }
         */
 
-        var asmName = new AssemblyName(appName);
+        ModuleDefinition module = _module ?? CreateModuleDefinition(appName);
 
-        AssemblyBuilder assembly =
-            AssemblyBuilder.DefineDynamicAssembly(
-                asmName,
-                AssemblyBuilderAccess.Run);
-
-        // The module name is usually the same as the assembly name.
-        ModuleBuilder module = assembly.DefineDynamicModule(
-            asmName.Name!);
-
-        TypeBuilder typeBuilder = module.DefineType(
-            "MyDynamicType",
-             TypeAttributes.Public);
+        var type = new TypeDefinition(
+            appName,
+            typeName,
+            TypeAttributes.Public,
+            module.TypeSystem.Object);
+        module.Types.Add(type);
 
         // private int m_number;
-        FieldBuilder numberField = BuilderNumberField(typeBuilder);
+        FieldDefinition numberField = BuilderNumberField(module);
+        type.Fields.Add(numberField);
 
         // public MyDynamicType(int initNumber)
-        ConstructorBuilder ctor1 = BuildConstructor1(typeBuilder, numberField);
+        MethodDefinition ctor1 = BuildConstructor1(module, numberField);
+        type.Methods.Add(ctor1);
 
         // public MyDynamicType() : this(42) {}
-        BuildConstructor0(typeBuilder, ctor1);
+        MethodDefinition ctor0 = BuildConstructor0(module, ctor1);
+        type.Methods.Add(ctor0);
 
         // public int Number { get { ... } set { ... } }
-        BuildPropertyNumber(typeBuilder, numberField);
+        PropertyDefinition numberProperty = BuildPropertyNumber(module, numberField);
+        type.Properties.Add(numberProperty);
+        type.Methods.Add(numberProperty.GetMethod);
+        type.Methods.Add(numberProperty.SetMethod);
 
         // public int MyMethod(int multiplier)
-        BuildMethodMyMethod(typeBuilder, numberField);
+        MethodDefinition myMethod = BuildMethodMyMethod(module, numberField);
+        type.Methods.Add(myMethod);
 
         // Finish the type.
-        Type type = typeBuilder.CreateType();
 
-        return type;
+        return module;
     }
 
-    private static FieldBuilder BuilderNumberField(TypeBuilder typeBuilder)
+    private static ModuleDefinition CreateModuleDefinition(string appName)
+    {
+        AssemblyDefinition assembly = AssemblyDefinition.CreateAssembly(
+            new AssemblyNameDefinition(appName, new Version()),
+            appName,
+            ModuleKind.Dll);
+
+        return assembly.MainModule;
+    }
+
+    private static FieldDefinition BuilderNumberField(ModuleDefinition module)
     {
         // Add a private field of type int (Int32).
-        return typeBuilder.DefineField(
+        FieldDefinition field = new(
             "m_number",
-            typeof(int),
-            FieldAttributes.Private);
+            FieldAttributes.Private,
+            module.TypeSystem.Int32);
+
+        return field;
     }
 
-    private static ConstructorBuilder BuildConstructor1(TypeBuilder typeBuilder, FieldBuilder numberField)
+    private static MethodDefinition BuildConstructor1(ModuleDefinition module, FieldReference numberField)
     {
-        // Define a constructor that takes an integer argument and
-        // stores it in the private field.
-        Type[] parameterTypes = [typeof(int)];
-        ConstructorBuilder ctor1 = typeBuilder.DefineConstructor(
-            MethodAttributes.Public,
-            CallingConventions.Standard,
-            parameterTypes);
+        MethodDefinition ctor1 = new(
+            ".ctor",
+            MethodAttributes.HideBySig | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName | MethodAttributes.Public,
+            module.TypeSystem.Void);
 
-        ILGenerator ctor1IL = ctor1.GetILGenerator();
+        ParameterDefinition initNumber = new(
+            "initNumber",
+            ParameterAttributes.None,
+            module.TypeSystem.Int32);
+        ctor1.Parameters.Add(initNumber);
+
+        ILProcessor ctor1IL = ctor1.Body.GetILProcessor();
         // For a constructor, argument zero is a reference to the new
         // instance. Push it on the stack before calling the base
         // class constructor. Specify the default constructor of the
         // base class (System.Object) by passing an empty array of
         // types (Type.EmptyTypes) to GetConstructor.
         ctor1IL.Emit(OpCodes.Ldarg_0);
-        ConstructorInfo? ci = typeof(object).GetConstructor(Type.EmptyTypes);
-        ctor1IL.Emit(OpCodes.Call, ci!);
+        MethodReference baseCtor = module.ImportReference(
+            module.TypeSystem.Object.Resolve().Methods.Single(x => x.Name == ".ctor"));
+        ctor1IL.Emit(OpCodes.Call, baseCtor!);
         // Push the instance on the stack before pushing the argument
         // that is to be assigned to the private field m_number.
         ctor1IL.Emit(OpCodes.Ldarg_0);
@@ -115,31 +124,29 @@ public sealed class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample
         return ctor1;
     }
 
-    private static ConstructorBuilder BuildConstructor0(TypeBuilder typeBuilder, ConstructorBuilder ctor1)
+    private static MethodDefinition BuildConstructor0(ModuleDefinition module, MethodReference ctor1)
     {
         // Define a default constructor that supplies a default value
         // for the private field. For parameter types, pass the empty
         // array of types or pass null.
-        ConstructorBuilder ctor0 = typeBuilder.DefineConstructor(
-            MethodAttributes.Public,
-            CallingConventions.Standard,
-            Type.EmptyTypes);
+        MethodDefinition ctor0 = new(
+             ".ctor",
+            MethodAttributes.HideBySig | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName | MethodAttributes.Public,
+            module.TypeSystem.Void);
 
-        ILGenerator ctor0IL = ctor0.GetILGenerator();
+        ILProcessor ctor0IL = ctor0.Body.GetILProcessor();
         // For a constructor, argument zero is a reference to the new
         // instance. Push it on the stack before pushing the default
         // value on the stack, then call constructor ctor1.
         ctor0IL.Emit(OpCodes.Ldarg_0);
-        ctor0IL.Emit(OpCodes.Ldc_I4_S, 42);
+        ctor0IL.Emit(OpCodes.Ldc_I4_S, (sbyte)42);
         ctor0IL.Emit(OpCodes.Call, ctor1);
         ctor0IL.Emit(OpCodes.Ret);
 
         return ctor0;
     }
 
-
-    private static (PropertyBuilder property, MethodBuilder getter, MethodBuilder setter)
-        BuildPropertyNumber(TypeBuilder typeBuilder, FieldBuilder numberField)
+    private static PropertyDefinition BuildPropertyNumber(ModuleDefinition module, FieldReference numberField)
     {
         // Define a property named Number that gets and sets the private
         // field.
@@ -148,11 +155,10 @@ public sealed class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample
         // property has no parameters. (If you don't specify null, you must
         // specify an array of Type objects. For a parameterless property,
         // use the built-in array with no elements: Type.EmptyTypes)
-        PropertyBuilder property = typeBuilder.DefineProperty(
+        PropertyDefinition property = new(
             "Number",
             PropertyAttributes.HasDefault,
-            typeof(int),
-            null);
+            module.TypeSystem.Int32);
 
         // The property "set" and property "get" methods require a special
         // set of attributes.
@@ -162,13 +168,12 @@ public sealed class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample
         // Define the "get" accessor method for Number. The method returns
         // an integer and has no arguments. (Note that null could be
         // used instead of Types.EmptyTypes)
-        MethodBuilder getter = typeBuilder.DefineMethod(
+        MethodDefinition getter = new(
             "get_Number",
             attributes,
-            typeof(int),
-            Type.EmptyTypes);
+            module.TypeSystem.Int32);
 
-        ILGenerator getterIL = getter.GetILGenerator();
+        ILProcessor getterIL = getter.Body.GetILProcessor();
         // For an instance property, argument zero is the instance. Load the
         // instance, then load the private field and return, leaving the
         // field value on the stack.
@@ -178,13 +183,18 @@ public sealed class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample
 
         // Define the "set" accessor method for Number, which has no return
         // type and takes one argument of type int (Int32).
-        MethodBuilder setter = typeBuilder.DefineMethod(
+        MethodDefinition setter = new(
             "set_Number",
             attributes,
-            null,
-            [typeof(int)]);
+            module.TypeSystem.Void);
 
-        ILGenerator setterIL = setter.GetILGenerator();
+        ParameterDefinition value = new(
+            "value",
+            ParameterAttributes.None,
+            module.TypeSystem.Int32);
+        setter.Parameters.Add(value);
+
+        ILProcessor setterIL = setter.Body.GetILProcessor();
         // Load the instance and then the numeric argument, then store the
         // argument in the field.
         setterIL.Emit(OpCodes.Ldarg_0);
@@ -194,25 +204,29 @@ public sealed class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample
 
         // Last, map the "get" and "set" accessor methods to the
         // PropertyBuilder. The property is now complete.
-        property.SetGetMethod(getter);
-        property.SetSetMethod(setter);
+        property.GetMethod = getter;
+        property.SetMethod = setter;
 
-        return (property, getter, setter);
+        return property;
     }
 
-    private static MethodBuilder BuildMethodMyMethod(TypeBuilder typeBuilder, FieldBuilder numberField)
+    private static MethodDefinition BuildMethodMyMethod(ModuleDefinition module, FieldReference numberField)
     {
-
         // Define a method that accepts an integer argument and returns
         // the product of that integer and the private field m_number. This
         // time, the array of parameter types is created on the fly.
-        MethodBuilder method = typeBuilder.DefineMethod(
+        MethodDefinition method = new(
             "MyMethod",
             MethodAttributes.Public,
-            typeof(int),
-            new Type[] { typeof(int) });
+            module.TypeSystem.Int32);
 
-        ILGenerator methodIL = method.GetILGenerator();
+        ParameterDefinition multiplier = new(
+            "multiplier",
+            ParameterAttributes.None,
+            module.TypeSystem.Int32);
+        method.Parameters.Add(multiplier);
+
+        ILProcessor methodIL = method.Body.GetILProcessor();
         // To retrieve the private instance field, load the instance it
         // belongs to (argument zero). After loading the field, load the
         // argument one and then multiply. Return from the method with
@@ -227,5 +241,13 @@ public sealed class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample
         return method;
     }
 
+
+    public DemoAssemblyBuilder Module(ModuleDefinition module)
+    {
+        _module = module;
+        return this;
+    }
+
+    private ModuleDefinition? _module;
 
 }

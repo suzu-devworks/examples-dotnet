@@ -3,15 +3,11 @@ using Mono.Cecil.Cil;
 
 namespace Examples.Metaprogramming.Tests._.Mono.Cecil;
 
-public sealed class ProgramClassBuilder
+/// <summary>
+/// Simple hello world assembly builder.
+/// </summary>
+public sealed class HelloWorldBuilder(string appName = "MonoCecilExample")
 {
-    private readonly string _appName;
-
-    public ProgramClassBuilder(string appName = "MonoCecilExample")
-    {
-        _appName = appName;
-    }
-
     public ModuleDefinition Build()
     {
         // This code creates an assembly containing a program with one main function.
@@ -26,13 +22,14 @@ public sealed class ProgramClassBuilder
         */
 
         using var assembly = AssemblyDefinition.CreateAssembly(
-            new AssemblyNameDefinition(_appName, new Version()),
-            _appName,
+            new AssemblyNameDefinition(appName, new Version()),
+            appName,
             ModuleKind.Console);
+
         var module = assembly.MainModule;
 
         var type = new TypeDefinition(
-            _appName,
+            appName,
             "Program",
             TypeAttributes.Public,
             module.ImportReference(typeof(object)));
