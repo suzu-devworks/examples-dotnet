@@ -43,7 +43,7 @@ public class AssemblyDefinitionTests(ITestOutputHelper output)
         var path = typeof(AssemblyDefinitionTests).Assembly.GetOutPath(
             $"{Path.GetFileNameWithoutExtension(typeof(AssemblyDefinitionTests).Assembly.Location)}.$MyDynamicType.dll");
 
-        // Write new console module.
+        // Write new module.
         ModuleDefinition module = new DemoAssemblyBuilder().Build();
         module.WriteFixture(path);
         output.WriteLine($"Wrote assembly is: \"{path}\"");
@@ -82,9 +82,35 @@ public class AssemblyDefinitionTests(ITestOutputHelper output)
         return;
     }
 
+    [Fact]
+    public void WhenCallingGeneratedExtensionMethod_WorksAsExpected()
+    {
+        var path = typeof(AssemblyDefinitionTests).Assembly.GetOutPath(
+            $"{Path.GetFileNameWithoutExtension(typeof(AssemblyDefinitionTests).Assembly.Location)}.$MyExtensions.dll");
 
+        // Write new module.
+        ModuleDefinition baseModule = new DemoAssemblyBuilder().Build();
+        ModuleDefinition module = new DemoAssemblyExtensionsBuilder().Module(baseModule).Build();
+        module.WriteFixture(path);
+        output.WriteLine($"Wrote assembly is: \"{path}\"");
 
+        // Run new assembly(module).
+        object? actual = null;
+        using (var context = new DisposableAssemblyLoadContext(nameof(AssemblyDefinitionTests)))
+        {
+            var assembly = context.LoadFromAssemblyPath(path);
+            var type = assembly.GetType("DynamicAssemblyExample.MyDynamicType");
+            var extension = assembly.GetType("DynamicAssemblyExample.MyDynamicExtensions");
 
+            var instance = Activator.CreateInstance(type!)!;
+            actual = extension!.GetMethod("DoExtension")!.Invoke(null, (object[])[instance, "<="]);
+        }
+
+        // assert.
+        actual!.IsInstanceOf<string>();
+        actual.Is("42<=");
+
+        return;
+    }
 
 }
-

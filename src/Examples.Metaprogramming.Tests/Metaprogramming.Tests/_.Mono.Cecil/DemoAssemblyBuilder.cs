@@ -5,7 +5,9 @@ namespace Examples.Metaprogramming.Tests._.Mono.Cecil;
 
 /// <summary>
 /// Dynamic assembly builder described in Microsoft docs.
+/// Implemented with MonoCecil.
 /// </summary>
+/// <see href="https://learn.microsoft.com/en-us/dotnet/api/system.reflection.emit.assemblybuilder?view=net-8.0"/>
 public class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample", string typeName = "MyDynamicType")
 {
     public ModuleDefinition Build()
@@ -70,15 +72,6 @@ public class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample", stri
         return module;
     }
 
-    private static ModuleDefinition CreateModuleDefinition(string appName)
-    {
-        AssemblyDefinition assembly = AssemblyDefinition.CreateAssembly(
-            new AssemblyNameDefinition(appName, new Version()),
-            appName,
-            ModuleKind.Dll);
-
-        return assembly.MainModule;
-    }
 
     private static FieldDefinition BuilderNumberField(ModuleDefinition module)
     {
@@ -241,6 +234,15 @@ public class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample", stri
         return method;
     }
 
+    private static ModuleDefinition CreateModuleDefinition(string appName)
+    {
+        AssemblyDefinition assembly = AssemblyDefinition.CreateAssembly(
+            new AssemblyNameDefinition(appName, new Version()),
+            appName,
+            ModuleKind.Dll);
+
+        return assembly.MainModule;
+    }
 
     public DemoAssemblyBuilder Module(ModuleDefinition module)
     {
