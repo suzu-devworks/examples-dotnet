@@ -5,7 +5,7 @@ namespace Examples.Xunit;
 /// <summary>
 /// Extension methods for unit tests non public accessor.
 /// </summary>
-public static class NonPublicExtensions
+public static class ReflectionExtensions
 {
     /// <summary>
     /// Invokes the non public method represented by the current instance, using  the specified parameters.
@@ -43,7 +43,7 @@ public static class NonPublicExtensions
     /// <returns>An object containing the return value of the invoked method.</returns>
     public static object? InvokeAs(this object instance, Type type, string name, params object?[]? args)
     {
-        var method = type.GetMethod(name, BindingFlags.Instance | BindingFlags.NonPublic)
+        var method = type.GetMethod(name, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public)
                     ?? throw new ArgumentException($"{name} is not found.");
         var result = method.Invoke(instance, args);
 
@@ -95,7 +95,7 @@ public static class NonPublicExtensions
         => GetPropertyAs(type, name).SetValue(instance, value);
 
     private static PropertyInfo GetPropertyAs(Type type, string name)
-        => type.GetProperty(name, BindingFlags.Instance | BindingFlags.NonPublic)
+        => type.GetProperty(name, BindingFlags.Instance)
             ?? throw new ArgumentException($"{name} is not found.");
 
     /// <summary>

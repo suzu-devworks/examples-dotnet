@@ -5,12 +5,12 @@ namespace Examples.Metaprogramming.Tests._.System.Reflection.Emit;
 public class AssemblyBuilderTests
 {
     [Fact]
-    public void WhenCallingProgramMain_OutToConsole()
+    public void WhenCallingGeneratedHelloWorldProgram_OutToConsoleAsExpected()
     {
         var mock = new Mock<TextWriter>();
         mock.Setup(x => x.WriteLine((object)"Hello Reflection.Emit World."));
 
-        Type programClass = ProgramClassBuilder.Build();
+        Type programClass = new HelloWorldBuilder().Build();
         ConsoleHelper.RunWith(mock.Object, ()
             => programClass.GetMethod("Main")!.Invoke(null, null));
 
@@ -20,9 +20,9 @@ public class AssemblyBuilderTests
     }
 
     [Fact]
-    public void WhenUseMyDynamicType_WithDefaultConstructor_ReturnAsExpected()
+    public void WhenUsingGeneratedTypes_WithDefaultConstructor_WorksAsExpected()
     {
-        Type myDynamicTypeClass = DemoAssemblyBuilder.Build();
+        Type myDynamicTypeClass = new DemoAssemblyBuilder().Build();
 
         // Create an instance of MyDynamicType using the default
         // constructor.
@@ -49,9 +49,9 @@ public class AssemblyBuilderTests
     }
 
     [Fact]
-    public void WhenUseMyDynamicType_WithParamConstructor_ReturnAsExpected()
+    public void WhenUsingGeneratedTypes_WithParameterConstructor_WorksAsExpected()
     {
-        Type myDynamicTypeClass = DemoAssemblyBuilder.Build();
+        Type myDynamicTypeClass = new DemoAssemblyBuilder().Build();
 
         // Create an instance of MyDynamicType using the constructor
         // that specifies m_Number. The constructor is identified by
