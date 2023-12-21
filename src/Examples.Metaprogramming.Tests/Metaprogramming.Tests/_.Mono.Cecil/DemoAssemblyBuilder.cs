@@ -9,8 +9,9 @@ namespace Examples.Metaprogramming.Tests._.Mono.Cecil;
 /// </summary>
 /// <see href="https://learn.microsoft.com/en-us/dotnet/api/system.reflection.emit.assemblybuilder?view=net-8.0"/>
 public class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample", string typeName = "MyDynamicType")
+    : BaseModuleDefinitionBuilder
 {
-    public ModuleDefinition Build()
+    public override ModuleDefinition Build()
     {
         /*
         public class MyDynamicType
@@ -36,7 +37,7 @@ public class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample", stri
         }
         */
 
-        ModuleDefinition module = _module ?? CreateModuleDefinition(appName);
+        ModuleDefinition module = GetModule(appName);
 
         var type = new TypeDefinition(
             appName,
@@ -46,7 +47,7 @@ public class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample", stri
         module.Types.Add(type);
 
         // private int m_number;
-        FieldDefinition numberField = BuilderNumberField(module);
+        FieldDefinition numberField = BuildNumberField(module);
         type.Fields.Add(numberField);
 
         // public MyDynamicType(int initNumber)
@@ -73,7 +74,7 @@ public class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample", stri
     }
 
 
-    private static FieldDefinition BuilderNumberField(ModuleDefinition module)
+    private static FieldDefinition BuildNumberField(ModuleDefinition module)
     {
         // Add a private field of type int (Int32).
         FieldDefinition field = new(
@@ -233,23 +234,5 @@ public class DemoAssemblyBuilder(string appName = "DynamicAssemblyExample", stri
 
         return method;
     }
-
-    private static ModuleDefinition CreateModuleDefinition(string appName)
-    {
-        AssemblyDefinition assembly = AssemblyDefinition.CreateAssembly(
-            new AssemblyNameDefinition(appName, new Version()),
-            appName,
-            ModuleKind.Dll);
-
-        return assembly.MainModule;
-    }
-
-    public DemoAssemblyBuilder Module(ModuleDefinition module)
-    {
-        _module = module;
-        return this;
-    }
-
-    private ModuleDefinition? _module;
 
 }

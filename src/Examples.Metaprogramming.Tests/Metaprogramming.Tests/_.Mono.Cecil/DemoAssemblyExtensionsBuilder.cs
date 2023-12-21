@@ -7,8 +7,9 @@ namespace Examples.Metaprogramming.Tests._.Mono.Cecil;
 /// Dynamic assembly builder with extension methods.
 /// </summary>
 public sealed class DemoAssemblyExtensionsBuilder(string appName = "DynamicAssemblyExample", string typeName = "MyDynamicExtensions")
+    : BaseModuleDefinitionBuilder
 {
-    public ModuleDefinition Build()
+    public override ModuleDefinition Build()
     {
         /*
         public static class MyDynamicExtensions
@@ -22,11 +23,12 @@ public sealed class DemoAssemblyExtensionsBuilder(string appName = "DynamicAssem
         }
         */
 
-        ModuleDefinition module = _module ?? CreateModuleDefinition(appName);
+        ModuleDefinition module = GetModule(appName);
 
         CustomAttribute nullableContextAttribute = new(
             module.ImportReference(
-                typeof(global::System.Runtime.CompilerServices.NullableContextAttribute).GetConstructor([typeof(byte)])));
+                typeof(global::System.Runtime.CompilerServices.NullableContextAttribute).GetConstructor([typeof(byte)])),
+            [01, 00, 01, 00, 00]);
         CustomAttribute extensionAttribute = new(
             module.ImportReference(
                 typeof(global::System.Runtime.CompilerServices.ExtensionAttribute).GetConstructor(Type.EmptyTypes)));
@@ -99,22 +101,4 @@ public sealed class DemoAssemblyExtensionsBuilder(string appName = "DynamicAssem
         return module;
     }
 
-
-    private static ModuleDefinition CreateModuleDefinition(string appName)
-    {
-        AssemblyDefinition assembly = AssemblyDefinition.CreateAssembly(
-            new AssemblyNameDefinition(appName, new Version()),
-            appName,
-            ModuleKind.Dll);
-
-        return assembly.MainModule;
-    }
-
-    public DemoAssemblyExtensionsBuilder Module(ModuleDefinition module)
-    {
-        _module = module;
-        return this;
-    }
-
-    private ModuleDefinition? _module;
 }

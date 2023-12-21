@@ -5,7 +5,7 @@ using Xunit.Abstractions;
 
 namespace Examples.Metaprogramming.Tests._.Mono.Cecil;
 
-public class AssemblyDefinitionTests(ITestOutputHelper output)
+public partial class AssemblyDefinitionTests(ITestOutputHelper output)
 {
     [Fact]
     public void WhenCallingGeneratedHelloWorldProgram_OutToConsoleAsExpected()
@@ -16,7 +16,7 @@ public class AssemblyDefinitionTests(ITestOutputHelper output)
         // Write new console module.
         ModuleDefinition module = new HelloWorldBuilder().Build();
         module.WriteFixture(path);
-        output.WriteLine($"Wrote assembly is is: \"{path}\"");
+        output.WriteLine($"Wrote assembly is: \"{path}\"");
 
         // Run new assembly(module).
         var mock = new Mock<TextWriter>();
@@ -90,7 +90,7 @@ public class AssemblyDefinitionTests(ITestOutputHelper output)
 
         // Write new module.
         ModuleDefinition baseModule = new DemoAssemblyBuilder().Build();
-        ModuleDefinition module = new DemoAssemblyExtensionsBuilder().Module(baseModule).Build();
+        ModuleDefinition module = new DemoAssemblyExtensionsBuilder().UseModule(baseModule).Build();
         module.WriteFixture(path);
         output.WriteLine($"Wrote assembly is: \"{path}\"");
 
@@ -107,8 +107,47 @@ public class AssemblyDefinitionTests(ITestOutputHelper output)
         }
 
         // assert.
-        actual!.IsInstanceOf<string>();
-        actual.Is("42<=");
+        actual!.IsInstanceOf<string>()
+            .Is("42<=");
+
+        return;
+    }
+
+    [Fact]
+    public void WhenUsingGeneratedOpenGenericType_WorksAsExpected()
+    {
+        var path = typeof(AssemblyDefinitionTests).Assembly.GetOutPath(
+            $"{Path.GetFileNameWithoutExtension(typeof(AssemblyDefinitionTests).Assembly.Location)}.$MyGeneric.dll");
+
+        // Write new module.
+        ModuleDefinition module = new DemoAssemblyOpenGenericBuilder().Build();
+        module.WriteFixture(path);
+        output.WriteLine($"Wrote assembly is: \"{path}\"");
+
+        // Run new assembly(module).
+        object? actualValue = null;
+        object? actualTuple = null;
+        using (var context = new DisposableAssemblyLoadContext(nameof(AssemblyDefinitionTests)))
+        {
+            var assembly = context.LoadFromAssemblyPath(path);
+            var type = assembly.GetType("DynamicAssemblyExample.MyDynamicOpenGeneric`1");
+
+            var closedGenericType = type!.MakeGenericType(typeof(int));
+            var instance = Activator.CreateInstance(closedGenericType!, 123)!;
+
+            actualValue = instance.InvokeAs(closedGenericType, "Get");
+
+            var openGenericMethod = closedGenericType!.GetMethod("DoMethod");
+            var closedGenericMethod = openGenericMethod!.MakeGenericMethod(typeof(int), typeof(int));
+            actualTuple = closedGenericMethod.Invoke(instance, [(object)456, (object)789]);
+
+        }
+
+        // assert.
+        actualValue!.IsInstanceOf<int>()
+            .Is(123);
+        actualTuple!.IsInstanceOf<ValueTuple<int, int>>()
+            .Is(value => value.Item1 == 456 && value.Item2 == 789);
 
         return;
     }
