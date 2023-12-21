@@ -1,7 +1,7 @@
 using System.Reflection;
 using System.Runtime.Loader;
 
-namespace Examples.Runtime.Loading;
+namespace Examples.Metaprogramming.Runtime.Loader;
 
 public class DependencyResolverAssemblyLoadContext : AssemblyLoadContext
 {
