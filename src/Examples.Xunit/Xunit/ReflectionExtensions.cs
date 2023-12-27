@@ -95,7 +95,7 @@ public static class ReflectionExtensions
         => GetPropertyAs(type, name).SetValue(instance, value);
 
     private static PropertyInfo GetPropertyAs(Type type, string name)
-        => type.GetProperty(name, BindingFlags.Instance)
+        => type.GetProperty(name, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public)
             ?? throw new ArgumentException($"{name} is not found.");
 
     /// <summary>
@@ -143,7 +143,7 @@ public static class ReflectionExtensions
         => GetFieldAs(type, name).SetValue(instance, value);
 
     private static FieldInfo GetFieldAs(Type type, string name)
-        => type.GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)
+        => type.GetField(name, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public)
             ?? throw new ArgumentException($"{name} is not found.");
 
 }

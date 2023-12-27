@@ -1,69 +1,68 @@
-using System.Collections;
-using System.Reflection;
 using Examples.Xunit;
 
 namespace System.Runtime.Caching;
 
 /// <summary>
-/// Extension method for <see href="MemoryCache" /> to spoofing <see cref="DateTime.Now" />.
+/// Extension method for <see cref="MemoryCache" /> to spoofing <see cref="DateTime.Now" />.
 /// </summary>
 /// <remarks>
-/// <para><see cref="MemoryCache" /> uses <see cref="DateTime.Now" /> internally, so it's hard to test.</para>
+/// The <see cref="MemoryCache" /> uses <see cref="DateTime.Now" /> internally, so it's hard to test.
 /// </remarks>
-/// <seealso href="https://github.com/dotnet/runtime/blob/main/src/libraries/System.Runtime.Caching/src/System/Runtime/Caching/MemoryCacheStore.cs#L295" />
-/// <seealso href="https://github.com/dotnet/runtime/blob/main/src/libraries/System.Runtime.Caching/src/System/Runtime/Caching/MemoryCacheEntry.cs#L309" />
-/// <seealso href="https://github.com/dotnet/runtime/blob/main/src/libraries/System.Runtime.Caching/src/System/Runtime/Caching/CacheExpires.cs#L760" />
-public static class RuntimeMemoryCacheExtensions
+public static class MemoryCacheExtensions
 {
-    public static void SetAbsoluteExpiration(this MemoryCache cache, string key, DateTime limit)
+    public static MemoryCacheEntryAccessor GetEntryAccessor(this MemoryCache cache, string key)
     {
-        // Get internal class MemoryCacheEntry instance.
-        var entry = cache.GetEntry(key)
-            ?? throw new InvalidOperationException($"GetEntry({key}) is null.");
+        // https://github.com/dotnet/runtime/blob/main/src/libraries/System.Runtime.Caching/src/System/Runtime/Caching/MemoryCache.cs#L588
+        // public override object this[string key]
 
-        // Set value to internal UtcAbsExp property.
-        entry.SetPropertyValueAs(entry.GetType(), "UtcAbsExp", limit);
+        // https://github.com/dotnet/runtime/blob/main/src/libraries/System.Runtime.Caching/src/System/Runtime/Caching/MemoryCache.cs#L509
+        // private object GetInternal(string key, string regionName)
 
-        return;
+        // https://github.com/dotnet/runtime/blob/main/src/libraries/System.Runtime.Caching/src/System/Runtime/Caching/MemoryCache.cs#L523
+        // internal MemoryCacheEntry GetEntry(string key)
+
+        var entry = cache.InvokeAs("GetEntry", key)
+            ?? throw new InvalidOperationException($"`MemoryCache#GetEntry( {key} )` is null.");
+
+        return new(entry);
     }
 
-    public static DateTime? GetAbsoluteExpiration(this MemoryCache cache, string key)
+    /// <summary>
+    /// MemoryCacheEntry internal instance accessor.
+    /// </summary>
+    public class MemoryCacheEntryAccessor(object entry)
     {
-        // Get internal class MemoryCacheEntry instance.
-        var entry = cache.GetEntry(key)
-            ?? throw new InvalidOperationException($"GetEntry({key}) is null.");
 
-        // Get value to internal UtcAbsExp property.
-        var value = entry.GetPropertyValueAs(entry.GetType(), "UtcAbsExp");
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        /// <seealso href="https://github.com/dotnet/runtime/blob/main/src/libraries/System.Runtime.Caching/src/System/Runtime/Caching/MemoryCacheEntry.cs#L50"/>
+        /// <code>
+        ///  internal DateTime UtcAbsExp { get; set; }
+        /// </code>
+        /// </remarks>
+        public DateTime UtcAbsExp
+        {
+            get => (DateTime)entry.GetPropertyValueAs(entry.GetType(), "UtcAbsExp")!;
+            set => entry.SetPropertyValueAs(entry.GetType(), "UtcAbsExp", value);
+        }
 
-        return (DateTime?)value;
-    }
+        /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>
+        /// <seealso href="https://github.com/dotnet/runtime/blob/main/src/libraries/System.Runtime.Caching/src/System/Runtime/Caching/MemoryCacheEntry.cs#L78"/>
+        /// <code>
+        ///  internal TimeSpan SlidingExp { get; }
+        /// </code>
+        /// </remarks>
+        public TimeSpan SlidingExp
+        {
+            get => (TimeSpan)entry.GetPropertyValueAs(entry.GetType(), "SlidingExp")!;
+            set => entry.SetFieldValueAs(entry.GetType(), "_slidingExp", value);
+        }
 
-    private static object? GetEntry(this MemoryCache cache, string key)
-    {
-        // Calling GetEntry will perform expired updates.
-        // var entry = cache.InvokeNonPublic("GetEntry", key)
-        //     ?? throw new InvalidOperationException($"GetEntry({key}) is null.");
-
-        var keyType = typeof(MemoryCache).Assembly.GetType("System.Runtime.Caching.MemoryCacheKey")
-            ?? throw new InvalidOperationException("`System.Runtime.Caching.MemoryCacheKey` not found.");
-
-        var keyInstance = Activator.CreateInstance(
-            keyType,
-            BindingFlags.Instance | BindingFlags.NonPublic,
-            null,
-            [key],
-            null)
-            ?? throw new InvalidOperationException($"`System.Runtime.Caching.MemoryCacheKey` is null.");
-
-        var store = cache.InvokeAs("GetStore", keyInstance)
-            ?? throw new InvalidOperationException($"`GetStore( {key} )` is null.");
-
-        var entries = (Hashtable?)store.GetFieldValueAs(store.GetType(), "_entries");
-
-        var entry = entries?[keyInstance];
-
-        return entry;
     }
 
 }
