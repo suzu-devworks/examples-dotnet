@@ -24,6 +24,7 @@ dotnet add package xunit.runner.visualstudio
 dotnet add package coverlet.collector
 dotnet add package Moq
 dotnet add package ChainingAssertion.Core.Xunit
+
 dotnet add package Microsoft.Extensions.DependencyInjection
 dotnet add package System.ComponentModel.Composition
 dotnet add package System.ComponentModel.Composition.Registration

@@ -5,7 +5,7 @@ namespace Examples.Fluency.Tests;
 public class EncodingExtensionsTests
 {
     [Fact]
-    public void WhenCallingRemovePreamble_WithUTF8Encoding_ReturnsExpected()
+    public void WhenCallingRemovePreamble_WithUTF8Encoding_ReturnsAsExpected()
     {
         // ### Arrange ###
         // Create a UTF8 string with BOM added at the beginning
@@ -68,7 +68,7 @@ public class EncodingExtensionsTests
     }
 
     [Fact]
-    public void WhenCallingRemovePreamble_WithUTF16Encoding_ReturnsExpected()
+    public void WhenCallingRemovePreamble_WithUTF16Encoding_ReturnsAsExpected()
     {
         // ### Arrange ###
         // Create a UTF8 string with BOM added at the beginning
