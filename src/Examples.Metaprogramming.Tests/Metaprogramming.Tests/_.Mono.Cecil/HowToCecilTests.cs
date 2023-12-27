@@ -126,9 +126,19 @@ public partial class HowToCecilTests(ITestOutputHelper output)
         var original = new Fixture(10).Sum(10);
 
         // Modify module.
+#if DEBUG
         method.Body.Instructions.Count.Is(9);
+#else
+        method.Body.Instructions.Count.Is(5);
+#endif
+
         Modify(method);
+
+#if DEBUG
         method.Body.Instructions.Count.Is(11);
+#else
+        method.Body.Instructions.Count.Is(7);
+#endif
 
         // write copy module.
         var outPath = typeof(HowToCecilTests).Assembly.GetOutPath(
@@ -152,12 +162,12 @@ public partial class HowToCecilTests(ITestOutputHelper output)
 
         static void Modify(MethodDefinition method)
         {
-            // === return x + y; ===
+            // === return x + y; with Debug ===
             // IL_0000: nop
             // IL_0001: ldarg.0
             // IL_0002: ldfld int32 Examples.Metaprogramming.Tests._.Mono.Cecil.HowToCecilTests/Fixture::'<x>P' /* 04000017 */
             // IL_0007: ldarg.1
-            // IL_0008: add
+            // IL_0008: add         // <== target
 
             // <<< return (x + y) * 2;
             // IL_0009: ldc.i4.2
@@ -165,13 +175,27 @@ public partial class HowToCecilTests(ITestOutputHelper output)
             // ===
             // >>>
 
-            // IL_000b: stloc.0     // <== target
+            // IL_000b: stloc.0     // <== target.Next
             // IL_000c: br.s IL_000e
             // IL_000e: ldloc.0
             // IL_000f: ret
 
+            // === return x + y; with Release ===
+            // IL_0000: ldarg.0
+            // IL_0001: ldfld System.Int32 Examples.Metaprogramming.Tests._.Mono.Cecil.HowToCecilTests / Fixture::< x > P
+            // IL_0006: ldarg.1
+            // IL_0007: add         // <== target
+
+            // <<< return (x + y) * 2;
+            // IL_0009: ldc.i4.2
+            // IL_000a: mul
+            // ===
+            // >>>
+
+            // IL_0008: ret         // <== target.Next
+
             var processor = method.Body.GetILProcessor();
-            var target = method.Body.Instructions.FirstOrDefault(x => x.OpCode == OpCodes.Stloc_0)
+            var target = method.Body.Instructions.FirstOrDefault(x => x.OpCode == OpCodes.Add)?.Next
                 ?? throw new XunitException("opcode not found.");
 
             processor.InsertBefore(target, Instruction.Create(OpCodes.Ldc_I4_2));
