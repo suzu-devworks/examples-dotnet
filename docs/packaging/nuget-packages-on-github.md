@@ -8,11 +8,11 @@
   <PropertyGroup>
     <!-- Properties related to NuGet packaging: -->
     <IsPackable>True</IsPackable>
-    <PackageId>Suzu.Examples.Shared</PackageId>
+    <PackageId>SleighBells.Examples</PackageId>
     <Authors>akira suzuki</Authors>
     <Company>suzu-devworks</Company>
     <Version>1.0.0-alpha</Version>
-    <Product>Suzu.Examples.NET</Product>
+    <Product>SleighBells.Examples</Product>
     <RepositoryUrl>https://github.com/suzu-devworks/examples-dotnet</RepositoryUrl>
     <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet</PackageProjectUrl>
     <PackageTags>local;learning</PackageTags>
