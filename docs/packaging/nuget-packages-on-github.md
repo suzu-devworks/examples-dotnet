@@ -8,7 +8,7 @@
   <PropertyGroup>
     <!-- Properties related to NuGet packaging: -->
     <IsPackable>True</IsPackable>
-    <PackageId>SleighBells.Examples</PackageId>
+    <PackageId>SleighBells.Examples.Shared</PackageId>
     <Authors>akira suzuki</Authors>
     <Company>suzu-devworks</Company>
     <Version>1.0.0-alpha</Version>
