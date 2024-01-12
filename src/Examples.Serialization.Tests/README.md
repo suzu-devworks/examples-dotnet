@@ -7,9 +7,9 @@
 dotnet new sln -o .
 
 ## Examples.Serialization.Tests
-dotnet new xunit -o tests/Examples.Serialization.Tests
-dotnet sln add tests/Examples.Serialization.Tests/
-cd tests/Examples.Serialization.Tests
+dotnet new xunit -o src/Examples.Serialization.Tests
+dotnet sln add src/Examples.Serialization.Tests/
+cd src/Examples.Serialization.Tests
 dotnet add reference ../../src/Examples.Shared
 dotnet add package Microsoft.NET.Test.Sdk
 dotnet add package xunit

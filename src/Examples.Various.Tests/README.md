@@ -7,9 +7,9 @@
 dotnet new sln -o .
 
 ## Examples.Various.Tests
-dotnet new xunit -o tests/Examples.Various.Tests
-dotnet sln add tests/Examples.Various.Tests/
-cd tests/Examples.Various.Tests
+dotnet new xunit -o src/Examples.Various.Tests
+dotnet sln add src/Examples.Various.Tests/
+cd src/Examples.Various.Tests
 dotnet add reference ../../src/Examples.Shared
 dotnet add reference ../../src/Examples.Xunit
 
