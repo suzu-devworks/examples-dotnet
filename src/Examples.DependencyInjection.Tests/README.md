@@ -15,9 +15,9 @@ dotnet add package Microsoft.Extensions.Logging.Abstractions
 cd ../../
 
 ## Examples.DependencyInjection.Tests
-dotnet new xunit -o tests/Examples.DependencyInjection.Tests
-dotnet sln add tests/Examples.DependencyInjection.Tests/
-cd tests/Examples.DependencyInjection.Tests
+dotnet new xunit -o src/Examples.DependencyInjection.Tests
+dotnet sln add src/Examples.DependencyInjection.Tests/
+cd src/Examples.DependencyInjection.Tests
 dotnet add reference ../../src/Examples.DependencyInjection
 dotnet add package Microsoft.NET.Test.Sdk
 dotnet add package xunit

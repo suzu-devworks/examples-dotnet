@@ -16,11 +16,11 @@
   <PropertyGroup>
     <!-- Properties related to NuGet packaging: -->
     <IsPackable>True</IsPackable>
-    <PackageId>Suzu.Examples.Shared</PackageId>
+    <PackageId>SleighBells.Examples</PackageId>
     <Authors>akira suzuki</Authors>
     <Company>suzu-devworks</Company>
-    <Version>1.0.0-alpha.2</Version>
-    <Product>Suzu.Examples.NET</Product>
+    <Version>1.0.0-alpha.1</Version>
+    <Product>SleighBells.Examples</Product>
     <RepositoryUrl>https://github.com/suzu-devworks/examples-dotnet</RepositoryUrl>
     <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet/tree/main/src/Examples.Shared</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>

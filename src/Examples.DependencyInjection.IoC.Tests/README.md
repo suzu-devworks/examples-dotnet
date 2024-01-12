@@ -15,9 +15,9 @@
 dotnet new sln -o .
 
 ## Examples.DependencyInjection.IoC.Tests
-dotnet new xunit -o tests/Examples.DependencyInjection.IoC.Tests
-dotnet sln add tests/Examples.DependencyInjection.IoC.Tests/
-cd tests/Examples.DependencyInjection.Tests
+dotnet new xunit -o src/Examples.DependencyInjection.IoC.Tests
+dotnet sln add src/Examples.DependencyInjection.IoC.Tests/
+cd src/Examples.DependencyInjection.Tests
 dotnet add package Microsoft.NET.Test.Sdk
 dotnet add package xunit
 dotnet add package xunit.runner.visualstudio
