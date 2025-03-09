@@ -384,6 +384,7 @@ FodyWeavers.xsd
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+!.vscode/cspell.json
 *.code-workspace
 
 # Local History for Visual Studio Code
@@ -398,3 +399,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+## User Define
+[Tt]emp/
+.mono/
+.DS_Store
