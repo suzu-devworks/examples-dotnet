@@ -1,4 +1,4 @@
-namespace Examples.Various.Tests;
+namespace Examples.Concurrency.Tests;
 
 public class UnitTest1
 {

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "dotnet-t4": {
+      "version": "3.0.0",
+      "commands": [
+        "t4"
+      ],
+      "rollForward": false
+    },
+    "coverlet.console": {
+      "version": "6.0.4",
+      "commands": [
+        "coverlet"
+      ],
+      "rollForward": false
+    }
+  }
+}

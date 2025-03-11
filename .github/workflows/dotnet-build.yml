@@ -1,0 +1,50 @@
+name: build
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+    paths:
+      - "src/**"
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - "src/**"
+  workflow_dispatch:
+
+env:
+  DOTNET_VERSION: "9.0.x"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET ${{ env.DOTNET_VERSION }}
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Auth Github nuget
+        run: dotnet nuget update source github --username suzu-devworks --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
+
+      - name: Restore Tools
+        run: dotnet tool restore
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test --configuration Release --no-build --verbosity normal
+
+      - name: Pack
+        run: dotnet pack --configuration Release --no-build -o artifacts/
+
+      # - name: Push
+      #   run: |
+      #     dotnet nuget update source github --username suzu-devworks --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
+      #     dotnet nuget push artifacts/*.nupkg --source "github" --skip-duplicate

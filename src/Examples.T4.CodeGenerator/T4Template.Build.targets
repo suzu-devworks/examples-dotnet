@@ -1,0 +1,32 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ItemGroup>
+    <DesignTimeTemplates Include="**/DesignTimeTemplates/**/*.tt" />
+    <RunTimeTemplates Include="**/RunTimeTemplates/**/*.tt" />
+    <Generated Include="**/*.Generated.*" />
+  </ItemGroup>
+
+  <Target Name="DesignTimeTextTemplateTransform" BeforeTargets="BeforeBuild">
+    <Message Text="design-time templates: @(DesignTimeTemplates)" />
+    <Exec Condition="'@(DesignTimeTemplates)' != ''" WorkingDirectory="$(ProjectDir)" Command="dotnet t4 %(DesignTimeTemplates.Identity) -o %(DesignTimeTemplates.RelativeDir)%(DesignTimeTemplates.Filename).Generated.cs" />
+    <ItemGroup>
+      <Compile Include="**/%(DesignTimeTemplates.RelativeDir)*$(DefaultLanguageSourceExtension)" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(BaseIntermediateOutputPath)**;$(BaseOutputPath)**;@(Compile)" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="RunTimeTextTemplateTransform" BeforeTargets="CoreCompile">
+    <Message Text="runtime templates: @(RunTimeTemplates)" />
+    <Exec Condition="'@(RunTimeTemplates)' != ''" WorkingDirectory="$(ProjectDir)" Command="dotnet t4 %(RunTimeTemplates.Identity) -c $(RootNameSpace).RunTimeTemplates.%(RunTimeTemplates.Filename) -o %(RunTimeTemplates.RelativeDir)%(RunTimeTemplates.Filename).Generated.cs" />
+    <ItemGroup>
+      <Compile Include="**/%(RunTimeTemplates.RelativeDir)*$(DefaultLanguageSourceExtension)" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(BaseIntermediateOutputPath)**;$(BaseOutputPath)**;@(Compile)" />
+    </ItemGroup>
+
+  </Target>
+
+  <Target Name="TextTemplateTransform" DependsOnTargets="DesignTimeTextTemplateTransform;RunTimeTextTemplateTransform" />
+
+  <Target Name="TextTemplateClean" AfterTargets="Clean">
+    <Delete Files="@(Generated)" />
+  </Target>
+
+</Project>
