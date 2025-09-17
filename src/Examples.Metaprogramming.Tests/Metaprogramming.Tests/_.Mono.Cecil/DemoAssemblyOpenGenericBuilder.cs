@@ -47,10 +47,10 @@ public class DemoAssemblyOpenGenericBuilder(string appName = "DynamicAssemblyExa
 
         GenericParameter genericType = new("T", type);
         type.GenericParameters.Add(genericType);
-
-        CustomAttribute x = new(
-            module.ImportReference(
-                typeof(global::System.Runtime.CompilerServices.NullableContextAttribute).GetConstructor([typeof(byte)])));
+        new
+         CustomAttribute(
+             module.ImportReference(
+                 typeof(global::System.Runtime.CompilerServices.NullableContextAttribute).GetConstructor([typeof(byte)])));
         CustomAttribute nullableContextAttribute = new(
             module.ImportReference(
                 typeof(global::System.Runtime.CompilerServices.NullableContextAttribute).GetConstructor([typeof(byte)])),
@@ -81,7 +81,7 @@ public class DemoAssemblyOpenGenericBuilder(string appName = "DynamicAssemblyExa
         return module;
     }
 
-    private static FieldDefinition BuildValueField(ModuleDefinition module, TypeReference fieldType)
+    private static FieldDefinition BuildValueField(ModuleDefinition _, TypeReference fieldType)
     {
         FieldDefinition field = new(
             "_value",
@@ -126,7 +126,7 @@ public class DemoAssemblyOpenGenericBuilder(string appName = "DynamicAssemblyExa
         return ctor;
     }
 
-    private static MethodDefinition BuildGetMethod(ModuleDefinition module, GenericParameter genericType, FieldDefinition valueField)
+    private static MethodDefinition BuildGetMethod(ModuleDefinition _, GenericParameter genericType, FieldDefinition valueField)
     {
         MethodDefinition method = new(
              "Get",
