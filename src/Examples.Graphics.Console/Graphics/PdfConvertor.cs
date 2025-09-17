@@ -75,7 +75,7 @@ public class PdfConvertor
 
         using var encoded = pixmap.Encode(format, quality);
 
-        return new(encoded.ToArray(), pixmap.Width, pixmap.Height);
+        return new(encoded!.ToArray(), pixmap.Width, pixmap.Height);
     }
 
     public record ImageSource(byte[] Data, double Width, double Height);

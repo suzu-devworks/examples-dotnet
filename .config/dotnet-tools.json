@@ -3,16 +3,18 @@
   "isRoot": true,
   "tools": {
     "coverlet.console": {
-      "version": "6.0.0",
+      "version": "6.0.4",
       "commands": [
         "coverlet"
-      ]
+      ],
+      "rollForward": false
     },
     "dotnet-t4": {
-      "version": "2.3.1",
+      "version": "3.0.0",
       "commands": [
         "t4"
-      ]
+      ],
+      "rollForward": false
     }
   }
 }
