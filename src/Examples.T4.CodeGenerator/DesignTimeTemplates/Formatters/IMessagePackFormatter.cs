@@ -2,9 +2,9 @@ namespace Examples.T4.CodeGenerator.DesignTimeTemplates.Formatters;
 
 public interface IMessagePackFormatter<T> where T : struct
 {
-    public void Serialize(ref MessagePackWriter writer, T value, MessagePackSerializerOptions options);
+    void Serialize(ref MessagePackWriter writer, T value, MessagePackSerializerOptions options);
 
-    public T Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options);
+    T Deserialize(ref MessagePackReader reader, MessagePackSerializerOptions options);
 
 }
 

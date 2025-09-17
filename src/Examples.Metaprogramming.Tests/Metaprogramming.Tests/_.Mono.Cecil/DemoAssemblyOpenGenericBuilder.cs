@@ -47,8 +47,8 @@ public class DemoAssemblyOpenGenericBuilder(string appName = "DynamicAssemblyExa
 
         GenericParameter genericType = new("T", type);
         type.GenericParameters.Add(genericType);
-
-        CustomAttribute x = new(
+        _ = new
+        CustomAttribute(
             module.ImportReference(
                 typeof(global::System.Runtime.CompilerServices.NullableContextAttribute).GetConstructor([typeof(byte)])));
         CustomAttribute nullableContextAttribute = new(

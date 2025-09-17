@@ -30,6 +30,7 @@ public sealed class DefaultScopedProcessingService : IScopedProcessingService
                 _executionCount);
 
             await Task.Delay(10_000, stoppingToken);
-        };
+        }
+        ;
     }
 }
