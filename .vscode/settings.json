@@ -30,8 +30,11 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "remote.autoForwardPortsFallback": 0,
-  "markdownlint.config": {
-    "MD024": false
+  "[markdown]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.markdownlint": "explicit"
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
   },
 }
