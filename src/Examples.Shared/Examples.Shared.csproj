@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>$(LatestFramework)</TargetFramework>
+    <TargetFrameworks>$(LTSFrameworks)</TargetFrameworks>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -15,12 +15,12 @@
 
   <PropertyGroup>
     <!-- Properties related to NuGet packaging: -->
-    <IsPackable>True</IsPackable>
-    <PackageId>SleighBells.Examples.Shared</PackageId>
+    <IsPackable>false</IsPackable>
+    <PackageId>Sn.Examples.Shared</PackageId>
     <Authors>akira suzuki</Authors>
     <Company>suzu-devworks</Company>
     <Version>1.0.0-alpha.1</Version>
-    <Product>SleighBells.Examples</Product>
+    <Product>Sn.Examples</Product>
     <RepositoryUrl>https://github.com/suzu-devworks/examples-dotnet</RepositoryUrl>
     <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet/tree/main/src/Examples.Shared</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
