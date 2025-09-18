@@ -72,9 +72,9 @@ public partial class CompositionContainerTests
         // The instance is also different because CreationPolicy.NonShared is specified.
         object.ReferenceEquals(service, other).IsFalse();
 
-        mock.Verify(x => x.Print("Hello MEF DI' world 1st."), Times.Exactly(2));
-        mock.Verify(x => x.Print("Hello MEF DI' world 2nd."), Times.Exactly(2));
-        mock.Verify(x => x.Print("Hello MEF DI' world 3rd."), Times.Exactly(2));
+        mock.Verify(x => x.Print("Hello MEF' DI world 1st."), Times.Exactly(2));
+        mock.Verify(x => x.Print("Hello MEF' DI world 2nd."), Times.Exactly(2));
+        mock.Verify(x => x.Print("Hello MEF' DI world 3rd."), Times.Exactly(2));
         mock.VerifyNoOtherCalls();
     }
 
