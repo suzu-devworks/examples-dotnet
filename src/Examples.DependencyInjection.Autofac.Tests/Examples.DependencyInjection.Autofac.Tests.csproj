@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.4.0" />
     <PackageReference Include="ChainingAssertion.Core.Xunit" Version="1.1.0" />
     <PackageReference Include="coverlet.collector" Version="6.0.4">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -27,12 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Examples.DependencyInjection\Examples.DependencyInjection.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Using Include="Xunit" />
     <Using Include="ChainingAssertion" />
+    <Using Include="Moq" />
   </ItemGroup>
 
 </Project>
