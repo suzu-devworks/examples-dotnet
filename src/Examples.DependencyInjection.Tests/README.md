@@ -1,6 +1,18 @@
 # Examples.DependencyInjection.Tests
 
-## Project Initialize
+This is a test project for [Examples.DependencyInjection](../Examples.DependencyInjection/README.md).
+
+## Table of Contents <!-- omit in toc -->
+
+- [Examples.DependencyInjection.Tests](#examplesdependencyinjectiontests)
+  - [Development](#development)
+    - [How the project was initialized](#how-the-project-was-initialized)
+
+## Development
+
+### How the project was initialized
+
+This project was initialized with the following command:
 
 ```shell
 ## Solution
@@ -18,7 +30,6 @@ cd ../../
 dotnet new xunit -o src/Examples.DependencyInjection.Tests
 dotnet sln add src/Examples.DependencyInjection.Tests/
 cd src/Examples.DependencyInjection.Tests
-dotnet add reference ../../src/Examples.DependencyInjection
 dotnet add package Microsoft.NET.Test.Sdk
 dotnet add package xunit
 dotnet add package xunit.runner.visualstudio
