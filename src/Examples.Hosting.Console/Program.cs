@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 var rootCommand = new RootCommand("Hosting example app")
-    .AddCommand(new Command("used", "used Microsoft.Extensions.Hosting example."), async () =>
+    .AddCommand(new Command("used", "used Microsoft.Extensions.Hosting example."), async (_, cancelToken) =>
     {
         using IHost host = Host.CreateDefaultBuilder(args)
             .ConfigureServices(services => services.AddTransient<IRunner, HelloWorldRunner>())
@@ -15,9 +15,9 @@ var rootCommand = new RootCommand("Hosting example app")
 
         using var scope = host.Services.CreateScope();
         var runner = scope.ServiceProvider.GetRequiredService<IRunner>();
-        await runner.RunAsync("Hosting");
+        await runner.RunAsync("Hosting", cancelToken);
     })
-    .AddCommand(new Command("unused", "unused Microsoft.Extensions.Hosting example."), async () =>
+    .AddCommand(new Command("unused", "unused Microsoft.Extensions.Hosting example."), async (_, cancelToken) =>
     {
         var environmentName = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
         IConfiguration configuration = new ConfigurationBuilder()
@@ -38,7 +38,7 @@ var rootCommand = new RootCommand("Hosting example app")
 
         using var scope = provider.CreateScope();
         var runner = scope.ServiceProvider.GetRequiredService<IRunner>();
-        await runner.RunAsync("ServiceProvider");
+        await runner.RunAsync("ServiceProvider", cancelToken);
     });
 
-await rootCommand.InvokeAsync(args);
+await rootCommand.Parse(args).InvokeAsync();
