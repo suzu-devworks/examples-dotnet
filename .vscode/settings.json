@@ -18,8 +18,7 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.markdownlint": "explicit"
     },
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
   "[razor]": {
     "editor.defaultFormatter": "ms-dotnettools.csharp"
