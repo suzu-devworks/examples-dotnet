@@ -3,7 +3,7 @@
 [![build](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/dotnet-build.yml/badge.svg)](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/dotnet-build.yml)
 [![CodeQL](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/github-code-scanning/codeql)
 
-A workspace for learning cryptography programming with dotnet.
+A workspace for learning programming with dotnet.
 
 ## What is this?
 
