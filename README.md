@@ -5,8 +5,8 @@
 
 ## What is the purpose of this repository?
 
-This repository is the author's personal playground for learning .NET and experimenting with its features.
+This repository is just my personal playground for learning and experimenting with .NET programming in C#.
 
-The content here may be useful for other developers who are facing similar issues.
+The content here might actually be helpful to other developers facing similar issues.
 
-However, please note that the code presented here is based solely on my personal understanding and may contain errors or inaccuracies.
+However, please keep in mind that this code is based solely on my own perspective and probably has lots of inaccurate or questionable parts!
