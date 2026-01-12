@@ -3,48 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Examples.DependencyInjection;
 
-public static class ServiceCollectionExtensions
+/// <summary>
+/// Extension for Dependency Injection service collection.
+/// </summary>
+public static partial class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddServiceWithAttributes(this IServiceCollection services)
+    /// <summary>
+    /// Adds services marked with the specified attribute to the service collection.
+    /// </summary>
+    /// <typeparam name="TAttribute"></typeparam>
+    /// <param name="services"></param>
+    /// <returns></returns>
+    public static IServiceCollection AddServiceWithAttributes<TAttribute>(this IServiceCollection services)
+        where TAttribute : ServiceRegistrationAttribute
     {
-        var provider = services.BuildServiceProvider();
-        var logger = provider.GetService<ILogger<ServiceRegistrationAttribute>>();
-
-        foreach (var (service, implement) in EnumerateServiceTypes<SingletonServiceRegistrationAttribute>())
+        foreach (var (serviceType, implementType, scope) in EnumerateServiceTypes<TAttribute>())
         {
-            services.Add(ServiceDescriptor.Singleton(service, implement));
-            logger?.LogDebug(".AddSingleton<{service}, {implement}>", service, implement);
-        }
-
-        foreach (var (service, implement) in EnumerateServiceTypes<ScopedServiceRegistrationAttribute>())
-        {
-            services.Add(ServiceDescriptor.Scoped(service, implement));
-            logger?.LogDebug(".AddScoped<{service}, {implement}>", service, implement);
-        }
-
-        foreach (var (service, implement) in EnumerateServiceTypes<TransientServiceRegistrationAttribute>())
-        {
-            services.Add(ServiceDescriptor.Transient(service, implement));
-            logger?.LogDebug(".AddTransient<{service}, {implement}>", service, implement);
+            services.Add(new ServiceDescriptor(serviceType, implementType, scope));
         }
 
         return services;
     }
 
-    private static IEnumerable<(Type, Type)> EnumerateServiceTypes<TAttribute>()
+    private static IEnumerable<(Type, Type, ServiceLifetime)> EnumerateServiceTypes<TAttribute>()
         where TAttribute : ServiceRegistrationAttribute
     {
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
         {
             var tuples = assembly.GetTypes()
                 .SelectMany(t => t.GetCustomAttributes<TAttribute>()
-                    .Where(a => a.Enabled)
                     .Select(a => (Attribute: a, ImplementType: t)))
-                .Select(x => (x.Attribute.ServiceType ?? x.ImplementType, x.ImplementType));
+                .Select(x => (x.Attribute.ServiceType ?? x.ImplementType, x.ImplementType, x.Attribute.Scope));
 
             foreach (var tuple in tuples)
             {
