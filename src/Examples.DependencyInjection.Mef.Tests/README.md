@@ -1,20 +1,19 @@
 # Examples.DependencyInjection.Mef.Tests
 
-This is a project for learning Ioc using The Managed Extensibility Framework.
-
 ## Table of Contents <!-- omit in toc -->
 
-- [Examples.DependencyInjection.Mef.Tests](#examplesdependencyinjectionmeftests)
-  - [What is MEF?](#what-is-mef)
-  - [Attributed programming model](#attributed-programming-model)
-    - [Setup](#setup)
-  - [A convention-based extension model](#a-convention-based-extension-model)
-    - [Setup](#setup-1)
-  - [MEF2 (System.Composition)](#mef2-systemcomposition)
-    - [Setup](#setup-2)
-  - [References](#references)
-  - [Development](#development)
-    - [How the project was initialized](#how-the-project-was-initialized)
+- [Overview](#overview)
+- [What is MEF?](#what-is-mef)
+- [Attributed programming model](#attributed-programming-model)
+- [A convention-based extension model](#a-convention-based-extension-model)
+- [MEF2 (System.Composition)](#mef2-systemcomposition)
+- [References](#references)
+- [Development](#development)
+  - [How the project was initialized](#how-the-project-was-initialized)
+
+## Overview
+
+This is a project for learning Ioc using The Managed Extensibility Framework.
 
 ## What is MEF?
 
@@ -36,8 +35,6 @@ The basic concepts of MEF:
 - [Imports and exports](<https://learn.microsoft.com/en-us/dotnet/framework/mef/#imports-and-exports-with-attributes>)
 
 Typically called just MEF.
-
-### Setup
 
 ```shell
 dotnet add package System.ComponentModel.Composition
@@ -61,8 +58,6 @@ Support for:
 
 Sometimes called MEF2 or MEF.
 
-### Setup
-
 ```shell
 dotnet add package System.ComponentModel.Composition.Registration
 ```
@@ -79,8 +74,6 @@ Key Features:
 - Provides dependency injection capabilities for loosely coupled modules.
 
 Lightweight version of MEF typically called MEF2.
-
-### Setup
 
 ```shell
 dotnet add package System.Composition
@@ -102,15 +95,13 @@ This project was initialized with the following command:
 dotnet new sln -o .
 
 ## Examples.DependencyInjection.Mef.Tests
-dotnet new xunit -o src/Examples.DependencyInjection.Mef.Tests
+dotnet new xunit3 -o src/Examples.DependencyInjection.Mef.Tests
 dotnet sln add src/Examples.DependencyInjection.Mef.Tests/
 cd src/Examples.DependencyInjection.Mef.Tests
 dotnet add package NET.Test.Sdk
-dotnet add package xunit
+dotnet add package xunit.v3
 dotnet add package xunit.runner.visualstudio
 dotnet add package coverlet.collector
-dotnet add package Moq
-dotnet add package ChainingAssertion.Core.Xunit
 dotnet add package System.ComponentModel.Composition
 dotnet add package System.ComponentModel.Composition.Registration
 dotnet add package System.Composition
