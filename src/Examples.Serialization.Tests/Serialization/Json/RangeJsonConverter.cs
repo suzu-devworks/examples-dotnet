@@ -16,4 +16,3 @@ public class RangeJsonConverter : JsonConverter<Range>
         => writer.WriteStringValue(value.ToString());
 
 }
-

@@ -9,7 +9,7 @@ namespace Examples.Benchmark.Articles;
 [MinColumn, MaxColumn]
 public partial class HowToRegExIsMatch
 {
-    private const string ADDRESS_PATTERN = @"^([a-zA-Z0-9_/\.\-\?\+])+\@([a-zA-Z0-9]+[a-zA-Z0-9\-]*\.)+[a-zA-Z0-9\-]+$";
+    private const string AddressPattern = @"^([a-zA-Z0-9_/\.\-\?\+])+\@([a-zA-Z0-9]+[a-zA-Z0-9\-]*\.)+[a-zA-Z0-9\-]+$";
 
     public static IEnumerable<string> ValuesForInput() => new[] {
             "AAAAAAAAAAA@contoso.com",
@@ -20,7 +20,7 @@ public partial class HowToRegExIsMatch
     [Benchmark]
     [ArgumentsSource(nameof(ValuesForInput))]
     public bool WhenUsingNewInstance(string input) =>
-        new Regex(ADDRESS_PATTERN).IsMatch(input);
+        new Regex(AddressPattern).IsMatch(input);
 
 
     [Benchmark]
@@ -28,7 +28,7 @@ public partial class HowToRegExIsMatch
     public bool WhenUsingStaticInstance(string input) =>
         StaticRegex.IsMatch(input);
 
-    private static readonly Regex StaticRegex = new(ADDRESS_PATTERN);
+    private static readonly Regex StaticRegex = new(AddressPattern);
 
 
     [Benchmark]
@@ -36,18 +36,18 @@ public partial class HowToRegExIsMatch
     public bool WhenUsingCompiledStaticInstance(string input) =>
         CompiledStaticRegex.IsMatch(input);
 
-    private static readonly Regex CompiledStaticRegex = new(ADDRESS_PATTERN, RegexOptions.Compiled);
+    private static readonly Regex CompiledStaticRegex = new(AddressPattern, RegexOptions.Compiled);
 
 
     [Benchmark]
     [ArgumentsSource(nameof(ValuesForInput))]
     public bool WhenUsingStaticMethod(string input) =>
-        Regex.IsMatch(input, ADDRESS_PATTERN);
+        Regex.IsMatch(input, AddressPattern);
 
     [Benchmark]
     [ArgumentsSource(nameof(ValuesForInput))]
     public bool WhenUsingCompiledStaticMethod(string input) =>
-        Regex.IsMatch(input, ADDRESS_PATTERN, RegexOptions.Compiled);
+        Regex.IsMatch(input, AddressPattern, RegexOptions.Compiled);
 
     // //[Benchmark]
     // //[ArgumentsSource(nameof(ValuesForInput))]
@@ -70,7 +70,7 @@ public partial class HowToRegExIsMatch
 
     private static readonly Regex GeneratedRegex = MyRegex();
 
-    [GeneratedRegex(ADDRESS_PATTERN, RegexOptions.Compiled)]
+    [GeneratedRegex(AddressPattern, RegexOptions.Compiled)]
     private static partial Regex MyRegex();
 
 #endif

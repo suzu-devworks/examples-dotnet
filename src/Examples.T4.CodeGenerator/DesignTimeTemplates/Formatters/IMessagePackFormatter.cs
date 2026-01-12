@@ -38,4 +38,3 @@ public class MessagePackReader
     public sbyte ReadSByte() { throw new NotSupportedException(); }
 
 }
-

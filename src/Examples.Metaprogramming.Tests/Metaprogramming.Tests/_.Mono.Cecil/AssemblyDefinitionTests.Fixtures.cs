@@ -4,23 +4,23 @@ namespace Examples.Metaprogramming.Tests._.Mono.Cecil
     {
         public class MyDynamicType
         {
-            private int m_number;
+            private int _number;
 
             public MyDynamicType() : this(42) { }
             public MyDynamicType(int initNumber)
             {
-                m_number = initNumber;
+                _number = initNumber;
             }
 
             public int Number
             {
-                get { return m_number; }
-                set { m_number = value; }
+                get { return _number; }
+                set { _number = value; }
             }
 
             public int MyMethod(int multiplier)
             {
-                return m_number * multiplier;
+                return _number * multiplier;
             }
         }
 

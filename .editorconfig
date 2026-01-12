@@ -50,7 +50,8 @@ indent_size = 4
 tab_width = 4
 
 # New line preferences
-insert_final_newline = false
+# insert_final_newline = false
+insert_final_newline = true
 
 #### .NET Coding Conventions ####
 [*.{cs,vb}]
@@ -270,7 +271,8 @@ dotnet_naming_rule.private_fields_should_be__camelcase.style = _camelcase
 
 dotnet_naming_rule.private_static_fields_should_be_s_camelcase.severity = suggestion
 dotnet_naming_rule.private_static_fields_should_be_s_camelcase.symbols = private_static_fields
-dotnet_naming_rule.private_static_fields_should_be_s_camelcase.style = s_camelcase
+# dotnet_naming_rule.private_static_fields_should_be_s_camelcase.style = s_camelcase
+dotnet_naming_rule.private_static_fields_should_be_s_camelcase.style = _camelcase
 
 dotnet_naming_rule.public_constant_fields_should_be_pascalcase.severity = suggestion
 dotnet_naming_rule.public_constant_fields_should_be_pascalcase.symbols = public_constant_fields
@@ -405,11 +407,12 @@ dotnet_naming_style.camelcase.required_suffix =
 dotnet_naming_style.camelcase.word_separator = 
 dotnet_naming_style.camelcase.capitalization = camel_case
 
-# customized:
-# dotnet_naming_style.s_camelcase.required_prefix = s_
-# dotnet_naming_style.s_camelcase.required_suffix = 
-# dotnet_naming_style.s_camelcase.word_separator = 
-# dotnet_naming_style.s_camelcase.capitalization = camel_case
+## unused
+## dotnet_naming_style.s_camelcase.required_prefix = s_
+## dotnet_naming_style.s_camelcase.required_suffix = 
+## dotnet_naming_style.s_camelcase.word_separator = 
+## dotnet_naming_style.s_camelcase.capitalization = camel_case
+
 dotnet_naming_style.constant_case.required_prefix = 
 dotnet_naming_style.constant_case.required_suffix = 
 dotnet_naming_style.constant_case.word_separator = _

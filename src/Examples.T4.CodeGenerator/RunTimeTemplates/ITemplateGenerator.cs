@@ -5,4 +5,3 @@ public interface ITemplateGenerator
     void Generate(TemplateCodeWriter writer);
 
 }
-
