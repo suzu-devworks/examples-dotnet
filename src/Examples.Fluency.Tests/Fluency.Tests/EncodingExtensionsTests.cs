@@ -5,9 +5,8 @@ namespace Examples.Fluency.Tests;
 public class EncodingExtensionsTests
 {
     [Fact]
-    public void WhenCallingRemovePreamble_WithUTF8Encoding_ReturnsAsExpected()
+    public void When_CallingRemovePreamble_WithUTF8Encoding_Then_ReturnsAsExpected()
     {
-        // ### Arrange ###
         // Create a UTF8 string with BOM added at the beginning
         const string baseString = "TEST文字列😄";
         byte[] original;
@@ -20,15 +19,13 @@ public class EncodingExtensionsTests
             original = stream.ToArray();
         }
 
-        // ### Act ###
         // The default is UTF8, so the result will be the same whether you specify it or not.
         var actual1 = original.RemovePreamble();
         var actual2 = original.RemovePreamble(Encoding.UTF8);
 
-        // ### Assert ###
         // Removed BOM.
-        actual1.Is(Encoding.UTF8.GetBytes(baseString));
-        actual2.Is(Encoding.UTF8.GetBytes(baseString));
+        Assert.Equal(Encoding.UTF8.GetBytes(baseString), actual1);
+        Assert.Equal(Encoding.UTF8.GetBytes(baseString), actual2);
 
         // Encoding.UTF8.GetString() is auto remove?
         {
@@ -36,8 +33,9 @@ public class EncodingExtensionsTests
             var actual = Encoding.UTF8.GetBytes(decoded);
 
             var bom = Encoding.UTF8.GetPreamble();
-            actual[..bom.Length].Is(bom); // not removed.
-            actual[bom.Length..].Is(Encoding.UTF8.GetBytes(baseString));
+
+            Assert.Equal(bom, actual[..bom.Length]); // not removed.
+            Assert.Equal(Encoding.UTF8.GetBytes(baseString), actual[bom.Length..]);
         }
 
         // Binary reader obediently reads from the preamble.
@@ -47,30 +45,32 @@ public class EncodingExtensionsTests
             var actual = reader.ReadBytes((int)stream.Length);
 
             var bom = Encoding.UTF8.GetPreamble();
-            actual[..bom.Length].Is(bom); // not removed.
-            actual[bom.Length..].Is(Encoding.UTF8.GetBytes(baseString));
+
+            Assert.Equal(bom, actual[..bom.Length]); // not removed.
+            Assert.Equal(Encoding.UTF8.GetBytes(baseString), actual[bom.Length..]);
         }
 
-        // StreamReader is auto remove?
+        // Binary reader obediently reads from the preamble.
         using (var stream = new MemoryStream(original))
         using (var reader = new StreamReader(stream, Encoding.UTF8))
         {
             Span<char> buffer = stackalloc char[(int)stream.Length];
             reader.ReadBlock(buffer);
-            buffer[0].Is(baseString[0]); // removed.
+
+            Assert.Equal(baseString[0], buffer[0]); // removed.
+
             var actual = buffer.ToString();
-            actual.IsNot(baseString); // null-terminated.
-            actual.TrimEnd('\0').Is(baseString);
+            Assert.NotEqual(baseString, actual); // null-terminated.
+            Assert.Equal(baseString, actual.TrimEnd('\0'));
         }
 
         // UTF-8 encoding BOM is...
-        Encoding.UTF8.GetPreamble().Is(new byte[] { 0xEF, 0xBB, 0xBF });
+        Assert.Equal(new byte[] { 0xEF, 0xBB, 0xBF }, Encoding.UTF8.GetPreamble());
     }
 
     [Fact]
-    public void WhenCallingRemovePreamble_WithUTF16Encoding_ReturnsAsExpected()
+    public void When_CallingRemovePreamble_WithUTF16Encoding_Then_ReturnsAsExpected()
     {
-        // ### Arrange ###
         // Create a UTF8 string with BOM added at the beginning
 
         var utf16 = Encoding.GetEncoding("UTF-16");
@@ -86,15 +86,13 @@ public class EncodingExtensionsTests
             original = stream.ToArray();
         }
 
-        // ### Act ###
         // The default is UTF8, so the result will be the same whether you specify it or not.
         var actual = original.RemovePreamble(utf16);
 
-        // ### Assert ###
         // Removed BOM.
-        actual.Is(utf16.GetBytes(baseString));
+        Assert.Equal(utf16.GetBytes(baseString), actual);
 
         // UTF-16 Little Endian encoding is...
-        utf16.GetPreamble().Is(new byte[] { 0xFF, 0xFE });
+        Assert.Equal(new byte[] { 0xFF, 0xFE }, utf16.GetPreamble());
     }
 }

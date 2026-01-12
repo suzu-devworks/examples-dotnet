@@ -1,5 +1,3 @@
-using System;
-
 namespace Examples.Fluency;
 
 /// <summary>

@@ -1,28 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>$(LTSFrameworks)</TargetFrameworks>
-    <ImplicitUsings>disable</ImplicitUsings>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
-    <RootNamespace>Examples</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
+    <RootNamespace>Examples</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn)</NoWarn>
+    <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>
     <!-- Properties related to NuGet packaging: -->
     <IsPackable>false</IsPackable>
-    <PackageId>Sn.Examples.Shared</PackageId>
+    <PackageId>Sn.Examples.Fluency</PackageId>
     <Authors>akira suzuki</Authors>
     <Company>suzu-devworks</Company>
     <Version>1.0.0-alpha.1</Version>
     <Product>Sn.Examples</Product>
     <RepositoryUrl>https://github.com/suzu-devworks/examples-dotnet</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet/tree/main/src/Examples.Shared</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet/tree/main/src/Examples.Fluency</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>local;learning</PackageTags>
     <Description>
