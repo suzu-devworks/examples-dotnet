@@ -63,12 +63,12 @@ public partial class DisposableObjectTests
         mock.Setup(x => x.Called("FreeUnmanagedResources(False)"));
         mock.Setup(x => x.Called("DisposeAsync"));
 
-        void _doScopedAction()
+        void DoScopedAction()
         {
             var obj = new DisposableTester(mock.Object);
             obj = null;
         }
-        _doScopedAction();
+        DoScopedAction();
 
         GC.Collect(0, GCCollectionMode.Forced);   // call Dispose(False) only.
         GC.WaitForPendingFinalizers();

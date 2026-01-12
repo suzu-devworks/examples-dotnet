@@ -23,14 +23,14 @@ public class JapaneseCharactersTests
     public void WhenCallingIsHiragana_WithInvalidValues_ReturnsFalse()
     {
         // value < \u3040.
-        const char IDEOGRAPHIC_HALF_FILL_SPACE = '\u303F';
-        Debug.WriteLine(IDEOGRAPHIC_HALF_FILL_SPACE);
-        JapaneseCharacters.IsFullWidthKatakana(IDEOGRAPHIC_HALF_FILL_SPACE).IsFalse();
+        const char ideographicHalfFillSpace = '\u303F';
+        Debug.WriteLine(ideographicHalfFillSpace);
+        JapaneseCharacters.IsFullWidthKatakana(ideographicHalfFillSpace).IsFalse();
 
         // \u309F < value.
-        const char KATAKANA_HIRAGANA_DOUBLE_HYPHEN = '\u30A0';
-        DebugWriteLine(KATAKANA_HIRAGANA_DOUBLE_HYPHEN);
-        JapaneseCharacters.IsHiragana(KATAKANA_HIRAGANA_DOUBLE_HYPHEN).IsFalse();
+        const char katakanaHiraganaDoubleHyphen = '\u30A0';
+        DebugWriteLine(katakanaHiraganaDoubleHyphen);
+        JapaneseCharacters.IsHiragana(katakanaHiraganaDoubleHyphen).IsFalse();
     }
 
     [Fact]
@@ -48,14 +48,14 @@ public class JapaneseCharactersTests
     public void WhenCallingIsFullWidthKatakana_WithInvalidValues_ReturnsFalse()
     {
         // value < \u30A0.
-        const char HIRAGANA_DIGRAPH_YORI = '\u309F';
-        DebugWriteLine(HIRAGANA_DIGRAPH_YORI);
-        JapaneseCharacters.IsFullWidthKatakana(HIRAGANA_DIGRAPH_YORI).IsFalse();
+        const char hiraganaDigraphYori = '\u309F';
+        DebugWriteLine(hiraganaDigraphYori);
+        JapaneseCharacters.IsFullWidthKatakana(hiraganaDigraphYori).IsFalse();
 
         // \u30FF < value.
-        const char BOPOMOFO_UNDEFINED = '\u3100';
-        DebugWriteLine(BOPOMOFO_UNDEFINED);
-        JapaneseCharacters.IsFullWidthKatakana(BOPOMOFO_UNDEFINED).IsFalse();
+        const char bopomofoUndefined = '\u3100';
+        DebugWriteLine(bopomofoUndefined);
+        JapaneseCharacters.IsFullWidthKatakana(bopomofoUndefined).IsFalse();
     }
 
     [Fact]
@@ -73,21 +73,23 @@ public class JapaneseCharactersTests
     public void WhenCallingIsHalfWidthKatakana_WithInvalidValues_ReturnsFalse()
     {
         // value < \uFF60.
-        const char FULL_WIDTH_RIGHT_WHITE_PARENTHESIS = '\uFF60';
-        DebugWriteLine(FULL_WIDTH_RIGHT_WHITE_PARENTHESIS);
-        JapaneseCharacters.IsHalfWidthKatakana(FULL_WIDTH_RIGHT_WHITE_PARENTHESIS).IsFalse();
+        const char fullWidthRightWhiteParenthesis = '\uFF60';
+        DebugWriteLine(fullWidthRightWhiteParenthesis);
+        JapaneseCharacters.IsHalfWidthKatakana(fullWidthRightWhiteParenthesis).IsFalse();
 
         // \uFF9F < value.
-        const char HALF_WIDTH_HANGUL_FILLER = '\uFFA0';
-        DebugWriteLine(HALF_WIDTH_HANGUL_FILLER);
-        JapaneseCharacters.IsHalfWidthKatakana(HALF_WIDTH_HANGUL_FILLER).IsFalse();
+        const char halfWidthHangulFiller = '\uFFA0';
+        DebugWriteLine(halfWidthHangulFiller);
+        JapaneseCharacters.IsHalfWidthKatakana(halfWidthHangulFiller).IsFalse();
     }
 
 #if DEBUG
+
     private static void DebugWrite(char input) => Debug.Write(input);
     private static void DebugWriteLine(char input) => Debug.WriteLine(input);
 
 #else
+
     private static void DebugWrite(char _) { }
     private static void DebugWriteLine(char _) { }
 

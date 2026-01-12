@@ -9,12 +9,12 @@ public class EncodingExtensionsTests
     {
         // ### Arrange ###
         // Create a UTF8 string with BOM added at the beginning
-        const string BASE_STRING = "TEST文字列😄";
+        const string baseString = "TEST文字列😄";
         byte[] original;
         using (var stream = new MemoryStream())
         {
             stream.Write(Encoding.UTF8.GetPreamble());
-            stream.Write(Encoding.UTF8.GetBytes(BASE_STRING));
+            stream.Write(Encoding.UTF8.GetBytes(baseString));
             stream.Flush();
 
             original = stream.ToArray();
@@ -27,8 +27,8 @@ public class EncodingExtensionsTests
 
         // ### Assert ###
         // Removed BOM.
-        actual1.Is(Encoding.UTF8.GetBytes(BASE_STRING));
-        actual2.Is(Encoding.UTF8.GetBytes(BASE_STRING));
+        actual1.Is(Encoding.UTF8.GetBytes(baseString));
+        actual2.Is(Encoding.UTF8.GetBytes(baseString));
 
         // Encoding.UTF8.GetString() is auto remove?
         {
@@ -37,7 +37,7 @@ public class EncodingExtensionsTests
 
             var bom = Encoding.UTF8.GetPreamble();
             actual[..bom.Length].Is(bom); // not removed.
-            actual[bom.Length..].Is(Encoding.UTF8.GetBytes(BASE_STRING));
+            actual[bom.Length..].Is(Encoding.UTF8.GetBytes(baseString));
         }
 
         // Binary reader obediently reads from the preamble.
@@ -48,7 +48,7 @@ public class EncodingExtensionsTests
 
             var bom = Encoding.UTF8.GetPreamble();
             actual[..bom.Length].Is(bom); // not removed.
-            actual[bom.Length..].Is(Encoding.UTF8.GetBytes(BASE_STRING));
+            actual[bom.Length..].Is(Encoding.UTF8.GetBytes(baseString));
         }
 
         // StreamReader is auto remove?
@@ -57,10 +57,10 @@ public class EncodingExtensionsTests
         {
             Span<char> buffer = stackalloc char[(int)stream.Length];
             reader.ReadBlock(buffer);
-            buffer[0].Is(BASE_STRING[0]); // removed.
+            buffer[0].Is(baseString[0]); // removed.
             var actual = buffer.ToString();
-            actual.IsNot(BASE_STRING); // null-terminated.
-            actual.TrimEnd('\0').Is(BASE_STRING);
+            actual.IsNot(baseString); // null-terminated.
+            actual.TrimEnd('\0').Is(baseString);
         }
 
         // UTF-8 encoding BOM is...
@@ -75,12 +75,12 @@ public class EncodingExtensionsTests
 
         var utf16 = Encoding.GetEncoding("UTF-16");
 
-        const string BASE_STRING = "TEST文字列😄";
+        const string baseString = "TEST文字列😄";
         byte[] original;
         using (var stream = new MemoryStream())
         {
             stream.Write(utf16.GetPreamble());
-            stream.Write(utf16.GetBytes(BASE_STRING));
+            stream.Write(utf16.GetBytes(baseString));
             stream.Flush();
 
             original = stream.ToArray();
@@ -92,7 +92,7 @@ public class EncodingExtensionsTests
 
         // ### Assert ###
         // Removed BOM.
-        actual.Is(utf16.GetBytes(BASE_STRING));
+        actual.Is(utf16.GetBytes(baseString));
 
         // UTF-16 Little Endian encoding is...
         utf16.GetPreamble().Is(new byte[] { 0xFF, 0xFE });
