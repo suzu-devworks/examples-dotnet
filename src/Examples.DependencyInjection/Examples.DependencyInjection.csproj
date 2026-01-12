@@ -21,7 +21,7 @@
     <Version>1.0.0-alpha.1</Version>
     <Product>Sn.Examples</Product>
     <RepositoryUrl>https://github.com/suzu-devworks/examples-dotnet</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet-dependency-injection/tree/main/src/Examples.DependencyInjection/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet/tree/main/src/Examples.DependencyInjection/</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>local;learning</PackageTags>
     <Description>
