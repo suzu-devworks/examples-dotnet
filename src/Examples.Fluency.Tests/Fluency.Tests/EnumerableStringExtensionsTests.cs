@@ -5,12 +5,12 @@ public class EnumerableStringExtensionsTests
 
     [Theory]
     [MemberData(nameof(DataForToSeparatedString))]
-    public void WhenCallingToSeparatedString_ReturnsConcatenatedString(
+    public void When_CallingToSeparatedString_Then_ReturnsConcatenatedString(
         IEnumerable<string> inputs,
         string separator,
         string expected)
     {
-        inputs.ToSeparatedString(separator).Is(expected);
+        Assert.Equal(expected, inputs.ToSeparatedString(separator));
     }
 
     public static IEnumerable<object[]> DataForToSeparatedString()
@@ -24,15 +24,15 @@ public class EnumerableStringExtensionsTests
     }
 
     [Fact]
-    public void WhenCallingToSeparatedString_WithNullElements_ReturnsConcatenatedString()
+    public void When_CallingToSeparatedStringWithNullElements_Then_ReturnsConcatenatedString()
     {
-        (new string?[] { null, null, null, null, null }).ToSeparatedString("").Is("");
+        Assert.Equal("", (new string?[] { null, null, null, null, null }).ToSeparatedString(""));
     }
 
     [Fact]
-    public void WhenCallingToSeparatedString_WithEmpty_ReturnsEmptyString()
+    public void When_CallingToSeparatedString_WithEmpty_Then_ReturnsEmptyString()
     {
-        Array.Empty<string>().ToSeparatedString(",").Is("");
+        Assert.Equal("", Array.Empty<string>().ToSeparatedString(","));
     }
 
 }

@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Examples.Shared\Examples.Shared.csproj" />
+    <ProjectReference Include="..\Examples.Fluency\Examples.Fluency.csproj" />
   </ItemGroup>
 
 </Project>
