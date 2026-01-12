@@ -19,7 +19,7 @@ public class BasicSerializationTests
     [Fact]
     public void WhenCallingsSerializeAndDeserialize_ReturnsAsExpected()
     {
-        const string EXPECTED = """
+        const string expected = """
             databaseConnectionString: Server=.;Database=myDatabase;
             uploadFolder: upload/
             approvedFileTypes:
@@ -43,7 +43,7 @@ public class BasicSerializationTests
         var yaml = serializer.Serialize(config);
 
         _output.WriteLine($"YAML{Environment.NewLine}{yaml}");
-        Assert.Equal(EXPECTED, yaml, ignoreLineEndingDifferences: true);
+        Assert.Equal(expected, yaml, ignoreLineEndingDifferences: true);
 
         // Deserialize.
         var deserializer = new DeserializerBuilder()

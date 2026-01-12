@@ -77,4 +77,3 @@ public class AssemblyBuilderTests
         return;
     }
 }
-

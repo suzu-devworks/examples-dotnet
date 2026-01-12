@@ -9,7 +9,7 @@ namespace Examples.Benchmark.Articles;
 [MinColumn, MaxColumn]
 public partial class HowToRegexReplaceMatchEvaluator
 {
-    private const string CAMEL_PATTERN = @"[a-z][A-Z]";
+    private const string CamelPattern = @"[a-z][A-Z]";
 
     public static readonly string Input = "HeSaidThatThatWasTheTheCorrectAnswer";
     public static readonly string Expected = "he_said_that_that_was_the_the_correct_answer";
@@ -18,7 +18,7 @@ public partial class HowToRegexReplaceMatchEvaluator
     [Benchmark]
     public void WhenNormal()
     {
-        var s = Regex.Replace(Input, CAMEL_PATTERN, match =>
+        var s = Regex.Replace(Input, CamelPattern, match =>
             $"{match.Groups[0].Value[0]}_{match.Groups[0].Value[1]}").ToLower();
 
         if (s != Expected)
@@ -30,7 +30,7 @@ public partial class HowToRegexReplaceMatchEvaluator
     [Benchmark]
     public void WhenWithAsSpan()
     {
-        var s = Regex.Replace(Input, @CAMEL_PATTERN, match =>
+        var s = Regex.Replace(Input, @CamelPattern, match =>
             $"{match.Groups[0].Value.AsSpan(0, 1).ToString()}_{match.Groups[0].Value.AsSpan(1, 1).ToString()}").ToLower();
 
         if (s != Expected)
@@ -67,7 +67,7 @@ public partial class HowToRegexReplaceMatchEvaluator
 
     private static readonly Regex CamelMatchRegex = MyRegex();
 
-    [GeneratedRegex(CAMEL_PATTERN, RegexOptions.Compiled)]
+    [GeneratedRegex(CamelPattern, RegexOptions.Compiled)]
     private static partial Regex MyRegex();
 
 #endif

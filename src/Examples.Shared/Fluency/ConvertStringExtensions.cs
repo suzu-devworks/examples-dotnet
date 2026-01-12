@@ -26,4 +26,3 @@ public static class ConvertStringExtensions
         => Convert.FromBase64String(source);
 
 }
-

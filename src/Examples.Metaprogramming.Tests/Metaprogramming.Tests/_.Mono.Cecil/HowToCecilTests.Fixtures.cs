@@ -22,4 +22,3 @@ namespace Examples.Metaprogramming.Tests._.Mono.Cecil
     }
 
 };
-
