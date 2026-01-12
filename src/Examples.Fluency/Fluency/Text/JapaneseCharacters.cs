@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Examples.Text;
+namespace Examples.Fluency.Text;
 
 /// <summary>
 /// A utility for handling Japanese characters.

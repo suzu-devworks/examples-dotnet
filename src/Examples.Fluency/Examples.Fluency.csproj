@@ -6,4 +6,31 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <RootNamespace>Examples</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Properties related to NuGet packaging: -->
+    <IsPackable>false</IsPackable>
+    <PackageId>Sn.Examples.Fluency</PackageId>
+    <Authors>akira suzuki</Authors>
+    <Company>suzu-devworks</Company>
+    <Version>1.0.0-alpha.1</Version>
+    <Product>Sn.Examples</Product>
+    <RepositoryUrl>https://github.com/suzu-devworks/examples-dotnet</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/suzu-devworks/examples-dotnet/tree/main/src/Examples.Fluency</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>local;learning</PackageTags>
+    <Description>
+      Libraries for learning dotnet programming.
+    </Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
 </Project>
