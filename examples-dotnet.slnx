@@ -1,15 +1,9 @@
-<Solution>
+﻿<Solution>
   <Folder Name="/src/">
     <Project Path="src/Examples.Benchmark/Examples.Benchmark.csproj" />
-    <Project Path="src/Examples.DependencyInjection.Extensions.Tests/Examples.DependencyInjection.Extensions.Tests.csproj" />
-    <Project Path="src/Examples.DependencyInjection.Mef.Tests/Examples.DependencyInjection.Mef.Tests.csproj" />
-    <Project Path="src/Examples.DependencyInjection.Tests/Examples.DependencyInjection.Tests.csproj" />
-    <Project Path="src/Examples.DependencyInjection/Examples.DependencyInjection.csproj" />
     <Project Path="src/Examples.Fluency.Tests/Examples.Fluency.Tests.csproj" />
     <Project Path="src/Examples.Fluency/Examples.Fluency.csproj" />
     <Project Path="src/Examples.Graphics.Console/Examples.Graphics.Console.csproj" />
-    <Project Path="src/Examples.Hosting.Console/Examples.Hosting.Console.csproj" />
-    <Project Path="src/Examples.Hosting.Workers/Examples.Hosting.Workers.csproj" />
     <Project Path="src/Examples.Metaprogramming.Tests/Examples.Metaprogramming.Tests.csproj" />
     <Project Path="src/Examples.Serialization.Tests/Examples.Serialization.Tests.csproj" />
     <Project Path="src/Examples.T4.CodeGenerator/Examples.T4.CodeGenerator.csproj" />
