@@ -1,21 +1,25 @@
 {
   "version": "0.2",
   "ignorePaths": [
-    ".git",
     ".devcontainer",
-    ".config",
-    ".github",
-    ".vscode",
     ".editorconfig",
+    ".git",
+    ".gitattributes",
+    ".github",
     ".gitignore",
+    ".prettier*",
+    ".vscode",
     "*.csproj",
-    "*.sln"
+    "*.slnx",
+    "appsettings*.json",
+    "dotnet-tools.json",
+    "global.json",
+    "launchSettings.json",
   ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
     "appsettings",
-    "Autofac",
     "xunit"
   ],
   "ignoreWords": [],
