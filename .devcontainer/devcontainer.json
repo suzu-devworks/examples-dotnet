@@ -9,6 +9,11 @@
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "postCreateCommand": "/bin/sh ./.devcontainer/postCreateCommand.sh",
   "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/node": {},
+    "ghcr.io/devcontainers/features/copilot-cli": {},
+    "ghcr.io/devcontainers/features/github-cli": {}
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -16,8 +21,8 @@
         "streetsidesoftware.code-spell-checker",
         "DavidAnson.vscode-markdownlint",
         "ms-dotnettools.csdevkit",
-        "jeremycaron.csharp-organize-usings",
-        "aliasadidev.nugetpackagemanagergui"
+        "aliasadidev.nugetpackagemanagergui",
+        "redhat.vscode-xml"
       ]
     }
   }
