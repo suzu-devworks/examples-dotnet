@@ -1,12 +1,13 @@
 <Solution>
   <Folder Name="/src/">
-    <Project Path="src/Examples.Benchmark/Examples.Benchmark.csproj" />
     <Project Path="src/Examples.Fluency.Tests/Examples.Fluency.Tests.csproj" />
     <Project Path="src/Examples.Fluency/Examples.Fluency.csproj" />
-    <Project Path="src/Examples.Graphics.Console/Examples.Graphics.Console.csproj" />
+    <Project Path="src/Examples.Serialization.Protobuf.Tests/Examples.Serialization.Protobuf.Tests.csproj" />
     <Project Path="src/Examples.Serialization.Tests/Examples.Serialization.Tests.csproj" />
-    <Project Path="src/Examples.Shared/Examples.Shared.csproj" />
+    <Project Path="src/Examples.Serialization.Xml.Tests/Examples.Serialization.Xml.Tests.csproj" />
+    <Project Path="src/Examples.Serialization.Yaml.Tests/Examples.Serialization.Yaml.Tests.csproj" />
+    <Project Path="src/Examples.Serialization/Examples.Serialization.csproj" />
     <Project Path="src/Examples.Various.Tests/Examples.Various.Tests.csproj" />
-    <Project Path="src/Examples.Xunit/Examples.Xunit.csproj" />
+    <Project Path="src/Examples.Various/Examples.Various.csproj" />
   </Folder>
 </Solution>

@@ -1,89 +1,69 @@
-namespace Examples.Fluency.Text.Tests;
+using Examples.Fluency.Text;
+
+namespace Examples.Fluency.Tests.Text;
 
 /// <summary>
 /// Tests <see cref="JapaneseCharacters" /> methods.
 /// </summary>
-public class JapaneseCharactersTests(ITestOutputHelper output)
+public class JapaneseCharactersTests
 {
-
-    [Fact]
-    public void When_CallingIsHiragana_WithValidValues_Then_ReturnsTrue()
+    public class IsHiraganaMethod
     {
-        foreach (var input in JapaneseCharacters.EnumerateHiragana())
+        [Fact]
+        public void When_EnumerateHiragana_Then_ReturnsTrue()
         {
-            output.Write($"{input}");
-            Assert.True(JapaneseCharacters.IsHiragana(input));
+            foreach (var input in JapaneseCharacters.EnumerateHiragana())
+            {
+                Assert.True(JapaneseCharacters.IsHiragana(input));
+            }
         }
-        output.WriteLine(".");
-    }
 
-    [Fact]
-    public void When_CallingIsHiragana_WithInvalidValues_Then_ReturnsFalse()
-    {
-        // value < \u3040.
-        const char ideographicHalfFillSpace = '\u303F';
-        output.WriteLine($"{ideographicHalfFillSpace}");
-
-        Assert.False(JapaneseCharacters.IsFullWidthKatakana(ideographicHalfFillSpace));
-
-        // \u309F < value.
-        const char katakanaHiraganaDoubleHyphen = '\u30A0';
-        output.WriteLine($"{katakanaHiraganaDoubleHyphen}");
-
-        Assert.False(JapaneseCharacters.IsHiragana(katakanaHiraganaDoubleHyphen));
-    }
-
-    [Fact]
-    public void When_CallingIsFullWidthKatakana_WithValidValues_Then_ReturnsTrue()
-    {
-        foreach (var input in JapaneseCharacters.EnumerateFullWidthKatakana())
+        [Theory]
+        [InlineData('\u3039')] // value < \u3040.
+        [InlineData('\u3100')] // \u309F < value.
+        public void When_WithInvalidValues_Then_ReturnsFalse(char input)
         {
-            output.Write($"{input}");
-
-            Assert.True(JapaneseCharacters.IsFullWidthKatakana(input));
+            Assert.False(JapaneseCharacters.IsHiragana(input));
         }
-        output.WriteLine(".");
     }
 
-    [Fact]
-    public void WhenCallingIsFullWidthKatakana_WithInvalidValues_ReturnsFalse()
+    public class IsFullWidthKatakanaMethod
     {
-        // value < \u30A0 (HIRAGANA DIGRAPH YORI).
-        const char hiraganaDigraphYori = '\u309F';
-        output.WriteLine($"{hiraganaDigraphYori}");
-
-        Assert.False(JapaneseCharacters.IsFullWidthKatakana(hiraganaDigraphYori));
-
-        // \u30FF (Bopomofo - 1) < value. 
-        const char bopomofoUndefined = '\u3100';
-        output.WriteLine($"{bopomofoUndefined}");
-
-        Assert.False(JapaneseCharacters.IsFullWidthKatakana(bopomofoUndefined));
-    }
-
-    [Fact]
-    public void WhenCallingIsHalfWidthKatakana_WithValidValues_ReturnsTrue()
-    {
-        foreach (var input in JapaneseCharacters.EnumerateHalfWidthKatakana())
+        [Fact]
+        public void When_EnumerateFullWidthKatakana_Then_ReturnsTrue()
         {
-            output.Write($"{input}");
-            Assert.True(JapaneseCharacters.IsHalfWidthKatakana(input));
+            foreach (var input in JapaneseCharacters.EnumerateFullWidthKatakana())
+            {
+                Assert.True(JapaneseCharacters.IsFullWidthKatakana(input));
+            }
         }
-        output.WriteLine(".");
+
+        [Theory]
+        [InlineData('\u309F')] // value < \u30A0 (HIRAGANA DIGRAPH YORI).
+        [InlineData('\u3100')] // \u30FF (Bopomofo - 1) < value.
+        public void When_InvalidValues_Then_ReturnsFalse(char input)
+        {
+            Assert.False(JapaneseCharacters.IsFullWidthKatakana(input));
+        }
     }
 
-    [Fact]
-    public void WhenCallingIsHalfWidthKatakana_WithInvalidValues_ReturnsFalse()
+    public class IsHalfWidthKatakanaMethod
     {
-        // value < \uFF60.
-        const char fullWidthRightWhiteParenthesis = '\uFF60';
-        output.WriteLine($"{fullWidthRightWhiteParenthesis}");
-        Assert.False(JapaneseCharacters.IsHalfWidthKatakana(fullWidthRightWhiteParenthesis));
+        [Fact]
+        public void When_EnumerateHalfWidthKatakana_Then_ReturnsTrue()
+        {
+            foreach (var input in JapaneseCharacters.EnumerateHalfWidthKatakana())
+            {
+                Assert.True(JapaneseCharacters.IsHalfWidthKatakana(input));
+            }
+        }
 
-        // \uFF9F < value.
-        const char halfWidthHangulFiller = '\uFFA0';
-        output.WriteLine($"{halfWidthHangulFiller}");
-        Assert.False(JapaneseCharacters.IsHalfWidthKatakana(halfWidthHangulFiller));
+        [Theory]
+        [InlineData('\uFF60')] // value < \uFF60.
+        [InlineData('\uFFA0')] // \uFF9F < value.
+        public void When_InvalidValues_Then_ReturnsFalse(char input)
+        {
+            Assert.False(JapaneseCharacters.IsHalfWidthKatakana(input));
+        }
     }
-
 }

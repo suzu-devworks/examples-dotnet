@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>$(LTSFrameworks)</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Examples</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../Examples.Fluency/Fluency/Text/JapaneseCharacters.cs">
+      <Link>Fluency/Text/JapaneseCharacters.cs</Link>
+    </Compile>
+    <Compile Include="../Examples.Fluency/Fluency/Extensions/TypeConvertorStringExtensions.cs">
+      <Link>Fluency/Extensions/TypeConvertorStringExtensions.cs</Link>
+    </Compile>
+  </ItemGroup>
+</Project>

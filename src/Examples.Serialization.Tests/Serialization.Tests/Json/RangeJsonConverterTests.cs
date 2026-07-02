@@ -1,28 +1,27 @@
 using System.Text.Json;
+using Examples.Serialization.Json;
 
-namespace Examples.Serialization.Json.Tests;
+namespace Examples.Serialization.Tests.Json;
 
 /// <summary>
 /// Tests <see cref="RangeJsonConverter" /> methods.
 /// </summary>
 public class RangeJsonConverterTests
 {
-    private readonly JsonSerializerOptions _options;
-
-    public RangeJsonConverterTests()
+    private static readonly JsonSerializerOptions Options = new()
     {
-        _options = new();
-        _options.Converters.Add(new RangeJsonConverter());
-    }
+        Converters = { new RangeJsonConverter() }
+    };
 
     [Fact]
-    public void WhenCallingsSerializeAndDeserialize()
+    public void When_DeserializeAfterSerializing_Then_RestoresToOriginal()
     {
         Range expected = 0..10;
-        var serializedJson = JsonSerializer.Serialize(expected, _options);
 
-        var actual = JsonSerializer.Deserialize<Range>(serializedJson, _options);
-        actual.Is(actual);
+        var serializedJson = JsonSerializer.Serialize(expected, Options);
+        var actual = JsonSerializer.Deserialize<Range>(serializedJson, Options);
+
+        Assert.Equal("\"0..10\"", serializedJson);
+        Assert.Equal(expected, actual);
     }
-
 }

@@ -1,19 +1,19 @@
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Examples.Serialization.Xml;
 
-namespace Examples.Serialization.Xml.Tests;
+namespace Examples.Serialization.Tests.Xml;
 
 /// <summary>
 /// Tests <see cref="UglyXmlTextReaderDecorator" /> methods.
 /// </summary>
 public class UglyXmlTextReaderDecoratorTests
 {
-
     [Fact]
-    public async Task WhenCallingNormalXmlReader_ThrowAnException()
+    public async Task When_ReadingUglyXml_Then_ThrowsException()
     {
-        using var inner = new StringReader(UglyXmlDocument1);
+        using var inner = new StringReader(UglyXml);
 
         var settings = new XmlReaderSettings
         {
@@ -23,16 +23,16 @@ public class UglyXmlTextReaderDecoratorTests
 
         using var reader = XmlReader.Create(inner, settings);
 
-        var ex = await Assert.ThrowsAsync<XmlException>(
-            () => XElement.LoadAsync(reader, LoadOptions.None, default));
+        var exception = await Assert.ThrowsAsync<XmlException>(
+            () => XElement.LoadAsync(reader, LoadOptions.None, TestContext.Current.CancellationToken));
 
-        return;
+        Assert.Contains("Name cannot begin with the '1' character, hexadecimal value 0x31.", exception.Message);
     }
 
     [Fact]
-    public async Task WhenUsingUglyXmlTextReaderDecorator()
+    public async Task When_ReadingUglyXml_WithUglyXmlTextReaderDecorator_Then_ReturnsXElement()
     {
-        using var inner = new UglyXmlTextReaderDecorator(new StringReader(UglyXmlDocument1));
+        using var inner = new UglyXmlTextReaderDecorator(new StringReader(UglyXml));
 
         var settings = new XmlReaderSettings
         {
@@ -42,16 +42,16 @@ public class UglyXmlTextReaderDecoratorTests
 
         using var reader = XmlReader.Create(inner, settings);
 
-        var document = await XElement.LoadAsync(reader, LoadOptions.None, default);
+        var element = await XElement.LoadAsync(reader, LoadOptions.None, TestContext.Current.CancellationToken);
 
-        document.XPathSelectElement(@"//*[starts-with(@name,'半角ｶﾅを含むノード')]")?.Value.Is("⭐️半角ｶﾅを含むノード");
-        document.XPathSelectElements(@"//NG-GROUP/*").Count().Is(3);
+        var halfKanaNode = element.XPathSelectElement(@"//*[starts-with(@name,'半角ｶﾅを含むノード')]");
+        var ngGroupElements = element.XPathSelectElements(@"//NG-GROUP/*");
 
-        return;
+        Assert.Equal("⭐️半角ｶﾅを含むノード", halfKanaNode?.Value);
+        Assert.Equal(3, ngGroupElements.Count());
     }
 
-
-    private static readonly string UglyXmlDocument1 = """
+    private static readonly string UglyXml = """
         <?xml version="1.0" encoding="utf-8"?>
         <DOC>
             <TEMPLATE>
@@ -69,5 +69,4 @@ public class UglyXmlTextReaderDecoratorTests
             </TEMPLATE>
         </DOC>
         """;
-
 }
