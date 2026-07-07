@@ -22,7 +22,7 @@
         "DavidAnson.vscode-markdownlint",
         "ms-dotnettools.csdevkit",
         "aliasadidev.nugetpackagemanagergui",
-        "redhat.vscode-xml"
+        "DotJoshJohnson.xml"
       ]
     }
   }
