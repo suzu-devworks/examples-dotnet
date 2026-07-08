@@ -1,7 +1,9 @@
-<Solution>
+﻿<Solution>
   <Folder Name="/src/">
     <Project Path="src/Examples.Fluency.Tests/Examples.Fluency.Tests.csproj" />
     <Project Path="src/Examples.Fluency/Examples.Fluency.csproj" />
+    <Project Path="src/Examples.Graphics.Tests/Examples.Graphics.Tests.csproj" />
+    <Project Path="src/Examples.Graphics/Examples.Graphics.csproj" />
     <Project Path="src/Examples.Serialization.Protobuf.Tests/Examples.Serialization.Protobuf.Tests.csproj" />
     <Project Path="src/Examples.Serialization.Tests/Examples.Serialization.Tests.csproj" />
     <Project Path="src/Examples.Serialization.Xml.Tests/Examples.Serialization.Xml.Tests.csproj" />
