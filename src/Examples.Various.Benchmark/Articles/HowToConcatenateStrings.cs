@@ -1,33 +1,30 @@
 using System.Text;
 using BenchmarkDotNet.Attributes;
 
-namespace Examples.Benchmark.Articles;
+namespace Examples.Various.Benchmark.Articles;
 
 [MemoryDiagnoser]
 public class HowToConcatenateStrings
 {
-    private IEnumerable<string> _data = default!;
+    private const int N = 10000;
+    private readonly IEnumerable<string> _data = default!;
 
-    [Params(10000)]
-    public int N;
-
-    [GlobalSetup]
-    public void Setup()
+    public HowToConcatenateStrings()
     {
         _data = Enumerable.Range(0, N).Select(x => x.ToString());
     }
 
     [Benchmark]
-    public string WhenUsingOperator() => _data.Aggregate((a, b) => a + "," + b);
+    public string Using_PlusOperator() => _data.Aggregate((a, b) => a + "," + b);
 
     [Benchmark]
-    public string WhenUsingStringConcat() => _data.Aggregate((a, b) => string.Concat(a, ",", b));
+    public string Using_String_Concat() => _data.Aggregate((a, b) => string.Concat(a, ",", b));
 
     [Benchmark]
-    public string WhenUsingStringJoin() => string.Join(",", _data);
+    public string Using_String_Join() => string.Join(",", _data);
 
     [Benchmark]
-    public string WhenUsingStringBuilderAppend() => _data
+    public string Using_StringBuilder_Append() => _data
         .Aggregate(
             new StringBuilder(),
             (builder, data) =>
@@ -40,7 +37,7 @@ public class HowToConcatenateStrings
         );
 
     [Benchmark]
-    public async Task<string> WhenUsingStringWriterWriteAsync()
+    public async Task<string> Using_StringWriter_WriteAsync()
     {
         var builder = new StringBuilder();
         using (var writer = new StringWriter(builder))
@@ -53,6 +50,4 @@ public class HowToConcatenateStrings
 
         return builder.ToString();
     }
-
-
 }
