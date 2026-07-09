@@ -11,8 +11,11 @@
     <Compile Include="../Examples.Fluency/Fluency/Text/JapaneseCharacters.cs">
       <Link>Fluency/Text/JapaneseCharacters.cs</Link>
     </Compile>
-    <Compile Include="../Examples.Fluency/Fluency/Extensions/TypeConvertorStringExtensions.cs">
-      <Link>Fluency/Extensions/TypeConvertorStringExtensions.cs</Link>
+    <Compile Include="../Examples.Fluency/Fluency/TypeConvertorStringExtensions.cs">
+      <Link>Fluency/TypeConvertorStringExtensions.cs</Link>
+    </Compile>
+    <Compile Include="../Examples.Fluency/Fluency/TypeConvertorStringExtensions.Range.cs">
+      <Link>Fluency/TypeConvertorStringExtensions.Range.cs</Link>
     </Compile>
   </ItemGroup>
 </Project>

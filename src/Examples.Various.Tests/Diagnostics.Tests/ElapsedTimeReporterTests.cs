@@ -5,39 +5,40 @@ namespace Examples.Diagnostics.Tests;
 /// </summary>
 public class ElapsedTimeReporterTests
 {
-
     [Fact]
-    public void WhenUsingSimply_ReturnsAsExpected()
+    public void When_UsedWithUsingScope_Then_CompletionIsReported()
     {
         TimeSpan? reportTime = null;
+
         using (var reporter = ElapsedTimeReporter.Start(x => reportTime = x))
         {
             // any codes.
 
         } // Stop Elapsed Time in Dispose().
 
-        // Assert
-        reportTime.IsNotNull();
-
-        return;
+        Assert.NotNull(reportTime);
     }
-
 
     [Fact]
-    public void WhenCallingSimply_StopwatchIsStoppedOnDispose()
+    public void When_DisposeCalled_Then_IsRunningBecomesFalse()
     {
-        // Given
         var reporter = ElapsedTimeReporter.Start(x => { });
 
-        reporter.IsRunning.IsTrue();
+        Assert.True(reporter.IsRunning);
 
-        // When
         reporter.Dispose();
 
-        // Then
-        reporter.IsRunning.IsFalse();
-
-        return;
+        Assert.False(reporter.IsRunning);
     }
 
+    [Fact]
+    public void When_ThrowExceptionInReportAction_Then_DisposingExceptionIsSet()
+    {
+        var reporter = ElapsedTimeReporter.Start(x => throw new InvalidOperationException("Test Exception"));
+
+        reporter.Dispose();
+
+        Assert.NotNull(reporter.DisposingException);
+        Assert.IsType<InvalidOperationException>(reporter.DisposingException);
+    }
 }

@@ -6,49 +6,57 @@ namespace Examples.Collections.Compatibility.Tests;
 public class PriorityQueueTests
 {
     [Fact]
-    public void WhenUsingPriorityQueue_IsCompatible()
+    public void When_AddItemsWithAssignedPriorities_Then_RetrievesInOrderOfPriority()
     {
-        var original = new global::System.Collections.Generic.PriorityQueue<string, int>();
-        original.Enqueue("First element", 200);
-        original.Enqueue("Second element", 100);
-        original.Enqueue("Third element", 100);
-        original.Enqueue("Fourth element", 1);
-        original.Enqueue("Fifth element", 300);
-
+        // Arrange.
         var queue = new PriorityQueue<string, int>();
-        queue.Enqueue("First element", 200);
-        queue.Enqueue("Second element", 100);
-        queue.Enqueue("Third element", 100);
-        queue.Enqueue("Fourth element", 1);
-        queue.Enqueue("Fifth element", 300);
+        foreach (var (element, priority) in GetTestData())
+        {
+            queue.Enqueue(element, priority);
+        }
 
-        //do and assert.
-        queue.Count.Is(5);
-        queue.Count.Is(original.Count);
-
-        string? actual;
-        actual = queue.Dequeue();
-        actual.Is("Fourth element");
-        actual.Is(original.Dequeue());
-
-        actual = queue.Dequeue();
-        actual.Is("Third element");     // LIFO.
-        actual.Is(original.Dequeue());
-
-        actual = queue.Dequeue();
-        actual.Is("Second element");    // LIFO.
-        actual.Is(original.Dequeue());
-
-        actual = queue.Dequeue();
-        actual.Is("First element");
-        actual.Is(original.Dequeue());
-
-        actual = queue.Dequeue();
-        actual.Is("Fifth element");
-        actual.Is(original.Dequeue());
-
-        return;
+        // Act & Assert.
+        Assert.Equal("Fourth element", queue.Dequeue());
+        Assert.Equal("Third element", queue.Dequeue());     // LIFO.
+        Assert.Equal("Second element", queue.Dequeue());    // LIFO.
+        Assert.Equal("First element", queue.Dequeue());
+        Assert.Equal("Fifth element", queue.Dequeue());
     }
 
+    [Fact]
+    public void When_ComparisonWithOfficialVersion_Then_ReturnsMatch()
+    {
+        // Arrange.
+        var data = GetTestData().ToArray();
+
+        var queue = new PriorityQueue<string, int>();
+        foreach (var (element, priority) in data)
+        {
+            queue.Enqueue(element, priority);
+        }
+
+        var official = new global::System.Collections.Generic.PriorityQueue<string, int>();
+        foreach (var (element, priority) in data)
+        {
+            official.Enqueue(element, priority);
+        }
+
+        // Act & Assert.
+        for (var i = 0; i < data.Length; i++)
+        {
+            var actual = queue.Dequeue();
+            var expected = official.Dequeue();
+            Assert.Equal(expected, actual);
+        }
+    }
+
+    private static IEnumerable<(string Element, int Priority)> GetTestData()
+    {
+        yield return ("First element", 200);
+        yield return ("Second element", 100);
+        yield return ("Third element", 100);
+        yield return ("Fourth element", 1);
+        yield return ("Fifth element", 300);
+    }
 
 }

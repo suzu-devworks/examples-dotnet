@@ -14,12 +14,16 @@
     "appsettings*.json",
     "dotnet-tools.json",
     "global.json",
-    "launchSettings.json",
+    "launchSettings.json"
   ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
     "appsettings",
+    "finalizer",
+    "Finalizers",
+    "Memberwise",
+    "SYSLIB",
     "xunit"
   ],
   "ignoreWords": [],

@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Examples.Fluency.Extensions;
+using Examples.Fluency;
 
 namespace Examples.Serialization.Json;
 

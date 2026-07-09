@@ -1,3 +1,4 @@
+using System.Text;
 using Examples.Fluency.Text;
 
 namespace Examples.Fluency.Tests.Text;

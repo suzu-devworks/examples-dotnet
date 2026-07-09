@@ -30,13 +30,11 @@ public partial class DisposableObjectTests
             base.FreeUnmanagedResources(disposing);
         }
 
-
         protected override ValueTask DisposeAsyncCore()
         {
             _verifier.Called("DisposeAsync");
             return base.DisposeAsyncCore();
         }
-
     }
 
 }

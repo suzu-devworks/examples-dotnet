@@ -1,5 +1,7 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/Examples.Concurrency.Tests/Examples.Concurrency.Tests.csproj" />
+    <Project Path="src/Examples.Concurrency/Examples.Concurrency.csproj" />
     <Project Path="src/Examples.Fluency.Tests/Examples.Fluency.Tests.csproj" />
     <Project Path="src/Examples.Fluency/Examples.Fluency.csproj" />
     <Project Path="src/Examples.Graphics.Tests/Examples.Graphics.Tests.csproj" />
