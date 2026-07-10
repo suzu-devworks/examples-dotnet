@@ -1,4 +1,4 @@
-<Solution>
+﻿<Solution>
   <Folder Name="/src/">
     <Project Path="src/Examples.Concurrency.Tests/Examples.Concurrency.Tests.csproj" />
     <Project Path="src/Examples.Concurrency/Examples.Concurrency.csproj" />
