@@ -5,7 +5,7 @@ namespace Examples.Serialization.Yaml.Tests.BasicUsages;
 
 public class SerializationTests
 {
-    private static ITestOutputHelper? Output => TestContext.Current.TestOutputHelper;
+    private readonly ITestOutputHelper? _output = TestContext.Current.TestOutputHelper;
 
     [Fact]
     public void When_DeserializeAfterSerializing_Then_RestoresToOriginal()
@@ -34,7 +34,7 @@ public class SerializationTests
 
         var yaml = serializer.Serialize(original);
 
-        Output?.WriteLine($"YAML:{Environment.NewLine}{yaml}");
+        _output?.WriteLine($"YAML:{Environment.NewLine}{yaml}");
         Assert.Equal(expected, yaml, ignoreLineEndingDifferences: true);
 
         // Deserialize.
@@ -80,7 +80,7 @@ public class SerializationTests
 
         var yaml = serializer.Serialize(original);
 
-        Output?.WriteLine($"YAML:{Environment.NewLine}{yaml}");
+        _output?.WriteLine($"YAML:{Environment.NewLine}{yaml}");
         Assert.Equal(expected, yaml, ignoreLineEndingDifferences: true);
     }
 

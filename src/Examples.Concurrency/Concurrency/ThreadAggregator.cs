@@ -12,7 +12,7 @@ public sealed class ThreadAggregator
 {
     private readonly ConcurrentQueue<(Action WorkAction, Action CompletionAction)> _workers = new();
     private readonly int _maxThreads;
-    private readonly List<WeakReference<Thread>> _threads = new();
+    private readonly List<Thread> _threads = new();
     private readonly ConcurrentQueue<Exception> _exceptions = new();
     private int _runningCount;
     private int _completedCount;
@@ -90,7 +90,7 @@ public sealed class ThreadAggregator
                 }
             });
 
-            _threads.Add(new(thread));
+            _threads.Add(thread);
             thread.Start();
         }
 
@@ -102,13 +102,7 @@ public sealed class ThreadAggregator
     /// </summary>
     public void WaitAll()
     {
-        _threads.ForEach(weak =>
-        {
-            if (weak.TryGetTarget(out var thread))
-            {
-                thread.Join();
-            }
-        });
+        _threads.ForEach(thread => thread.Join());
         _threads.Clear();
     }
 }
