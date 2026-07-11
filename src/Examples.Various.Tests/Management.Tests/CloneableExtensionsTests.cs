@@ -3,81 +3,68 @@ namespace Examples.Management.Tests;
 /// <summary>
 /// Tests <see cref="CloneableExtensions" /> methods.
 /// </summary>
-public class CloneableExtensionsTests
+public partial class CloneableExtensionsTests
 {
-
-    [Fact]
-    public void WhenCallingIClonableClone()
+    public class DeepCopyMethod
     {
-        var obj = new FatClass() { Code = "123", Name = "foo" };
-        var other = obj.Clone() as FatClass;
-
-        // clone object is another instance.
-        (other == obj).IsFalse();
-        ReferenceEquals(obj, other).IsFalse();
-
-        // member is shallow copy.
-        (other!.Code == obj.Code).IsTrue();
-        (other!.Name == obj.Name).IsTrue();
-        ReferenceEquals(obj.Code, other.Code).IsTrue();
-        ReferenceEquals(obj.Name, other.Name).IsTrue();
-
-        return;
-    }
-
-    [Fact]
-    public void WhenCallingDeepCopy()
-    {
-        var obj = new FatClass() { Code = "123", Name = "foo" };
-        var other = obj.DeepCopy();
-
-        // clone object is another instance.
-        (other == obj).IsFalse();
-        ReferenceEquals(obj, other).IsFalse();
-
-        // member is deep copies.
-        (other.Code == obj.Code).IsTrue();
-        (other.Name == obj.Name).IsTrue();
-        ReferenceEquals(obj.Code, other.Code).IsFalse();
-        ReferenceEquals(obj.Name, other.Name).IsFalse();
-
-        return;
-    }
-
-    [Fact]
-    public void WhenCallingShallowCopy()
-    {
-        var obj = new FatClass() { Code = "123", Name = "foo" };
-        var other = obj.ShallowCopy();
-
-        // clone object is another instance.
-        (other == obj).IsFalse();
-        ReferenceEquals(obj, other).IsFalse();
-
-        // member is shallow copy.
-        (other!.Code == obj.Code).IsTrue();
-        (other!.Name == obj.Name).IsTrue();
-        ReferenceEquals(obj.Code, other.Code).IsTrue();
-        ReferenceEquals(obj.Name, other.Name).IsTrue();
-
-        return;
-    }
-
-    [Serializable]
-    private class FatClass : ICloneable
-    {
-        //ICloneable is considered a bad API now, since it does not specify whether the result is a deep or a shallow copy.
-        // I think this is why they do not improve this interface.
-
-        public string? Code { get; set; }
-        public string? Name { get; set; }
-        public object Clone()
+        [Fact]
+        public void When_CopingIncludingNestedClasses_Then_ReturnsDifferentInstanceWithSameValue()
         {
-            var copied = (FatClass)MemberwiseClone();
-            //other reference member copy...
+            var original = new NonCloneableClass() { Value = "123", Nested = new() { Code = 123, Name = "foo" } };
 
-            return copied;
+            var copied = original.DeepCopy();
+
+            // clone object is another instance.
+            Assert.False(copied == original);
+            Assert.False(ReferenceEquals(original, copied));
+
+            // member is deep copies.
+            Assert.False(ReferenceEquals(original.Value, copied.Value));
+            Assert.True(copied.Value == original.Value);
+            Assert.False(ReferenceEquals(original.Nested, copied.Nested));
+            Assert.True(copied.Nested!.Code == original.Nested!.Code);
+            Assert.True(copied.Nested!.Name == original.Nested!.Name);
         }
     }
 
+    public class ShallowCopyMethod
+    {
+        [Fact]
+        public void When_CopingIncludingNestedClasses_Then_ReturnsAsReferenceCopy()
+        {
+            var original = new NonCloneableClass() { Value = "123", Nested = new() { Code = 123, Name = "foo" } };
+
+            var copied = original.ShallowCopy();
+
+            // clone object is another instance.
+            Assert.False(copied == original);
+            Assert.False(ReferenceEquals(original, copied));
+
+            // member is shallow copies.
+            Assert.True(copied.Value == original.Value);
+            Assert.True(ReferenceEquals(original.Value, copied.Value));
+            Assert.True(copied.Nested!.Code == original.Nested!.Code);
+            Assert.True(copied.Nested!.Name == original.Nested!.Name);
+            Assert.True(ReferenceEquals(original.Nested, copied.Nested));
+        }
+
+        [Fact]
+        public void When_CopingCloneableClass_Then_ReturnsAsReferenceCopy()
+        {
+            var original = new CloneableClass() { Value = "123", Nested = new() { Code = 123, Name = "foo" } };
+
+            var copied = (CloneableClass)original.Clone();
+
+            // clone object is another instance.
+            Assert.False(copied == original);
+            Assert.False(ReferenceEquals(original, copied));
+
+            // member is shallow copies.
+            Assert.True(copied.Value == original.Value);
+            Assert.True(ReferenceEquals(original.Value, copied.Value));
+            Assert.True(copied.Nested!.Code == original.Nested!.Code);
+            Assert.True(copied.Nested!.Name == original.Nested!.Name);
+            Assert.True(ReferenceEquals(original.Nested, copied.Nested));
+        }
+    }
 }

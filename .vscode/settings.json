@@ -1,7 +1,4 @@
 {
-  "[aspnetcorerazor]": {
-    "editor.defaultFormatter": "ms-dotnettools.csharp"
-  },
   "[csharp]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit"
@@ -17,12 +14,11 @@
     },
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
-  "[razor]": {
-    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml",
+    "editor.wordWrap": "off",
+    "files.trimTrailingWhitespace": true,
   },
-  "csharpOrganizeUsings.removeUnnecessaryUsings": true,
-  "csharpOrganizeUsings.sortOrder": "System",
-  "csharpOrganizeUsings.splitGroups": false,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "files.associations": {
@@ -30,11 +26,7 @@
     "appsettings*.json": "jsonc",
     "web.config": "xml"
   },
-  "markdown.extension.toc.levels": "2..6",
-  "markdownlint.config": {
-    "MD024": false
-  },
-  "omnisharp.enableAsyncCompletion": true,
   "omnisharp.enableEditorConfigSupport": true,
-  "omnisharp.enableMsBuildLoadProjectsOnDemand": true
+  "omnisharp.enableMsBuildLoadProjectsOnDemand": true,
+  "xml.format.maxLineWidth": 0
 }

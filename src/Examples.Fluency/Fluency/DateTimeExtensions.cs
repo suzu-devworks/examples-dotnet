@@ -12,7 +12,7 @@ public static class DateTimeExtensions
     /// <param name="ticksPerAny">A baseline value, such as the constant <see cref="TimeSpan.TicksPerSecond" />.</param>
     /// <returns>Truncated <see cref="DateTime" /> instance.</returns>
     public static DateTime Truncate(this DateTime value, long ticksPerAny = TimeSpan.TicksPerSecond)
-        => value.AddTicks((value.Ticks % ticksPerAny) * -1);
+        => value.AddTicks(value.Ticks % ticksPerAny * -1);
 
     /// <summary>
     /// Truncate time by <paramref name="ticksPerAny" /> value.
@@ -21,6 +21,6 @@ public static class DateTimeExtensions
     /// <param name="ticksPerAny">A baseline value, such as the constant <see cref="TimeSpan.TicksPerSecond" />.</param>
     /// <returns>Truncated <see cref="DateTimeOffset" /> instance.</returns>
     public static DateTimeOffset Truncate(this DateTimeOffset value, long ticksPerAny = TimeSpan.TicksPerSecond)
-        => value.AddTicks((value.Ticks % ticksPerAny) * -1);
+        => value.AddTicks(value.Ticks % ticksPerAny * -1);
 
 }

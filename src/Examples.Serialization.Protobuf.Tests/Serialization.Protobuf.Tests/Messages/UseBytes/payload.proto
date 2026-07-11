@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "Examples.Serialization.Protobuf.Tests.Messages.UseBytes";
+
+message PayloadRequest {
+  string id = 1;
+}
+
+message PayloadResponse {
+  bytes data = 1;
+}

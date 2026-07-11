@@ -5,55 +5,164 @@ namespace Examples.Collections.Compatibility.Tests;
 /// </summary>
 public class EnumerableExtensionsTests
 {
-
-    [Fact]
-    public void WhenCallingChunk_IsCompatible()
+    public class ChunkMethod
     {
-        var source = Enumerable.Range(1, 20);
+        [Theory]
+        [InlineData(7, 3)]
+        [InlineData(13, 2)]
+        [InlineData(23, 1)]
+        public void When_SequentialDataBySpecifiedCount_Then_SplitsAsExpected(int count, int expectedChunks)
+        {
+            // Arrange.
+            var source = Enumerable.Range(1, 20);
 
-        // do.
-        var original = global::System.Linq.Enumerable.Chunk(source, 8).ToArray();
-        var chunks = source.Chunk(8).ToArray();
+            // Act.
+            var chunks = source.Chunk(count).ToArray();
 
-        // assert.
-        chunks.Length.Is(3);
-        chunks[0].Is([1, 2, 3, 4, 5, 6, 7, 8]);
-        chunks[1].Is([9, 10, 11, 12, 13, 14, 15, 16]);
-        chunks[2].Is([17, 18, 19, 20]);
+            // Assert.
+            Assert.Equal(expectedChunks, chunks.Length);
 
-        chunks.Length.Is(original.Length);
-        chunks[0].Is(original[0]);
-        chunks[1].Is(original[1]);
-        chunks[2].Is(original[2]);
+            for (var i = 0; i < chunks.Length; i++)
+            {
+                var chunk = chunks[i];
+                if (i < chunks.Length - 1)
+                {
+                    // Split by a specified number of items
+                    Assert.Equal(count, chunk.Count());
+                }
+                else
+                {
+                    // Remainder
+                    Assert.True(chunk.Count() <= count);
+                }
+            }
+        }
 
-        return;
+        [Fact]
+        public void When_EmptySource_Then_ReturnsEmpty()
+        {
+            // Arrange.
+            var source = Enumerable.Empty<int>();
+
+            // Act.
+            var chunks = source.Chunk(5).ToArray();
+
+            // Assert.
+            Assert.Empty(chunks);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-1)]
+        public void When_ChunkSizeIsNegativeOrZero_Then_ThrowsArgumentOutOfRangeException(int count)
+        {
+            // Arrange.
+            var source = Enumerable.Range(1, 10);
+
+            // Act & Assert.
+            Assert.Throws<ArgumentOutOfRangeException>(() => source.Chunk(count).ToArray());
+        }
+
+        [Fact]
+        public void When_NullSource_Then_ThrowsArgumentNullException()
+        {
+            // Arrange.
+            IEnumerable<int> source = null!;
+
+            // Act & Assert.
+            Assert.Throws<ArgumentNullException>(() => source.Chunk(1).ToArray());
+        }
+
+        [Fact]
+        public void When_ComparisonWithOfficialVersion_Then_ReturnsMatch()
+        {
+            // Arrange.
+            var source = Enumerable.Range(1, 20);
+
+            // Act.
+            var official = global::System.Linq.Enumerable.Chunk(source, 8).ToArray();
+            var chunks = source.Chunk(8).ToArray();
+
+            // Assert.
+            Assert.Equal(official.Length, chunks.Length);
+            for (var i = 0; i < chunks.Length; i++)
+            {
+                Assert.Equal(official[i], chunks[i]);
+            }
+        }
     }
 
-    [Fact]
-    public void WhenCallingDistinctBy_IsCompatible()
+    public class DistinctByMethod
     {
-        var source = new[] {
-            ( A: 100, B: "ABC", C: "1st element." ),
-            ( A: 200, B: "ABC", C: "2nd element." ),
-            ( A: 300, B: "XYZ", C: "3rd element." ),
-            ( A: 400, B: "XYZ", C: "4th element." ),
-        };
+        [Fact]
+        public void When_CallingDistinctBy_IsCompatible()
+        {
+            // Arrange.
+            var source = new[] {
+                ( A: 100, B: "ABC", C: "1st element." ),
+                ( A: 200, B: "ABC", C: "2nd element." ),
+                ( A: 300, B: "XYZ", C: "3rd element." ),
+                ( A: 400, B: "XYZ", C: "4th element." ),
+            };
 
-        // do.
-        var original = Enumerable.DistinctBy(source, x => x.B).ToArray();
-        var unique = source.DistinctBy(x => x.B).ToArray();
+            // Act.
+            var unique = source.DistinctBy(x => x.B).ToArray();
 
-        // assert.
-        unique.Length.Is(2);
-        (unique[0] == source[0]).IsTrue();
-        (unique[1] == source[2]).IsTrue();
+            // Assert.
+            Assert.Equal(2, unique.Length);
+            Assert.True(unique[0] == source[0]);
+            Assert.True(unique[1] == source[2]);
+        }
 
-        unique.Length.Is(original.Length);
-        unique[0].Is(original[0]);
-        unique[1].Is(original[1]);
+        [Fact]
+        public void When_EmptySource_Then_ReturnsEmpty()
+        {
+            // Arrange.
+            var source = Enumerable.Empty<(int A, string B, string C)>();
 
-        return;
+            // Act.
+            var unique = source.DistinctBy(x => x.B).ToArray();
+
+            // Assert.
+            Assert.Empty(unique);
+        }
+
+        [Fact]
+        public void When_NullSource_Then_ThrowsArgumentNullException()
+        {
+            IEnumerable<int> source = null!;
+            Assert.Throws<ArgumentNullException>(() => source.DistinctBy(x => x).ToArray());
+        }
+
+        [Fact]
+        public void When_NullKeySelector_Then_ThrowsArgumentNullException()
+        {
+            var source = new[] { 1, 2, 3 };
+            Func<int, int> keySelector = null!;
+            Assert.Throws<ArgumentNullException>(() => source.DistinctBy(keySelector).ToArray());
+        }
+
+        [Fact]
+        public void When_ComparisonWithOfficialVersion_Then_ReturnsMatch()
+        {
+            // Arrange.
+            var source = new[] {
+                ( A: 100, B: "ABC", C: "1st element." ),
+                ( A: 200, B: "ABC", C: "2nd element." ),
+                ( A: 300, B: "XYZ", C: "3rd element." ),
+                ( A: 400, B: "XYZ", C: "4th element." ),
+            };
+
+            // Act.
+            var official = global::System.Linq.Enumerable.DistinctBy(source, x => x.B).ToArray();
+            var unique = source.DistinctBy(x => x.B).ToArray();
+
+            // Assert.
+            Assert.Equal(official.Length, unique.Length);
+            for (var i = 0; i < unique.Length; i++)
+            {
+                Assert.Equal(official[i], unique[i]);
+            }
+        }
     }
-
-
 }

@@ -1,0 +1,1 @@
+# Examples.Serialization.Protobuf.Tests

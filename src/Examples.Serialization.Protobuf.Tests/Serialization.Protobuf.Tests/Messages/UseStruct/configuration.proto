@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "google/protobuf/struct.proto";
+
+option csharp_namespace = "Examples.Serialization.Protobuf.Tests.Messages.UseStruct";
+
+message UserMetadata {
+  string                 user_id           = 1;
+  google.protobuf.Struct custom_attributes = 2;
+}

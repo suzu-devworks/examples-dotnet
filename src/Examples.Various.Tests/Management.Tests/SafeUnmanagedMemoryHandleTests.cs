@@ -5,24 +5,27 @@ namespace Examples.Management.Tests;
 /// </summary>
 public class SafeUnmanagedMemoryHandleTests
 {
+    private struct StructureTester
+    {
+        public int Id;
+    }
 
     [Fact]
-    public void WhenCallingCreate_WithSize()
+    public void When_MemorySizeIsSpecified_Then_CanAllocateUnmanagedMemoryThatValidWithinScope()
     {
         SafeUnmanagedMemoryHandle handle;
         using (handle = SafeUnmanagedMemoryHandle.Create(40))
         {
             // Enable handle.
-            handle.IsInvalid.IsFalse();
+            Assert.False(handle.IsInvalid);
         }
-        // Free handle.
-        handle.IsInvalid.IsTrue();
 
-        return;
+        // Free handle.
+        Assert.True(handle.IsInvalid);
     }
 
     [Fact]
-    public void WhenCallingCreate_WithStructureInstance()
+    public void When_CStructureInstanceSpecified_Then_MarshalingStructureToUnmanagedMemory()
     {
         var tester = new StructureTester { Id = 0 };
 
@@ -30,19 +33,10 @@ public class SafeUnmanagedMemoryHandleTests
         using (handle = SafeUnmanagedMemoryHandle.Create(tester))
         {
             // Enable handle.
-            handle.IsInvalid.IsFalse();
+            Assert.False(handle.IsInvalid);
         }
+
         // Free handle.
-        handle.IsInvalid.IsTrue();
-
-        return;
+        Assert.True(handle.IsInvalid);
     }
-
-
-    private struct StructureTester
-    {
-        public int Id;
-
-    }
-
 }

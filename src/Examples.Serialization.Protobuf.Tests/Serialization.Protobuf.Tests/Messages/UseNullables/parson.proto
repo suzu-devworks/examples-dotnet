@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+option csharp_namespace = "Examples.Serialization.Protobuf.Tests.Messages.UseNullables";
+
+message Person {
+  int32                      id         = 1;
+  string                     first_name = 2;
+  string                     last_name  = 3;
+  google.protobuf.Int32Value age        = 5;
+}
