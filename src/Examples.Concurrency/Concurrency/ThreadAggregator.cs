@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+
 namespace Examples.Concurrency;
 
 /// <summary>
@@ -8,14 +10,12 @@ namespace Examples.Concurrency;
 /// </remarks>
 public sealed class ThreadAggregator
 {
-    private readonly List<WeakReference<Thread>> _threads;
-
-    /// <summary>
-    /// Initializes a new <see cref="ThreadAggregator" /> instance with the default maximum value.
-    /// </summary>
-    public ThreadAggregator() : this(maxThreads: 4)
-    {
-    }
+    private readonly ConcurrentQueue<(Action WorkAction, Action CompletionAction)> _workers = new();
+    private readonly int _maxThreads;
+    private readonly List<WeakReference<Thread>> _threads = new();
+    private readonly ConcurrentQueue<Exception> _exceptions = new();
+    private int _runningCount;
+    private int _completedCount;
 
     /// <summary>
     /// Initializes a new <see cref="ThreadAggregator" /> instance with the specified maximum value.
@@ -23,36 +23,78 @@ public sealed class ThreadAggregator
     /// <param name="maxThreads">The number of threads maximum value.</param>
     public ThreadAggregator(int maxThreads)
     {
-        _threads = new(capacity: maxThreads);
+        _maxThreads = maxThreads;
     }
 
     /// <summary>
-    /// Create aggregate thread instance.
+    /// Gets the number of completed threads.
     /// </summary>
-    /// <param name="action">The method that executes on a thread.</param>
-    /// <returns>A <see cref="Thread" /> instance.</returns>
-    public Thread CreateNew(ThreadStart action)
+    public int CompletedCount => _completedCount;
+
+    /// <summary>
+    /// Gets the number of running threads.
+    /// </summary>
+    public int RunningCount => _runningCount;
+
+    /// <summary>
+    /// Gets the exceptions that occurred during thread execution.
+    /// </summary>
+    public IReadOnlyList<Exception> Exceptions => _exceptions.ToList();
+
+    /// <summary>
+    /// Adds a worker thread to the aggregator.
+    /// </summary>
+    /// <param name="workAction"></param>
+    /// <param name="completionAction"></param>
+    /// <returns></returns>
+    public ThreadAggregator AddWorker(Action workAction, Action completionAction)
     {
-        if (_threads.Count == _threads.Capacity)
+        _workers.Enqueue((workAction, completionAction));
+        return this;
+    }
+
+    /// <summary>
+    /// Starts all threads simultaneously.
+    /// </summary>
+    public void StartAll()
+    {
+        var startSignal = new ManualResetEventSlim(false);
+
+        for (int i = 0; i < _maxThreads; i++)
         {
-            throw new InvalidOperationException($"The number of threads to aggregate has overflowed! : {_threads.Capacity}");
+            var thread = new Thread(() =>
+            {
+                startSignal.Wait();
+                var currentThreadId = Environment.CurrentManagedThreadId;
+
+                while (_workers.TryDequeue(out var worker))
+                {
+                    try
+                    {
+                        Interlocked.Increment(ref _runningCount);
+
+                        worker.WorkAction();
+                        worker.CompletionAction();
+
+                        Interlocked.Increment(ref _completedCount);
+                    }
+                    catch (Exception ex)
+                    {
+                        _exceptions.Enqueue(new ApplicationException(
+                                $"Thread {currentThreadId} encountered an exception.", ex));
+                    }
+                    finally
+                    {
+                        Interlocked.Decrement(ref _runningCount);
+                    }
+                }
+            });
+
+            _threads.Add(new(thread));
+            thread.Start();
         }
 
-        var thread = new Thread(action);
-        _threads.Add(new(thread));
-        return thread;
-    }
-
-    /// <summary>
-    /// Create aggregate thread instance and start now.
-    /// </summary>
-    /// <param name="action">The method that executes on a thread.</param>
-    /// <returns>A <see cref="Thread" /> instance.</returns>
-    public Thread StartNew(ThreadStart action)
-    {
-        var thread = CreateNew(action);
-        thread.Start();
-        return thread;
+        startSignal.Set();
     }
 
     /// <summary>
@@ -69,5 +111,4 @@ public sealed class ThreadAggregator
         });
         _threads.Clear();
     }
-
 }
