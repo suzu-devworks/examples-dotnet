@@ -443,3 +443,8 @@ $RECYCLE.BIN/
 [Tt]emp/
 .mono/
 .DS_Store
+
+## output image
+*.png
+*.jpg
+*.jpeg
