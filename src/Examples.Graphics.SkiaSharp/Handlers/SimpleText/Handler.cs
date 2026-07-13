@@ -26,7 +26,7 @@ public class Handler : IHandler
         using var paint = new SKPaint
         {
             IsAntialias = true,
-            Color = SKColors.Black
+            Color = SKColors.Black,
         };
 
         // using var typeface = SKTypeface.FromFamilyName("Arial");
@@ -35,7 +35,15 @@ public class Handler : IHandler
 
         Console.WriteLine($"Font \"{font.Typeface.FamilyName}\", size {font.Size:N0}pt");
 
-        canvas.DrawText("Skia", 20, 140, SKTextAlign.Left, font, paint);
+        canvas.DrawText(text, 20, 140, SKTextAlign.Left, font, paint);
+
+        font.Embolden = true;
+        canvas.DrawText(text, 20, 240, SKTextAlign.Left, font, paint);
+        font.Embolden = false;
+
+        font.SkewX = -0.25f;
+        canvas.DrawText(text, 20, 340, SKTextAlign.Left, font, paint);
+        font.SkewX = 0.0f;
 
         // Save
         using var image = surface.Snapshot();
