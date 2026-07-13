@@ -12,8 +12,11 @@ public class RunCommand : Command
         {
             // This program is designed to intentionally trigger a warning from the analyzer.
 
+            const
+            // This program is designed to intentionally trigger a warning from the analyzer.
+
             int i = 1;
-            int j = 2;
+            const int j = 2;
             int k = i + j;
 
             // uncomment for analyzer test:
@@ -21,9 +24,9 @@ public class RunCommand : Command
 
             object s = "abc";
 
-            string s2 = "abc";
+            const string s2 = "abc";
 
-            var item = "xyz";
+            const string? item = "xyz";
 
             Console.WriteLine($"k = {k}, s = {s}, s2 = {s2}, item = {item}");
         });

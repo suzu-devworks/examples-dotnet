@@ -32,6 +32,9 @@
     "Nlog",
     "Serilog",
     "SYSLIB",
+    "creational",
+    "Newtonsoft",
+    "Piikokku",
     "xunit"
   ],
   "ignoreWords": [],
