@@ -1,11 +1,11 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
 {
-  "name": "C# (.NET with graphics)",
+  "name": "C# (.NET with fonts)",
   "dockerComposeFile": [
-    "compose.develop.yaml"
+    "../compose.dev-fonts.yaml"
   ],
-  "service": "graphics",
+  "service": "dev-fonts",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "postCreateCommand": "/bin/sh ./.devcontainer/postCreateCommand.sh",
   "remoteUser": "vscode",

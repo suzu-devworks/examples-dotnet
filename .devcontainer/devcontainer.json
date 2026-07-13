@@ -3,7 +3,7 @@
 {
   "name": "C# (.NET)",
   "dockerComposeFile": [
-    "compose.develop.yaml"
+    "compose.dev.yaml"
   ],
   "service": "dev",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",

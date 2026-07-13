@@ -7,7 +7,8 @@
     "fontconfig",
     "libfontconfig",
     "Noto",
-    "Skia"
+    "Skia",
+    "wght"
   ],
   "ignoreWords": [],
   "import": [
