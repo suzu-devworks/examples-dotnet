@@ -1,0 +1,9 @@
+Output Message 3 (from included file 2).
+<#+ // Start of class feature control block.
+void AnotherGenerateMessage(int n)
+{
+#>
+       Output Message <#= n #> (from AnotherGenerateMessage method).
+<#+
+}
+#>

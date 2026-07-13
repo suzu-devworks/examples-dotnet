@@ -24,7 +24,10 @@
   "files.associations": {
     ".dockerignore": "ignore",
     "appsettings*.json": "jsonc",
-    "web.config": "xml"
+    "web.config": "xml",
+    "nlog*.config": "xml",
+    "NLog*.config": "xml",
+    "*.resx": "xml",
   },
   "omnisharp.enableEditorConfigSupport": true,
   "omnisharp.enableMsBuildLoadProjectsOnDemand": true,
