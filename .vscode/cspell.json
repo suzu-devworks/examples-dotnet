@@ -14,15 +14,23 @@
     "appsettings*.json",
     "dotnet-tools.json",
     "global.json",
-    "launchSettings.json"
+    "launchSettings.json",
+    "NLog*.config"
   ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
     "appsettings",
+    "Autofac",
+    "commandlineparser",
     "finalizer",
-    "Finalizers",
+    "longdate",
     "Memberwise",
+    "Metaprogramming",
+    "netstandard",
+    "Newtonsoft",
+    "Nlog",
+    "Serilog",
     "SYSLIB",
     "xunit"
   ],

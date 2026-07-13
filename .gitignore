@@ -440,6 +440,7 @@ $RECYCLE.BIN/
 *.sln.iml
 
 ## User Define
+[Ll]ogs/
 [Tt]emp/
 .mono/
 .DS_Store
