@@ -442,10 +442,20 @@ $RECYCLE.BIN/
 ## User Define
 [Ll]ogs/
 [Tt]emp/
-.mono/
 .DS_Store
+.mono/
 
 ## output image
 *.png
 *.jpg
 *.jpeg
+
+.devcontainer/.keys
+.env*
+.password
+[Tt]emp/
+*.crt
+*.key
+*.pfx
+*.srl
+assets/

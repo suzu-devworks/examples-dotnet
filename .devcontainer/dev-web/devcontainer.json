@@ -1,0 +1,32 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
+{
+  "name": "C# (.NET with web)",
+  "dockerComposeFile": [
+    "../compose.web.yaml",
+    "../compose.dev-web.yaml"
+  ],
+  "service": "dev-web",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "postCreateCommand": "/bin/sh ./.devcontainer/postCreateCommand.sh",
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/node": {},
+    "ghcr.io/devcontainers/features/copilot-cli": {},
+    "ghcr.io/devcontainers/features/github-cli": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "streetsidesoftware.code-spell-checker",
+        "DavidAnson.vscode-markdownlint",
+        "ms-dotnettools.csdevkit",
+        "aliasadidev.nugetpackagemanagergui",
+        "esbenp.prettier-vscode",
+        "DotJoshJohnson.xml",
+        "DrBlury.protobuf-vsc"
+      ]
+    }
+  }
+}

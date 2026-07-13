@@ -1,9 +1,28 @@
 {
+  "[aspnetcorerazor]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
   "[csharp]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit"
     },
     "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "[css][scss][sass]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript][typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json][jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
@@ -14,6 +33,9 @@
     },
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
+  "[razor]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
   "[xml]": {
     "editor.defaultFormatter": "DotJoshJohnson.xml",
     "editor.wordWrap": "off",
@@ -23,6 +45,7 @@
   "editor.formatOnSave": true,
   "files.associations": {
     ".dockerignore": "ignore",
+    ".prettierrc": "ignore",
     "appsettings*.json": "jsonc",
     "web.config": "xml",
     "nlog*.config": "xml",
