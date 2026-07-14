@@ -1,11 +1,16 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
 {
-  "name": "C# (.NET with fonts)",
+  "name": "C# (.NET with Web)",
   "dockerComposeFile": [
-    "../compose.dev-fonts.yaml"
+    "../compose.yaml",
+    "../compose.dev-web.yaml"
   ],
-  "service": "dev-fonts",
+  "service": "dev-web",
+  "runServices": [
+    "dev-web",
+    "nginx"
+  ],
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "postCreateCommand": "/bin/sh ./.devcontainer/postCreateCommand.sh",
   "remoteUser": "vscode",
@@ -22,7 +27,9 @@
         "DavidAnson.vscode-markdownlint",
         "ms-dotnettools.csdevkit",
         "aliasadidev.nugetpackagemanagergui",
-        "DotJoshJohnson.xml"
+        "esbenp.prettier-vscode",
+        "DotJoshJohnson.xml",
+        "DrBlury.protobuf-vsc"
       ]
     }
   }

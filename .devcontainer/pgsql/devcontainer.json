@@ -1,0 +1,53 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
+{
+  "name": "C# (.NET with PostgreSQL)",
+  "dockerComposeFile": [
+    "../compose.yaml",
+    "../compose.dev-database.yaml"
+  ],
+  "service": "dev-database",
+  "runServices": [
+    "dev-database",
+    "pgsql"
+  ],
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "postCreateCommand": "/bin/sh ./.devcontainer/postCreateCommand.sh",
+  "remoteUser": "vscode",
+  "remoteEnv": {
+    "MSSQL_SERVICE": "",
+    "POSTGRES_SERVICE": "pgsql"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/node": {},
+    "ghcr.io/devcontainers/features/copilot-cli": {},
+    "ghcr.io/devcontainers/features/github-cli": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "streetsidesoftware.code-spell-checker",
+        "DavidAnson.vscode-markdownlint",
+        "ms-dotnettools.csdevkit",
+        "aliasadidev.nugetpackagemanagergui",
+        "DotJoshJohnson.xml",
+        "ms-ossdata.vscode-pgsql",
+        "ReneSaarsoo.sql-formatter-vsc"
+      ],
+      "settings": {
+        "[sql]": {
+          "editor.defaultFormatter": "ReneSaarsoo.sql-formatter-vsc",
+          "editor.formatOnPaste": true,
+          "editor.formatOnSave": true
+        },
+        "SQL-Formatter-VSCode.dataTypeCase": "upper",
+        "SQL-Formatter-VSCode.functionCase": "upper",
+        "SQL-Formatter-VSCode.identifierCase": "lower",
+        "SQL-Formatter-VSCode.keywordCase": "upper",
+        "SQL-Formatter-VSCode.dialect": "postgresql",
+        "SQL-Formatter-VSCode.expressionWidth": 120
+      }
+    }
+  }
+}

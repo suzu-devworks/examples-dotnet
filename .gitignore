@@ -450,7 +450,7 @@ $RECYCLE.BIN/
 *.jpg
 *.jpeg
 
-.devcontainer/.keys
+.devcontainer/.keys/
 .env*
 .password
 [Tt]emp/
@@ -459,3 +459,4 @@ $RECYCLE.BIN/
 *.pfx
 *.srl
 assets/
+.db_password.txt
