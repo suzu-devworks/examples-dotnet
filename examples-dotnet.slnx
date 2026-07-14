@@ -16,6 +16,12 @@
     <Project Path="src/Examples.CodeGenerator.T4.Demo/Examples.CodeGenerator.T4.Demo.csproj" />
     <Project Path="src/Examples.Concurrency.Tests/Examples.Concurrency.Tests.csproj" />
     <Project Path="src/Examples.Concurrency/Examples.Concurrency.csproj" />
+    <Project Path="src/Examples.Cryptography.BouncyCastle.App/Examples.Cryptography.BouncyCastle.App.csproj" />
+    <Project Path="src/Examples.Cryptography.BouncyCastle.Tests/Examples.Cryptography.BouncyCastle.Tests.csproj" />
+    <Project Path="src/Examples.Cryptography.BouncyCastle/Examples.Cryptography.BouncyCastle.csproj" />
+    <Project Path="src/Examples.Cryptography.Tests/Examples.Cryptography.Tests.csproj" />
+    <Project Path="src/Examples.Cryptography.Xml.Tests/Examples.Cryptography.Xml.Tests.csproj" />
+    <Project Path="src/Examples.Cryptography/Examples.Cryptography.csproj" />
     <Project Path="src/Examples.Dapper.PostgreSQL.Tests/Examples.Dapper.PostgreSQL.Tests.csproj" />
     <Project Path="src/Examples.Dapper.SqlServer.Tests/Examples.Dapper.SqlServer.Tests.csproj" />
     <Project Path="src/Examples.Dapper/Examples.Dapper.csproj" />

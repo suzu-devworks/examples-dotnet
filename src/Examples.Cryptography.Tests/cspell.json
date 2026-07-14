@@ -1,0 +1,40 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "Acreateserial",
+    "certfile",
+    "ciphertext",
+    "Decap",
+    "decapsulates",
+    "Decapsulating",
+    "Decapsulation",
+    "decryptor",
+    "ecparam",
+    "encap",
+    "encryptor",
+    "extfile",
+    "FIPS",
+    "genkey",
+    "hmac",
+    "HMACSHA",
+    "inkey",
+    "nocrl",
+    "nocrypt",
+    "noout",
+    "OAEP",
+    "outform",
+    "passout",
+    "pubout",
+    "reqexts",
+    "Shor's",
+    "topk",
+    "XMSS"
+  ],
+  "ignoreWords": [],
+  "import": [
+    "../../.vscode/cspell.json"
+  ]
+}

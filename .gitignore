@@ -460,3 +460,9 @@ $RECYCLE.BIN/
 *.srl
 assets/
 .db_password.txt
+
+*.db
+*.db-shm
+*.db-wal
+assets/
+!*.App/
