@@ -1,5 +1,7 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/ContosoCorporation/ContosoCorporation.csproj" />
+    <Project Path="src/ContosoUniversity/ContosoUniversity.csproj" />
     <Project Path="src/Examples.Analyzer.Roslyn.CodeFixes/Examples.Analyzer.Roslyn.CodeFixes.csproj" />
     <Project Path="src/Examples.Analyzer.Roslyn.Demo/Examples.Analyzer.Roslyn.Demo.csproj" />
     <Project Path="src/Examples.Analyzer.Roslyn.Tests/Examples.Analyzer.Roslyn.Tests.csproj" />
@@ -14,6 +16,9 @@
     <Project Path="src/Examples.CodeGenerator.T4.Demo/Examples.CodeGenerator.T4.Demo.csproj" />
     <Project Path="src/Examples.Concurrency.Tests/Examples.Concurrency.Tests.csproj" />
     <Project Path="src/Examples.Concurrency/Examples.Concurrency.csproj" />
+    <Project Path="src/Examples.Dapper.PostgreSQL.Tests/Examples.Dapper.PostgreSQL.Tests.csproj" />
+    <Project Path="src/Examples.Dapper.SqlServer.Tests/Examples.Dapper.SqlServer.Tests.csproj" />
+    <Project Path="src/Examples.Dapper/Examples.Dapper.csproj" />
     <Project Path="src/Examples.DependencyInjection.Autofac.Tests/Examples.DependencyInjection.Autofac.Tests.csproj" />
     <Project Path="src/Examples.DependencyInjection.Extensions.Tests/Examples.DependencyInjection.Extensions.Tests.csproj" />
     <Project Path="src/Examples.DependencyInjection.Mef.Tests/Examples.DependencyInjection.Mef.Tests.csproj" />
@@ -25,8 +30,13 @@
     <Project Path="src/Examples.Design.Gof.Tests/Examples.Design.Gof.Tests.csproj" />
     <Project Path="src/Examples.Design.Microsoft.Tests/Examples.Design.Microsoft.Tests.csproj" />
     <Project Path="src/Examples.Design.Vernon.Tests/Examples.Design.Vernon.Tests.csproj" />
+    <Project Path="src/Examples.EntityFrameworkCore.PostgreSQL.Tests/Examples.EntityFrameworkCore.PostgreSQL.Tests.csproj" />
+    <Project Path="src/Examples.EntityFrameworkCore.SqlServer.Tests/Examples.EntityFrameworkCore.SqlServer.Tests.csproj" />
+    <Project Path="src/Examples.EntityFrameworkCore.Tests/Examples.EntityFrameworkCore.Tests.csproj" />
+    <Project Path="src/Examples.EntityFrameworkCore/Examples.EntityFrameworkCore.csproj" />
     <Project Path="src/Examples.Fluency.Tests/Examples.Fluency.Tests.csproj" />
     <Project Path="src/Examples.Fluency/Examples.Fluency.csproj" />
+    <Project Path="src/Examples.FluentMigrator.PostgreSQL/Examples.FluentMigrator.PostgreSQL.csproj" />
     <Project Path="src/Examples.Graphics.SkiaSharp/Examples.Graphics.SkiaSharp.csproj" />
     <Project Path="src/Examples.Graphics.Tests/Examples.Graphics.Tests.csproj" />
     <Project Path="src/Examples.Graphics/Examples.Graphics.csproj" />
@@ -37,6 +47,7 @@
     <Project Path="src/Examples.Hosting.Workers/Examples.Hosting.Workers.csproj" />
     <Project Path="src/Examples.Logging.Nlog/Examples.Logging.Nlog.csproj" />
     <Project Path="src/Examples.Logging.Serilog/Examples.Logging.Serilog.csproj" />
+    <Project Path="src/Examples.Logging/Examples.Logging.csproj" />
     <Project Path="src/Examples.Metaprogramming.ExpressionTrees.Tests/Examples.Metaprogramming.ExpressionTrees.Tests.csproj" />
     <Project Path="src/Examples.Metaprogramming.MonoCecil.Tests/Examples.Metaprogramming.MonoCecil.Tests.csproj" />
     <Project Path="src/Examples.Metaprogramming.Reflection.Tests/Examples.Metaprogramming.Reflection.Tests.csproj" />

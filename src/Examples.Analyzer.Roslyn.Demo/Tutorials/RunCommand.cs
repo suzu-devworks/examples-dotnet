@@ -17,7 +17,7 @@ public class RunCommand : Command
 
             int i = 1;
             const int j = 2;
-            int k = i + j;
+            const int k = i + j;
 
             // uncomment for analyzer test:
             //int x = "abc";

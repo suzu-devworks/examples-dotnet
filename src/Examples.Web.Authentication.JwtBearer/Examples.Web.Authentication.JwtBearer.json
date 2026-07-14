@@ -19,7 +19,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/<Program>FE2929E31BBB3AAC3EB72BB365378E63BBBE2C77CAD8AF7E85E78ECA2CAFBFD0E__WeatherForecast"
+                    "$ref": "#/components/schemas/<Program>F1FDB038FBC76A181431A455C39EA8CAF77746F3C6AD34C56769E0CF64BE7726E__WeatherForecast"
                   }
                 }
               }
@@ -114,7 +114,7 @@
   },
   "components": {
     "schemas": {
-      "<Program>FE2929E31BBB3AAC3EB72BB365378E63BBBE2C77CAD8AF7E85E78ECA2CAFBFD0E__WeatherForecast": {
+      "<Program>F1FDB038FBC76A181431A455C39EA8CAF77746F3C6AD34C56769E0CF64BE7726E__WeatherForecast": {
         "required": [
           "date",
           "temperatureC",
