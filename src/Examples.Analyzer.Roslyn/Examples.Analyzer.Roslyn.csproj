@@ -9,6 +9,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);CS2002</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="5.3.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -18,11 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources.resx" Generator="ResXFileCodeGenerator"
-      LastGenOutput="Resources.Designer.cs"
-      StronglyTypedFileName="Resources.Designer.cs"
-      StronglyTypedLanguage="CSharp"
-      StronglyTypedNamespace="Examples.Analyzer.Roslyn"
-      StronglyTypedClassName="Resources" />
+    <EmbeddedResource Update="Resources.resx" Generator="ResXFileCodeGenerator" LastGenOutput="Resources.Designer.cs" StronglyTypedFileName="Resources.Designer.cs" StronglyTypedLanguage="CSharp" StronglyTypedNamespace="Examples.Analyzer.Roslyn" StronglyTypedClassName="Resources" />
   </ItemGroup>
 </Project>

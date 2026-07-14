@@ -8,3 +8,5 @@ echo
 
 sh ${script_dir}/../scripts/install-xunit3template.sh
 sh ${script_dir}/../scripts/download-fonts.sh
+
+dotnet tool restore --ignore-failed-sources

@@ -39,20 +39,18 @@
   "[xml]": {
     "editor.defaultFormatter": "DotJoshJohnson.xml",
     "editor.wordWrap": "off",
-    "files.trimTrailingWhitespace": true,
+    "files.trimTrailingWhitespace": true
   },
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "files.associations": {
-    ".dockerignore": "ignore",
-    ".prettierrc": "ignore",
-    "appsettings*.json": "jsonc",
-    "web.config": "xml",
-    "nlog*.config": "xml",
-    "NLog*.config": "xml",
-    "*.resx": "xml",
+    ".*ignore": "ignore",
+    "appsettings*.json": "jsonc"
   },
-  "omnisharp.enableEditorConfigSupport": true,
-  "omnisharp.enableMsBuildLoadProjectsOnDemand": true,
+  "files.watcherExclude": {
+    "**/.git/**": true,
+    "**/bin/**": true,
+    "**/obj/**": true
+  },
   "xml.format.maxLineWidth": 0
 }

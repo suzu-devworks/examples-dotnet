@@ -67,7 +67,7 @@ services:
 
 secrets:
    db_password:
-     file: ./.db_password.txt
+     file: ./.db_password
 
 volumes:
   mssql-data:
