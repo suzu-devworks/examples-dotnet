@@ -13,6 +13,4 @@
   <Project Path="Examples.Hosting.Console/Examples.Hosting.Console.csproj" />
   <Project Path="Examples.Hosting.ConsoleAppFramework/Examples.Hosting.ConsoleAppFramework.csproj" />
   <Project Path="Examples.Hosting.Workers/Examples.Hosting.Workers.csproj" />
-  <Project Path="Examples.Logging.Nlog/Examples.Logging.Nlog.csproj" />
-  <Project Path="Examples.Logging.Serilog/Examples.Logging.Serilog.csproj" />
 </Solution>

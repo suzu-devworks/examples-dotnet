@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="../logging/Examples.Logging/Examples.Logging.csproj" />
   <Project Path="ContosoCorporation/ContosoCorporation.csproj" />
   <Project Path="ContosoUniversity/ContosoUniversity.csproj" />
   <Project Path="Examples.Dapper.PostgreSQL.Tests/Examples.Dapper.PostgreSQL.Tests.csproj" />
@@ -9,5 +10,4 @@
   <Project Path="Examples.EntityFrameworkCore.Tests/Examples.EntityFrameworkCore.Tests.csproj" />
   <Project Path="Examples.EntityFrameworkCore/Examples.EntityFrameworkCore.csproj" />
   <Project Path="Examples.FluentMigrator.PostgreSQL/Examples.FluentMigrator.PostgreSQL.csproj" />
-  <Project Path="Examples.Logging/Examples.Logging.csproj" />
 </Solution>

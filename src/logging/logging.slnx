@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Examples.Logging.Nlog/Examples.Logging.Nlog.csproj" />
+  <Project Path="Examples.Logging.Serilog/Examples.Logging.Serilog.csproj" />
+  <Project Path="Examples.Logging/Examples.Logging.csproj" />
+</Solution>

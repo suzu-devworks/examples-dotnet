@@ -22,26 +22,31 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Examples.Metaprogramming\Examples.Metaprogramming.csproj" />
     <ProjectReference Include="..\Examples.Plugins.Abstractions\Examples.Plugins.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\plugins\Examples.Plugins.Hello\Examples.Plugins.Hello.csproj" ReferenceOutputAssembly="false" />
-    <ProjectReference Include="..\plugins\Examples.Plugins.Json\Examples.Plugins.Json.csproj" ReferenceOutputAssembly="false" />
-    <ProjectReference Include="..\plugins\Examples.Plugins.Libuv\Examples.Plugins.Libuv.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\fixtures\Examples.Plugins.Hello\Examples.Plugins.Hello.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\fixtures\Examples.Plugins.Json\Examples.Plugins.Json.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\fixtures\Examples.Plugins.Libuv\Examples.Plugins.Libuv.csproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../../compiler_and_roslyn/Examples.Metaprogramming/Extensions/AssemblyExtensions.cs">
+      <Link>Metaprogramming/Extensions/AssemblyExtensions.cs</Link>
+    </Compile>
   </ItemGroup>
 
   <Target Name="CopyFixturePluginOutputs" AfterTargets="Build">
     <ItemGroup>
       <_FixturePlugin Include="Examples.Plugins.Hello">
-        <SourcePath>..\plugins\Examples.Plugins.Hello\bin\$(Configuration)\$(TargetFramework)</SourcePath>
+        <SourcePath>..\fixtures\Examples.Plugins.Hello\bin\$(Configuration)\$(TargetFramework)</SourcePath>
       </_FixturePlugin>
       <_FixturePlugin Include="Examples.Plugins.Json">
-        <SourcePath>..\plugins\Examples.Plugins.Json\bin\$(Configuration)\$(TargetFramework)</SourcePath>
+        <SourcePath>..\fixtures\Examples.Plugins.Json\bin\$(Configuration)\$(TargetFramework)</SourcePath>
       </_FixturePlugin>
       <_FixturePlugin Include="Examples.Plugins.Libuv">
-        <SourcePath>..\plugins\Examples.Plugins.Libuv\bin\$(Configuration)\$(TargetFramework)</SourcePath>
+        <SourcePath>..\fixtures\Examples.Plugins.Libuv\bin\$(Configuration)\$(TargetFramework)</SourcePath>
       </_FixturePlugin>
 
       <_FixturePluginFile Include="%(_FixturePlugin.SourcePath)\**\*.*">

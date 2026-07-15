@@ -48,7 +48,6 @@
     <Project Path="src/databases/Examples.EntityFrameworkCore.Tests/Examples.EntityFrameworkCore.Tests.csproj" />
     <Project Path="src/databases/Examples.EntityFrameworkCore/Examples.EntityFrameworkCore.csproj" />
     <Project Path="src/databases/Examples.FluentMigrator.PostgreSQL/Examples.FluentMigrator.PostgreSQL.csproj" />
-    <Project Path="src/databases/Examples.Logging/Examples.Logging.csproj" />
   </Folder>
   <Folder Name="/src/fundamentals/">
     <Project Path="src/fundamentals/Examples.Fluency.Tests/Examples.Fluency.Tests.csproj" />
@@ -77,15 +76,20 @@
     <Project Path="src/hosting_and_lifecycle/Examples.Hosting.Console/Examples.Hosting.Console.csproj" />
     <Project Path="src/hosting_and_lifecycle/Examples.Hosting.ConsoleAppFramework/Examples.Hosting.ConsoleAppFramework.csproj" />
     <Project Path="src/hosting_and_lifecycle/Examples.Hosting.Workers/Examples.Hosting.Workers.csproj" />
-    <Project Path="src/hosting_and_lifecycle/Examples.Logging.Nlog/Examples.Logging.Nlog.csproj" />
-    <Project Path="src/hosting_and_lifecycle/Examples.Logging.Serilog/Examples.Logging.Serilog.csproj" />
+  </Folder>
+  <Folder Name="/src/logging/">
+    <Project Path="src/logging/Examples.Logging.Nlog/Examples.Logging.Nlog.csproj" />
+    <Project Path="src/logging/Examples.Logging.Serilog/Examples.Logging.Serilog.csproj" />
+    <Project Path="src/logging/Examples.Logging/Examples.Logging.csproj" />
   </Folder>
   <Folder Name="/src/plugins/">
     <Project Path="src/plugins/Examples.Plugins.Abstractions/Examples.Plugins.Abstractions.csproj" />
-    <Project Path="src/plugins/Examples.Plugins.Hello/Examples.Plugins.Hello.csproj" />
-    <Project Path="src/plugins/Examples.Plugins.Json/Examples.Plugins.Json.csproj" />
-    <Project Path="src/plugins/Examples.Plugins.Libuv/Examples.Plugins.Libuv.csproj" />
     <Project Path="src/plugins/Examples.Plugins.Tests/Examples.Plugins.Tests.csproj" />
+  </Folder>
+  <Folder Name="/src/plugins/fixtures/">
+    <Project Path="src/plugins/fixtures/Examples.Plugins.Hello/Examples.Plugins.Hello.csproj" />
+    <Project Path="src/plugins/fixtures/Examples.Plugins.Json/Examples.Plugins.Json.csproj" />
+    <Project Path="src/plugins/fixtures/Examples.Plugins.Libuv/Examples.Plugins.Libuv.csproj" />
   </Folder>
   <Folder Name="/src/serialization/">
     <Project Path="src/serialization/Examples.Serialization.Protobuf.Tests/Examples.Serialization.Protobuf.Tests.csproj" />
@@ -103,8 +107,6 @@
     <Project Path="src/web/Examples.Web.Authentication.Oidc/Examples.Web.Authentication.Oidc.csproj" />
     <Project Path="src/web/Examples.Web.Blazor.WebApp/Examples.Web.Blazor.WebApp.csproj" />
     <Project Path="src/web/Examples.Web.Generator.JwtToken/Examples.Web.Generator.JwtToken.csproj" />
-    <Project Path="src/web/Examples.Web.HostingStartup1/Examples.Web.HostingStartup1.csproj" />
-    <Project Path="src/web/Examples.Web.HostingStartup2/Examples.Web.HostingStartup2.csproj" />
     <Project Path="src/web/Examples.Web.Infrastructure.Assets/Examples.Web.Infrastructure.Assets.csproj" />
     <Project Path="src/web/Examples.Web.Infrastructure.GrpcClient/Examples.Web.Infrastructure.GrpcClient.csproj" />
     <Project Path="src/web/Examples.Web.Infrastructure.OpenApi/Examples.Web.Infrastructure.OpenApi.csproj" />
@@ -114,5 +116,9 @@
     <Project Path="src/web/Examples.Web.WebApi.Grpc/Examples.Web.WebApi.Grpc.csproj" />
     <Project Path="src/web/Examples.Web.WebApi/Examples.Web.WebApi.csproj" />
     <Project Path="src/web/Examples.Web.WebApp/Examples.Web.WebApp.csproj" />
+  </Folder>
+  <Folder Name="/src/web/fixtures/">
+    <Project Path="src/web/fixtures/Examples.Web.HostingStartup1/Examples.Web.HostingStartup1.csproj" />
+    <Project Path="src/web/fixtures/Examples.Web.HostingStartup2/Examples.Web.HostingStartup2.csproj" />
   </Folder>
 </Solution>
