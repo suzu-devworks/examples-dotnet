@@ -1,0 +1,16 @@
+<Solution>
+  <Project Path="Examples.Analyzer.Roslyn.CodeFixes/Examples.Analyzer.Roslyn.CodeFixes.csproj" />
+  <Project Path="Examples.Analyzer.Roslyn.Demo/Examples.Analyzer.Roslyn.Demo.csproj" />
+  <Project Path="Examples.Analyzer.Roslyn.Tests/Examples.Analyzer.Roslyn.Tests.csproj" />
+  <Project Path="Examples.Analyzer.Roslyn/Examples.Analyzer.Roslyn.csproj" />
+  <Project Path="Examples.CodeGenerator.Roslyn.Demo/Examples.CodeGenerator.Roslyn.Demo.csproj" />
+  <Project Path="Examples.CodeGenerator.Roslyn.Tests/Examples.CodeGenerator.Roslyn.Tests.csproj" />
+  <Project Path="Examples.CodeGenerator.Roslyn/Examples.CodeGenerator.Roslyn.csproj" />
+  <Project Path="Examples.CodeGenerator.T4.Demo/Examples.CodeGenerator.T4.Demo.csproj" />
+  <Project Path="Examples.Metaprogramming.ExpressionTrees.Tests/Examples.Metaprogramming.ExpressionTrees.Tests.csproj" />
+  <Project Path="Examples.Metaprogramming.MonoCecil.Tests/Examples.Metaprogramming.MonoCecil.Tests.csproj" />
+  <Project Path="Examples.Metaprogramming.Reflection.Tests/Examples.Metaprogramming.Reflection.Tests.csproj" />
+  <Project Path="Examples.Metaprogramming.ReflectionEmit.Tests/Examples.Metaprogramming.ReflectionEmit.Tests.csproj" />
+  <Project Path="Examples.Metaprogramming.Tests/Examples.Metaprogramming.Tests.csproj" />
+  <Project Path="Examples.Metaprogramming/Examples.Metaprogramming.csproj" />
+</Solution>

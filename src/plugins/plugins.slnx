@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Examples.Plugins.Abstractions/Examples.Plugins.Abstractions.csproj" />
+  <Project Path="Examples.Plugins.Hello/Examples.Plugins.Hello.csproj" />
+  <Project Path="Examples.Plugins.Json/Examples.Plugins.Json.csproj" />
+  <Project Path="Examples.Plugins.Libuv/Examples.Plugins.Libuv.csproj" />
+  <Project Path="Examples.Plugins.Tests/Examples.Plugins.Tests.csproj" />
+</Solution>
