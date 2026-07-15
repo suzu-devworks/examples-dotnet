@@ -19,22 +19,6 @@ public class Pkcs10CertificateCreationTests(
         public Fixture()
         {
             KeyPair = ECDsa.Create(ECCurve.NamedCurves.nistP256);
-
-            var subject = new X500DistinguishedNameBuilder()
-                .WithCommonName("pkcs10.examples.com")
-                .Build();
-
-            Request = new CertificateRequest(
-                 subject,
-                 KeyPair,
-                 HashAlgorithmName.SHA256)
-                .AddExtension(X509BasicConstraintsExtension.CreateForEndEntity())
-                .AddKeyUsageExtension(critical: false, X509KeyUsageFlags.DigitalSignature)
-                .AddSubjectAlternativeName(san =>
-                {
-                    san.AddDnsName("localhost");
-                    san.AddIpAddress(System.Net.IPAddress.Parse("127.0.0.1"));
-                });
         }
 
         public async ValueTask InitializeAsync()
@@ -51,7 +35,20 @@ public class Pkcs10CertificateCreationTests(
 
         public CaCertificatesOpenSslFixture CaCerts { get; } = new(includePrivateKeys: true);
         public ECDsa KeyPair { get; }
-        public CertificateRequest Request { get; }
+        public CertificateRequest Request => new CertificateRequest(
+            new X500DistinguishedNameBuilder()
+                .WithCommonName("pkcs10.examples.com")
+                .Build(),
+            ECDsa.Create(ECCurve.NamedCurves.nistP256),
+            HashAlgorithmName.SHA256)
+            .AddExtension(X509BasicConstraintsExtension.CreateForEndEntity())
+            .AddKeyUsageExtension(critical: false, X509KeyUsageFlags.DigitalSignature)
+            .AddSubjectAlternativeName(san =>
+            {
+                san.AddDnsName("localhost");
+                san.AddIpAddress(System.Net.IPAddress.Parse("127.0.0.1"));
+            });
+
         public X509Certificate2 SignerCert => CaCerts.IntermediateCaCertificate;
     }
 
