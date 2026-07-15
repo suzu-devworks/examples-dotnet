@@ -10,6 +10,10 @@
             "appsettings*.json": "jsonc"
         },
         "dotnet.codeLens.enableReferencesCodeLens": true,
-        "dotnet.codeLens.enableTestsCodeLens": true
+        "dotnet.codeLens.enableTestsCodeLens": true,
+        "dotnet.unitTests.runSettingsPath": ".runsettings",
+        "terminal.integrated.env.linux": {
+            "TEST_ASSETS_PATH": "${workspaceFolder}/assets"
+        },
     }
 }
