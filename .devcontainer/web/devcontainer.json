@@ -30,7 +30,12 @@
         "esbenp.prettier-vscode",
         "DotJoshJohnson.xml",
         "DrBlury.protobuf-vsc"
-      ]
+      ],
+      "settings": {
+        // Disable CodeLens for tests and references in the web devcontainer to avoid performance issues
+        "dotnet.codeLens.enableTestsCodeLens": false,
+        "dotnet.codeLens.enableReferencesCodeLens": false
+      }
     }
   }
 }

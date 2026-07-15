@@ -40,6 +40,10 @@
           "editor.formatOnPaste": true,
           "editor.formatOnSave": true
         },
+        // Disable CodeLens for tests and references in the web devcontainer to avoid performance issues
+        "dotnet.codeLens.enableTestsCodeLens": false,
+        "dotnet.codeLens.enableReferencesCodeLens": false,
+        // SQL Formatter settings
         "SQL-Formatter-VSCode.dataTypeCase": "upper",
         "SQL-Formatter-VSCode.functionCase": "upper",
         "SQL-Formatter-VSCode.identifierCase": "lower",

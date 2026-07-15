@@ -8,6 +8,8 @@
         "files.associations": {
             ".*ignore": "ignore",
             "appsettings*.json": "jsonc"
-        }
+        },
+        "dotnet.codeLens.enableReferencesCodeLens": true,
+        "dotnet.codeLens.enableTestsCodeLens": true
     }
 }

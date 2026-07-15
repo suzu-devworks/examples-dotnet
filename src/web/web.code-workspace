@@ -8,6 +8,14 @@
         "files.associations": {
             ".*ignore": "ignore",
             "appsettings*.json": "jsonc"
-        }
+        },
+        "dotnet.codeLens.enableReferencesCodeLens": true,
+        "dotnet.codeLens.enableTestsCodeLens": true
+    },
+    "extensions": {
+        "recommendations": [
+            "esbenp.prettier-vscode",
+            "drblury.protobuf-vsc"
+        ]
     }
 }
