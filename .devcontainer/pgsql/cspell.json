@@ -4,13 +4,9 @@
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
-    "appsettings",
-    "Npgsql",
-    "nspname",
-    "polrelid",
-    "relname",
-    "relnamespace",
-    "relrowsecurity"
+    "createdb",
+    "psql",
+    "setval"
   ],
   "ignoreWords": [],
   "import": [

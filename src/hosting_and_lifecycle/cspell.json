@@ -3,7 +3,16 @@
   "ignorePaths": [],
   "dictionaryDefinitions": [],
   "dictionaries": [],
-  "words": [],
+  "words": [
+    "appsettings",
+    "Autofac",
+    "barbaz",
+    "bazbaz",
+    "ERRORLEVEL",
+    "guidvalue",
+    "Metaprogramming",
+    "netstandard"
+  ],
   "ignoreWords": [],
   "import": [
     "../../.vscode/cspell.json"

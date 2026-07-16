@@ -12,17 +12,22 @@
     "ECDH",
     "EPES",
     "ETSI",
+    "FIPS",
     "GMAC",
+    "HMAC",
     "IDAS",
     "keystream",
     "manpages",
     "noout",
+    "OCSP",
+    "Rijndael",
     "RSASHA",
     "Shor's",
-    "Xades"
+    "Xades",
+    "xscgen"
   ],
   "ignoreWords": [],
   "import": [
-    "../.vscode/cspell.json"
+    "../../.vscode/cspell.json"
   ]
 }

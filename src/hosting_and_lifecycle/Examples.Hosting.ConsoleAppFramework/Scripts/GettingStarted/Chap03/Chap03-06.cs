@@ -27,5 +27,3 @@ internal class Commands
     [Command("doc|d")]
     public void Doc() { }
 }
-
-// spell-checker: words keyvault

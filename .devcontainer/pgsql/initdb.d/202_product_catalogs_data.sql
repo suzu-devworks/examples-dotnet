@@ -1,7 +1,7 @@
-/* sql-formatter-disable */
+-- sql-formatter-disable
 \c product_catalogs
 
-/* sql-formatter-enable */
+-- sql-formatter-enable
 DELETE FROM categories;
 
 INSERT INTO

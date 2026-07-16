@@ -1,5 +1,4 @@
 #!/bin/bash
-
 if [ -n "${MSSQL_SA_PASSWORD_FILE}" ]; then
     MSSQL_SA_PASSWORD=$(cat $MSSQL_SA_PASSWORD_FILE)
     MSSQL_PASSWORD=$MSSQL_SA_PASSWORD
@@ -25,7 +24,7 @@ if [ -z "$MSSQL_CUSTOM_INIT" ]; then
 fi
 
 echo "Waiting for Sql Server to be ready before executing custom setup"
-until IsSqlServerReady; do 
+until IsSqlServerReady; do
     sleep 5;
 done
 

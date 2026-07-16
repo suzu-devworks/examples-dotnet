@@ -4,8 +4,6 @@
 
 - [domain driven design - martinfowler.com](https://martinfowler.com/tags/domain%20driven%20design.html)
 
-<!-- spell-checker: words martinfowler -->
-
 ## Patterns of Enterprise Application Architecture
 
 - [Catalog of Patterns of Enterprise Application Architecture](https://martinfowler.com/eaaCatalog/)

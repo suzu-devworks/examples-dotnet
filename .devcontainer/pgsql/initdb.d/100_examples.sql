@@ -1,7 +1,7 @@
 CREATE DATABASE examples;
 
-/* sql-formatter-disable */
+-- sql-formatter-disable
 \l
 
-/* sql-formatter-disable */
+-- sql-formatter-disable
 \c examples

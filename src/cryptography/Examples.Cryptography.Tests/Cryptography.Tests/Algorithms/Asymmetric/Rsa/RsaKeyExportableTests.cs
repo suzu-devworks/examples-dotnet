@@ -46,8 +46,7 @@ public class RsaKeyExportableTests(RsaKeyFixture fixture) : IClassFixture<RsaKey
         var exported = original.ExportRSAPrivateKey();
 
         using var imported = RSA.Create();
-        // spell-checker: words readcount
-        imported.ImportRSAPrivateKey(exported, out var readcount);
+        imported.ImportRSAPrivateKey(exported, out var readCount);
 
         // Assert:
 

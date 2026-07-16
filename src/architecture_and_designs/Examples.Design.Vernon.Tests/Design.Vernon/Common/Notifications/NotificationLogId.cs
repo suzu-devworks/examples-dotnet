@@ -24,9 +24,9 @@ namespace SaaSOvation.Common.Notifications
             this.High = highId;
         }
 
-        public NotificationLogId(string notificationlogId)
+        public NotificationLogId(string notificationLogId)
         {
-            var pts = notificationlogId.Split(',');
+            var pts = notificationLogId.Split(',');
             this.Low = long.Parse(pts[0]);
             this.High = long.Parse(pts[1]);
         }

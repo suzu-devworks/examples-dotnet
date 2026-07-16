@@ -4,10 +4,13 @@
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
-    "Expando",
-    "Noda",
-    "Npgsql",
-    "Sqlify"
+    "appsettings",
+    "ASPNETCORE",
+    "HOSTINGSTARTUPASSEMBLIES",
+    "HOSTINGSTARTUPEXCLUDEASSEMBLIES",
+    "Linq",
+    "Nlog",
+    "PREVENTHOSTINGSTARTUP"
   ],
   "ignoreWords": [],
   "import": [

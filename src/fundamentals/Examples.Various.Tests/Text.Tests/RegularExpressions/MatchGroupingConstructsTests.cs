@@ -8,8 +8,6 @@ namespace Examples.Text.Tests.RegularExpressions;
 /// <seealso href="https://docs.microsoft.com/ja-jp/dotnet/standard/base-types/grouping-constructs-in-regular-expressions" />
 public class MatchGroupingConstructsTests
 {
-    // spell-checker:words subexpression imnsx
-
     [Fact]
     public void When_MatchedSubexpressions_Then_MatchesExpectations()
     {
@@ -228,22 +226,26 @@ public class MatchGroupingConstructsTests
     {
         // (?>subexpression)
 
+        // spell-checker: disable-next-line
         string[] inputs = { "cccd.", "aaad", "aaaa" };
 
         var back = @"(\w)\1+.\b";
         var matches1 = inputs.Select(input => Regex.Match(input, back)).ToArray();
 
+        // spell-checker: disable-next-line
         Assert.Equal("cccd", matches1[0].Value);
+        // spell-checker: disable-next-line
         Assert.Equal("aaad", matches1[1].Value);
+        // spell-checker: disable-next-line
         Assert.Equal("aaaa", matches1[2].Value);
 
         var noBack = @"(?>(\w)\1+).\b";
         var matches2 = inputs.Select(input => Regex.Match(input, noBack)).ToArray();
 
+        // spell-checker: disable-next-line
         Assert.Equal("cccd", matches2[0].Value);
+        // spell-checker: disable-next-line
         Assert.Equal("aaad", matches2[1].Value);
         Assert.False(matches2[2].Success);
-
-        // spell-checker:ignore cccd aaad aaaa
     }
 }

@@ -282,7 +282,6 @@ public static class OcspRespExtensions
         //                  -- by extnID
         // }
         // ```
-        // spell-checker: words extn
 
         writer.WriteLine($"                  extnID: {oid.Id}");
         writer.WriteLine($"                critical: {extension.IsCritical}");

@@ -131,8 +131,8 @@ public partial class ContosoContext : DbContext
 
             entity.Property(e => e.DateKey).HasMaxLength(50);
             entity.Property(e => e.Date1).HasColumnName("Date");
-            entity.Property(e => e.DayofWeek).HasMaxLength(30);
-            entity.Property(e => e.DayofWeekShort).HasMaxLength(30);
+            entity.Property(e => e.DayOfWeek).HasMaxLength(30);
+            entity.Property(e => e.DayOfWeekShort).HasMaxLength(30);
             entity.Property(e => e.Month).HasMaxLength(30);
             entity.Property(e => e.MonthShort).HasMaxLength(30);
             entity.Property(e => e.Quarter).HasMaxLength(2);

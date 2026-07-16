@@ -68,7 +68,6 @@ public static class TimeStampTokenExtensions
         //
         // SignerInfos ::= SET OF SignerInfo
         // ```
-        /* spell-checker: words crls encap */
         var signedData = timeStampToken.ToCmsSignedData().SignedData;
 
         writer.WriteLine($"                 version: {signedData.Version}");
@@ -260,7 +259,6 @@ public static class TimeStampTokenExtensions
         //      millis     [0] INTEGER  (1..999)    OPTIONAL,
         //      micros     [1] INTEGER  (1..999)    OPTIONAL  }
         // ```
-        // spell-checker: words millis
         if (accuracy.Seconds is not null)
         {
             writer.WriteLine($"                seconds: {accuracy.Seconds}");

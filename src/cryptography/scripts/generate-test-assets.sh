@@ -9,7 +9,7 @@ mkdir -p "$TARGET_DIR"
 OUT_DIR=$(cd "$TARGET_DIR" && pwd)
 echo "Output To: ${OUT_DIR}"
 
-CONF_FILE=${FILE_DIR}/test-assets.openssl.cnf
+CONF_FILE=${FILE_DIR}/openssl.cnf
 
 DAYS=3
 echo "Certificate valid for ${DAYS} days"

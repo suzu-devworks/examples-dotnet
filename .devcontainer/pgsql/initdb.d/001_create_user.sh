@@ -1,5 +1,4 @@
 #!/bin/bash
-
 password=$(cat /run/secrets/db_password)
 
 psql << EOT

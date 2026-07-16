@@ -9,7 +9,7 @@ DEST_DIR="${1:-${BASE_DIR}}"
 mkdir -p "$DEST_DIR"
 echo "Output to: ${DEST_DIR}"
 
-CONF_FILE=${BASE_DIR}/mtls.conf
+CONF_FILE=${BASE_DIR}/openssl.cnf
 echo "Using OpenSSL config: ${CONF_FILE}"
 
 DAYS=30

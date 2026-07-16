@@ -49,10 +49,11 @@ public class MatchCharacterClassesTests
         var pattern = @"^[\p{Lu}-[A]]+$";
 
         // does not include 'A' ... is Match.
+        // spell-checker: disable-next-line
         Assert.Matches(pattern, "BCDEFG");
-        // spell-checker: words BCDEFG
 
         // include 'A' ... is Not Match.
+        // spell-checker: disable-next-line
         Assert.DoesNotMatch(pattern, "ABCDEF");
     }
 

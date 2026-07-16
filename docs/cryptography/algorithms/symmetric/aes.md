@@ -14,8 +14,6 @@ AES is a symmetric-key block cipher algorithm that was standardized by the Unite
 2001. The U.S. National Institute of Standards and Technology (NIST) ran an open competition,
 and the Rijndael cipher was selected and standardized as AES.
 
-<!-- spell-checker:words Rijndael -->
-
 ## Block cipher mode of operation
 
 A mechanism for encrypting messages longer than the block size by using a block cipher.

@@ -27,7 +27,6 @@ fi
 echo "Building and installing OpenSSL $target_ver..."
 cd temp/openssl-$target_ver
 ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib
-# spell-checker: words openssldir
 make -j$(nproc)
 
 # Install the new OpenSSL version

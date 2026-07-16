@@ -1,7 +1,6 @@
 # Examples.Design.Anderson.Tests
 
 ## Piikokku Anderson's Domain-Driven Design
-<!-- spell-checker:words Piikokku -->
 
 - <https://anderson02.com/ddd-menu/>
 

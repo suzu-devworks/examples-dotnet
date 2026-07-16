@@ -29,11 +29,11 @@ public partial class Date
 
     public int MonthNumber { get; set; }
 
-    public string DayofWeek { get; set; } = null!;
+    public string DayOfWeek { get; set; } = null!;
 
-    public string DayofWeekShort { get; set; } = null!;
+    public string DayOfWeekShort { get; set; } = null!;
 
-    public int DayofWeekNumber { get; set; }
+    public int DayOfWeekNumber { get; set; }
 
     public bool WorkingDay { get; set; }
 

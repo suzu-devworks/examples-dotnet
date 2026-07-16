@@ -1,16 +1,11 @@
 {
   "version": "0.2",
-  "ignorePaths": [
-    "wwwroot/*"
-  ],
+  "ignorePaths": [],
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
-    "Blazor",
-    "Invokable",
-    "onclick",
-    "rendermode",
-    "stylesheet"
+    "Kaku",
+    "topbar"
   ],
   "ignoreWords": [],
   "import": [

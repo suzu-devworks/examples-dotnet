@@ -56,6 +56,7 @@ if you can unzip the file on the host machine.
 7z x bak-ContosoV2-100k.7z 
 ```
 
+<!-- spell-checker: disable -->
 ```console
 $ ls -lR
 
@@ -68,7 +69,7 @@ drwx------ 3 1000 1000       96 Oct 26 08:28 dump
 total 112784
 -rw-r--r-- 1 1000 1000 115490816 Sep 20 17:16 ContosoV2100k.bak
 ```
-<!-- spell-checker: words drwx -->
+<!-- spell-checker: enable -->
 
 Copy to container:
 
@@ -132,8 +133,8 @@ Here, we are working within the `Examples.EntityFrameworkCore.SqlServer.Tests` p
 ```shell
 dotnet ef dbcontext scaffold "Data Source=sqlserver;Initial Catalog=Contoso;User ID=sa;Password=$(cat /run/secrets/db_password);Persist Security Info=False;TrustServerCertificate=yes" Microsoft.EntityFrameworkCore.SqlServer --context-dir Data --context-namespace ContosoCorporation.Data --output-dir Models --namespace ContosoCorporation.Models --no-onconfiguring
 ```
-<!-- spell-checker: words onconfiguring -->
 
+<!-- spell-checker: disable -->
 ```console
 $ ls -lR ContosoCorporation/
 ContosoCorporation/:
@@ -162,7 +163,7 @@ total 56
 -rw-r--r-- 1 vscode vscode  513 Oct 26 21:32 Store1.cs
 -rw-r--r-- 1 vscode vscode  773 Oct 26 21:32 Store.cs
 ```
-<!-- spell-checker: words drwxr -->
+<!-- spell-checker: enable -->
 
 Upon reviewing the generated files, it appears there is duplication between the tables and views.
 Since we are not managing the migrations in this case, we will modify the files after they have been generated.

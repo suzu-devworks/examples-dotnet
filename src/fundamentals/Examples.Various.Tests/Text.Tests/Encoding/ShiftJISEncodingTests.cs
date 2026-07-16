@@ -36,7 +36,6 @@ public class ShiftJISEncodingTests
         {
             Assert.Equal(Encoding932, Encoding.GetEncoding(name));
         }
-        // spell-checker: words sjis
 
         [Theory]
         [InlineData("s-jis")]

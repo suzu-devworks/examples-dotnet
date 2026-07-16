@@ -1,5 +1,5 @@
 #!/bin/sh
-# spell-checker: disable
+# spell-checker: words pkey
 echo "Show OpenSSL files..."
 openssl version
 

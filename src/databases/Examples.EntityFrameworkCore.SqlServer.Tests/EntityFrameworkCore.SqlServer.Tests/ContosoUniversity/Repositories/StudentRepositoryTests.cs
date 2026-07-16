@@ -28,7 +28,6 @@ public class StudentRepositoryTests(ContosoUniversityFixture fixture) : IClassFi
     [InlineData(3, "Anand")]
     public async Task FindAsync_WhenPrimaryKeyIsProvided_ReturnsSpecifiedRecord(int id, string lastName)
     {
-        // spell-checker: words Anand Alonso
         var repository = _fixture.ServiceProvider.GetRequiredService<IStudentRepository>();
 
         var record = await repository.FindAsync(id, TestContext.Current.CancellationToken);
@@ -49,11 +48,11 @@ public class StudentRepositoryTests(ContosoUniversityFixture fixture) : IClassFi
 
         var input = new Student
         {
+            // spell-checker: disable-next-line
             FirstMidName = "Hoge",
             LastName = "Foo",
             EnrollmentDate = DateTime.Parse("2022-10-01")
         };
-        // spell-checker: words Hoge
 
         await repository.AddAsync(input, TestContext.Current.CancellationToken);
 

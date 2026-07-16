@@ -1,0 +1,34 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "callvirt",
+    "Euan",
+    "Evain",
+    "Finalizers",
+    "hostspecific",
+    "ldarg",
+    "ldfld",
+    "ldloc",
+    "ldloca",
+    "ldstr",
+    "Linq",
+    "metaprogramming",
+    "mscorlib",
+    "MSIL",
+    "nameof",
+    "newobj",
+    "resx",
+    "sbyte",
+    "stfld",
+    "stloc",
+    "valuetype",
+    "warnaserror",
+  ],
+  "ignoreWords": [],
+  "import": [
+    "../../.vscode/cspell.json"
+  ]
+}

@@ -1,4 +1,4 @@
 #!/bin/sh
 
-# add xunit3 template
+# add xunit template
 dotnet new install xunit.v3.templates

@@ -85,7 +85,6 @@ public static class CertificateRequestExtensions
         // ```openssl.conf
         // authorityKeyIdentifier = keyid, issuer
         // ```
-        // spell-checker: words keyid
 
         if (issuer is null)
         {

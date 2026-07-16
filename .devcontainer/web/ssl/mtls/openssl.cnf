@@ -1,5 +1,4 @@
 # ssl.cnf - Development use only.
-# spell-checker: disable
 
 [ req ]
 distinguished_name  = req

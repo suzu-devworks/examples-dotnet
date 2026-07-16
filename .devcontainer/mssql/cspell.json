@@ -4,8 +4,15 @@
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
-    "Bopomofo",
-    "Yori"
+    "datareader",
+    "datawriter",
+    "ddladmin",
+    "memberprincipalid",
+    "memberprincipalname",
+    "nocount",
+    "roleprincipalid",
+    "roleprincipalname",
+    "sqlcmd"
   ],
   "ignoreWords": [],
   "import": [

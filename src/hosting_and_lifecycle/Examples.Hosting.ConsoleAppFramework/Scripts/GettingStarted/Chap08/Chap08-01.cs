@@ -13,5 +13,3 @@ ConsoleApp.Run(args, int () => Random.Shared.Next());
 
 // Linux and macOS: echo $?
 // Windows: echo %ERRORLEVEL%
-
-// spell-checker: words ERRORLEVEL

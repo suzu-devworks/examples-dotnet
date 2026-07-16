@@ -22,5 +22,3 @@ app.Add("foo baz", () => { });
 //   foo baz
 
 app.Run(args);
-
-// spell-checker: words barbaz

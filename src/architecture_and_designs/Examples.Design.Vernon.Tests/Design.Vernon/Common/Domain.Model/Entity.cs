@@ -22,7 +22,7 @@ namespace SaaSOvation.Common.Domain.Model
     public abstract class EntityWithCompositeId : Entity
     {
         /// <summary>
-        /// When overriden in a derived class, gets all components of the identity of the entity.
+        /// When overridden in a derived class, gets all components of the identity of the entity.
         /// </summary>
         /// <returns></returns>
         protected abstract IEnumerable<object> GetIdentityComponents();

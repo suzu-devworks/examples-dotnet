@@ -52,5 +52,7 @@
     "**/bin/**": true,
     "**/obj/**": true
   },
-  "xml.format.maxLineWidth": 0
+  "xml.format.maxLineWidth": 0,
+  "cSpell.logLevel": "Debug",
+  "cSpell.showStatus": true
 }

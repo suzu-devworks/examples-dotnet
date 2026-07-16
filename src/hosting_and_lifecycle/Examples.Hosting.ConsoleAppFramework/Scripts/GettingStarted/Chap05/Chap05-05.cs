@@ -22,5 +22,3 @@ app.Add("run", (string project, ConsoleAppContext context) =>
 });
 
 app.Run(args);
-
-// spell-checker: words bazbaz

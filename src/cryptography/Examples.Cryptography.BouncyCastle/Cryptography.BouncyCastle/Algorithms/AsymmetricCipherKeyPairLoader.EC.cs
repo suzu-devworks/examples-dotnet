@@ -114,7 +114,6 @@ public static partial class AsymmetricCipherKeyPairLoader
         //      publicKey   [1] BIT STRING OPTIONAL
         // }
         // ```
-        /* spell-checker: words Privkey */
         var structure = ECPrivateKeyStructure.GetInstance(seq);
 
         // RFC 5208 - Public-Key Cryptography Standards (PKCS) #8

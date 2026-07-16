@@ -88,7 +88,7 @@ public partial class EnumerationTests
         Assert.True(CardType.MasterCard == CardType.Parse("3"));
         Assert.False(CardType.MasterCard == CardType.Parse("mAsterCard"));
 
-        // spell-checker:: disable-next-line
+        // spell-checker: disable-next-line
         Assert.Null(CardType.Parse("hogehoge"));
         Assert.Throws<ArgumentNullException>(() => CardType.Parse(null));
     }

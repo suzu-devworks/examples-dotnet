@@ -63,7 +63,7 @@ dotnet run -- quick --help
 ### ``syntax``, ``syntax-options``, ``syntax-exclusive``, ``syntax-grouping`` command
 
 These commands are for learning the syntax of command-line arguments. They basically refer to
-the [Wiki - commandlineparser/commandline](https://github.com/commandlineparser/commandline/wiki),
+the [Wiki - commandLineParser/commandline](https://github.com/commandlineparser/commandline/wiki),
 but I implemented them myself to verify their actual behavior.
 
 ```bash

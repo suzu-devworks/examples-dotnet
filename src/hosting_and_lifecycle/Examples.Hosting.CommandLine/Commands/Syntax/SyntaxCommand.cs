@@ -29,8 +29,8 @@ public class SyntaxCommand : Command
     // The verbosity option. (with custom validation and parsing logic.)
     public readonly Option<VerbosityLevel> VerbosityOption = new("--verbosity", "-v")
     {
+        // spell-checker: disable-next-line
         Description = "Output verbosity level. Allowed values are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic].",
-        // spell-checker: words uiet inimal ormal etailed nostic
         Recursive = true,
         Arity = ArgumentArity.ZeroOrOne,
         DefaultValueFactory = result =>
@@ -59,6 +59,7 @@ public class SyntaxCommand : Command
 
             if (!validValues.Contains(value))
             {
+                // spell-checker: disable-next-line
                 result.AddError($"Argument '{value}' not recognized. Must be one of: 'q[uiet]', 'm[inimal]', 'n[ormal]', 'd[etailed]', 'diag[nostic]'");
             }
         };

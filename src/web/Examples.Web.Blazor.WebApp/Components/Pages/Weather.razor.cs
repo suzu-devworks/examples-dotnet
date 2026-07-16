@@ -26,7 +26,6 @@ public partial class Weather : IAsyncDisposable
                     Label = "Temp. (F)",
                     Data = forecasts?.Select(f => f.TemperatureF) ?? [],
                     BorderColor = "lightgreen",
-                    // spell-checker: words lightgreen
                 }
             }
         };

@@ -7,9 +7,6 @@ design patterns. The book was written by Erich Gamma, Richard Helm, Ralph Johnso
 by Grady Booch. The book is divided into two parts, with the first two chapters exploring the capabilities and pitfalls
 of object-oriented programming, and the remaining chapters describing 23 classic software design patterns.
 
-<!-- spell-checker:words Vlissides -->
-<!-- spell-checker:words Booch -->
-
 > [Design patterns] solve specific design problems and make object-oriented designs more flexible, elegant, and
 > ultimately reusable. They help designers reuse successful designs by basing new designs on prior experience.
 > A designer who is familiar with such patterns can apply them immediately to design problems without having
@@ -18,8 +15,6 @@ of object-oriented programming, and the remaining chapters describing 23 classic
 ## Patterns by type
 
 ### Creational
-
-<!-- spell-checker:words Creational -->
 
 Creational patterns provide the capability to create objects based on a required criterion and in a controlled way.
 

@@ -9,7 +9,6 @@ public static class WeatherForecastApiExtensions
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        // spell-checker: words weatherforecast
         return endpoints.MapGet("/weatherforecast", () =>
          {
              var forecast = Enumerable.Range(1, 5).Select(index =>

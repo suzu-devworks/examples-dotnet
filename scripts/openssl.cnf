@@ -1,5 +1,4 @@
 # openssl.cnf - Development use only.
-# spell-checker: disable
 
 [ req ]
 prompt                  = no

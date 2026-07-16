@@ -33,5 +33,3 @@ internal class MyClass
     public string Name { get; set; } = default!;
     public int Age { get; set; }
 }
-
-// spell-checker: words guidvalue

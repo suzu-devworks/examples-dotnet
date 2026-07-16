@@ -37,7 +37,6 @@ public static class CloneableExtensions
     {
         var method = source.GetType().GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
         return (T)method!.Invoke(source, null)!;
-        // spell-checker: words memberwise
     }
 
 }
