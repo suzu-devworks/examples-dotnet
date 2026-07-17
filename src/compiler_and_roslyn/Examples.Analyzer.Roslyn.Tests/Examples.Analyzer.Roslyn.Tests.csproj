@@ -22,14 +22,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Analyzer.Testing" Version="1.1.4" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeFix.Testing" Version="1.1.4" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="5.3.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="5.6.0" />
     <PackageReference Include="xunit.v3.mtp-v2" Version="3.2.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Examples.Analyzer.Roslyn\Examples.Analyzer.Roslyn.csproj" />
-    <ProjectReference
-      Include="..\Examples.Analyzer.Roslyn.CodeFixes\Examples.Analyzer.Roslyn.CodeFixes.csproj" />
+    <ProjectReference Include="..\Examples.Analyzer.Roslyn.CodeFixes\Examples.Analyzer.Roslyn.CodeFixes.csproj" />
   </ItemGroup>
 
 </Project>
