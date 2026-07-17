@@ -78,7 +78,7 @@ namespace Examples.Web.Authentication.Identity.Areas.Identity.Pages.Account
                 throw new InvalidOperationException($"Unable to load two-factor authentication user.");
             }
 
-            ReturnUrl = returnUrl;
+            ReturnUrl = Url.IsLocalUrl(returnUrl) ? returnUrl : "~/";
             RememberMe = rememberMe;
 
             return Page();
