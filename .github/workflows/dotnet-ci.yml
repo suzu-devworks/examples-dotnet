@@ -48,7 +48,8 @@ jobs:
         run: |
           # For manual execution (workflow_dispatch), target all projects under src/
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            PROJECTS=$(ls -d src/*/ | cut -d'/' -f2 | jq -R -s -c 'split("\n") | map(select(length > 0))')
+            ALL_PROJECTS=$(find src/ -maxdepth 2 \( -name "*.slnx" -o -name "*.sln" \))
+            PROJECTS=$(echo "$ALL_PROJECTS" | cut -d'/' -f2 | jq -R -s -c 'split("\n") | map(select(length > 0))')
             echo "projects=$PROJECTS" >> $GITHUB_OUTPUT
           else
             # json array returned from the plugin (e.g. ["src/AAA", "src/BBB"])
