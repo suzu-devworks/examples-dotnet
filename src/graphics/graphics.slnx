@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Examples.Graphics.SkiaSharp/Examples.Graphics.SkiaSharp.csproj" />
+  <Project Path="Examples.Graphics.Tests/Examples.Graphics.Tests.csproj" />
+  <Project Path="Examples.Graphics/Examples.Graphics.csproj" />
+</Solution>

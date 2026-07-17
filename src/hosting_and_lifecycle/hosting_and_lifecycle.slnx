@@ -1,0 +1,16 @@
+<Solution>
+  <Project Path="Examples.Caching.Extensions.Tests/Examples.Caching.Extensions.Tests.csproj" />
+  <Project Path="Examples.Caching.Runtime.Tests/Examples.Caching.Runtime.Tests.csproj" />
+  <Project Path="Examples.Caching.Tests/Examples.Caching.Tests.csproj" />
+  <Project Path="Examples.Caching/Examples.Caching.csproj" />
+  <Project Path="Examples.DependencyInjection.Autofac.Tests/Examples.DependencyInjection.Autofac.Tests.csproj" />
+  <Project Path="Examples.DependencyInjection.Extensions.Tests/Examples.DependencyInjection.Extensions.Tests.csproj" />
+  <Project Path="Examples.DependencyInjection.Mef.Tests/Examples.DependencyInjection.Mef.Tests.csproj" />
+  <Project Path="Examples.DependencyInjection.Tests/Examples.DependencyInjection.Tests.csproj" />
+  <Project Path="Examples.DependencyInjection/Examples.DependencyInjection.csproj" />
+  <Project Path="Examples.Hosting.CommandLine/Examples.Hosting.CommandLine.csproj" />
+  <Project Path="Examples.Hosting.CommandLineParser/Examples.Hosting.CommandLineParser.csproj" />
+  <Project Path="Examples.Hosting.Console/Examples.Hosting.Console.csproj" />
+  <Project Path="Examples.Hosting.ConsoleAppFramework/Examples.Hosting.ConsoleAppFramework.csproj" />
+  <Project Path="Examples.Hosting.Workers/Examples.Hosting.Workers.csproj" />
+</Solution>

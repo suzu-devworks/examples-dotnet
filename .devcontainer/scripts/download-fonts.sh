@@ -1,4 +1,5 @@
 #!/bin/sh
+# spell-checker: words Noto wght
 font_dir="$HOME/.local/share/fonts"
 mkdir -p "$font_dir"
 

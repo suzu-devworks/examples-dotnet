@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/fixtures/">
+    <Project Path="fixtures/Examples.Plugins.Hello/Examples.Plugins.Hello.csproj" />
+    <Project Path="fixtures/Examples.Plugins.Json/Examples.Plugins.Json.csproj" />
+    <Project Path="fixtures/Examples.Plugins.Libuv/Examples.Plugins.Libuv.csproj" />
+  </Folder>
+  <Project Path="Examples.Plugins.Abstractions/Examples.Plugins.Abstractions.csproj" />
+  <Project Path="Examples.Plugins.Tests/Examples.Plugins.Tests.csproj" />
+</Solution>

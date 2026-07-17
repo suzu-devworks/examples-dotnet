@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <JobName>Overview</JobName>
+  <Classes>
+    <Class Name="Employee">
+      <Property Name="FirstName" Type="string" />
+      <Property Name="LastName" Type="string" />
+      <Property Name="Age" Type="int" />
+    </Class>
+    <Class Name="Department">
+      <Property Name="Name" Type="string" />
+    </Class>
+    <Class Name="Company">
+      <Property Name="Name" Type="string" />
+    </Class>
+  </Classes>
+</Configuration>

@@ -1,0 +1,61 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <DesignTimeTemplates Include="**/DesignTimeTemplates/**/*.tt" />
+    <RunTimeTemplates Include="**/RunTimeTemplates/**/*.tt" />
+    <Generated Include="**/*.g.*" />
+  </ItemGroup>
+
+  <Target Name="DesignTimeTextTemplateTransform" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+      <DesignTimeTemplatesWithMeta Include="@(DesignTimeTemplates)">
+        <InputPath>%(Identity)</InputPath>
+        <OutputPath>%(RelativeDir)%(Filename).g.cs</OutputPath>
+      </DesignTimeTemplatesWithMeta>
+    </ItemGroup>
+
+    <Message Importance="high"
+      Text="[T4 DesignTime Debug] InputPath  : %(DesignTimeTemplatesWithMeta.InputPath)" />
+
+    <Exec
+      Condition="'@(DesignTimeTemplatesWithMeta->Count())' &gt; '0'"
+      WorkingDirectory="$(ProjectDir)"
+      Command="dotnet t4 %(DesignTimeTemplatesWithMeta.InputPath) -o %(DesignTimeTemplatesWithMeta.OutputPath)" />
+
+    <ItemGroup>
+      <Compile Include="**/%(DesignTimeTemplates.RelativeDir)*$(DefaultLanguageSourceExtension)"
+        Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(BaseIntermediateOutputPath)**;$(BaseOutputPath)**;@(Compile)" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="RunTimeTextTemplateTransform" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+      <RunTimeTemplatesWithMeta Include="@(RunTimeTemplates)">
+        <FullClassName>$([System.String]::Copy('$(RootNamespace).%(RelativeDir)%(Filename)')
+          .Replace('\','.').Replace('/','.').Replace('..', '.'))</FullClassName>
+        <InputPath>%(Identity)</InputPath>
+        <OutputPath>%(RelativeDir)%(Filename).g.cs</OutputPath>
+      </RunTimeTemplatesWithMeta>
+    </ItemGroup>
+
+    <Message Importance="high"
+      Text="[T4 RunTime Debug] InputPath  : %(RunTimeTemplatesWithMeta.InputPath)" />
+
+    <Exec
+      Condition="'@(RunTimeTemplatesWithMeta->Count())' &gt; '0'"
+      WorkingDirectory="$(ProjectDir)"
+      Command="dotnet t4 %(RunTimeTemplatesWithMeta.InputPath) -c %(RunTimeTemplatesWithMeta.FullClassName) -o %(RunTimeTemplatesWithMeta.OutputPath)" />
+
+    <ItemGroup>
+      <Compile Include="**/%(RunTimeTemplates.RelativeDir)*$(DefaultLanguageSourceExtension)"
+        Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(BaseIntermediateOutputPath)**;$(BaseOutputPath)**;@(Compile)" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="T4"
+    DependsOnTargets="DesignTimeTextTemplateTransform;RunTimeTextTemplateTransform" />
+
+  <Target Name="TextTemplateClean" AfterTargets="Clean">
+    <Delete Files="@(Generated)" />
+  </Target>
+
+</Project>

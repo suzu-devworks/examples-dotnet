@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Examples.Concurrency.Tests/Examples.Concurrency.Tests.csproj" />
+  <Project Path="Examples.Concurrency/Examples.Concurrency.csproj" />
+</Solution>

@@ -1,0 +1,20 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            ".*ignore": "ignore",
+            "appsettings*.json": "jsonc"
+        },
+        "dotnet.codeLens.enableReferencesCodeLens": true,
+        "dotnet.codeLens.enableTestsCodeLens": true
+    },
+    "extensions": {
+        "recommendations": [
+            "drblury.protobuf-vsc"
+        ]
+    }
+}

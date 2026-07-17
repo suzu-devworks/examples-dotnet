@@ -1,0 +1,7 @@
+<#@ template language="C#" #>
+
+<#@ parameter type="System.Int32" name="TimesToRepeat" #>
+
+<# for (int i = 0; i < TimesToRepeat; i++) { #>
+Line <#= i #>
+<# } #>

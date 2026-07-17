@@ -1,0 +1,8 @@
+<#@ output extension=".txt" #>
+Output message 1 (from top template).
+<#@ include file="TextFile1.t4"#>
+Output message 5 (from top template).
+<#
+   GenerateMessage(6); // defined in TextFile1.t4
+   AnotherGenerateMessage(7); // defined in TextFile2.t4
+#>

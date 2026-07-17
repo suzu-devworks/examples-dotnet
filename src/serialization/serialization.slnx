@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Examples.Serialization.Protobuf.Tests/Examples.Serialization.Protobuf.Tests.csproj" />
+  <Project Path="Examples.Serialization.Tests/Examples.Serialization.Tests.csproj" />
+  <Project Path="Examples.Serialization.Xml.Tests/Examples.Serialization.Xml.Tests.csproj" />
+  <Project Path="Examples.Serialization.Yaml.Tests/Examples.Serialization.Yaml.Tests.csproj" />
+  <Project Path="Examples.Serialization/Examples.Serialization.csproj" />
+</Solution>

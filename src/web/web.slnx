@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/fixtures/">
+    <Project Path="fixtures/Examples.Web.HostingStartup1/Examples.Web.HostingStartup1.csproj" />
+    <Project Path="fixtures/Examples.Web.HostingStartup2/Examples.Web.HostingStartup2.csproj" />
+  </Folder>
+  <Project Path="Examples.Web.Authentication.Basic/Examples.Web.Authentication.Basic.csproj" />
+  <Project Path="Examples.Web.Authentication.Certificate/Examples.Web.Authentication.Certificate.csproj" />
+  <Project Path="Examples.Web.Authentication.Cookie/Examples.Web.Authentication.Cookie.csproj" />
+  <Project Path="Examples.Web.Authentication.Identity/Examples.Web.Authentication.Identity.csproj" />
+  <Project Path="Examples.Web.Authentication.JwtBearer/Examples.Web.Authentication.JwtBearer.csproj" />
+  <Project Path="Examples.Web.Authentication.Oidc/Examples.Web.Authentication.Oidc.csproj" />
+  <Project Path="Examples.Web.Blazor.WebApp/Examples.Web.Blazor.WebApp.csproj" />
+  <Project Path="Examples.Web.Generator.JwtToken/Examples.Web.Generator.JwtToken.csproj" />
+  <Project Path="Examples.Web.Infrastructure.Assets/Examples.Web.Infrastructure.Assets.csproj" />
+  <Project Path="Examples.Web.Infrastructure.GrpcClient/Examples.Web.Infrastructure.GrpcClient.csproj" />
+  <Project Path="Examples.Web.Infrastructure.OpenApi/Examples.Web.Infrastructure.OpenApi.csproj" />
+  <Project Path="Examples.Web.Infrastructure.Swagger/Examples.Web.Infrastructure.Swagger.csproj" />
+  <Project Path="Examples.Web.Infrastructure.Tests/Examples.Web.Infrastructure.Tests.csproj" />
+  <Project Path="Examples.Web.Infrastructure/Examples.Web.Infrastructure.csproj" />
+  <Project Path="Examples.Web.WebApi.Grpc/Examples.Web.WebApi.Grpc.csproj" />
+  <Project Path="Examples.Web.WebApi/Examples.Web.WebApi.csproj" />
+  <Project Path="Examples.Web.WebApp/Examples.Web.WebApp.csproj" />
+</Solution>

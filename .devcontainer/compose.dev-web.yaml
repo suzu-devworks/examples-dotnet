@@ -1,0 +1,31 @@
+services:
+  nginx:
+    depends_on:
+      - dev-web
+
+  dev-web:
+    extends:
+      file: compose.dev.yaml
+      service: dev
+    networks:
+      interconnect:
+        aliases:
+          - dev
+    secrets:
+      - Kestrel__Certificates__Default__Password
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/etc/ssl/local/localhost.pfx
+    volumes:
+      # Use SSL server certificate
+      - ./web/ssl:/etc/ssl/local:ro
+      # Use Data Protection keys
+      - ./.keys:/home/vscode/.aspnet/DataProtection-Keys:rw
+
+secrets:
+  Kestrel__Certificates__Default__Password:
+    file: ./web/ssl/.password
+
+networks:
+  interconnect:
+    driver: bridge

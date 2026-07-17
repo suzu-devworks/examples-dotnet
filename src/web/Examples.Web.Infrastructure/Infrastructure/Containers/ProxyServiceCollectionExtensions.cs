@@ -1,0 +1,44 @@
+using System.Net;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Examples.Web.Infrastructure.Containers;
+
+/// <summary>
+/// Extension methods for proxy services to <see cref="IServiceCollection"/>.
+/// </summary>
+public static class ProxyServiceCollectionExtensions
+{
+    /// <summary>
+    /// Adds forwarded headers configuration to the service collection,
+    /// allowing the application to process X-Forwarded-For, X-Forwarded-Proto, and X-Forwarded-Prefix headers
+    /// from trusted proxies.
+    /// </summary>
+    /// <param name="services">The service collection to add the configuration to.</param>
+    /// <param name="trustedProxyNetwork">The trusted proxy network. If null, defaults to the Docker bridge network (172.16.0.0/12).</param>
+    public static void AddProxyForwardedHeaders(this IServiceCollection services,
+        System.Net.IPNetwork? trustedProxyNetwork = null)
+    {
+        // Allows the all range of docker bridge network (172.16.0.0/12) to be trusted for forwarded headers.
+        trustedProxyNetwork ??= new(IPAddress.Parse("172.16.0.0"), 12);
+
+        // Add Forwarded Headers Middleware to process the X-Forwarded-For, X-Forwarded-Proto, and X-Forwarded-Prefix headers.
+        services.Configure<ForwardedHeadersOptions>(options =>
+        {
+            options.KnownProxies.Clear();
+
+#if NET10_0_OR_GREATER
+            options.KnownIPNetworks.Clear();
+            options.KnownIPNetworks.Add(trustedProxyNetwork.Value);
+#else
+            options.KnownNetworks.Clear();
+            options.KnownNetworks.Add(new Microsoft.AspNetCore.HttpOverrides.IPNetwork(
+                trustedProxyNetwork.Value.BaseAddress, trustedProxyNetwork.Value.PrefixLength));
+#endif
+
+            options.ForwardedHeaders =
+                ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedPrefix;
+        });
+    }
+}

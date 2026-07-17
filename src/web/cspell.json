@@ -1,0 +1,46 @@
+{
+  "version": "0.2",
+  "ignorePaths": [
+    "**/wwwroot/**",
+    "nlog*.config"
+  ],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "Antiforgery",
+    "appsettings",
+    "ASPNETCORE",
+    "Backchannel",
+    "Blazor",
+    "Cpath",
+    "Csvg",
+    "glyphicon",
+    "HSTS",
+    "httpbody",
+    "importmap",
+    "Invokable",
+    "jquery",
+    "jwts",
+    "libman",
+    "librarymanager",
+    "lightgreen",
+    "mihirdilip",
+    "nosniff",
+    "OCSP",
+    "onclick",
+    "otpauth",
+    "qrcode",
+    "razorclasslib",
+    "rendermode",
+    "stylesheet",
+    "Swashbuckle",
+    "toggleable",
+    "totp",
+    "weatherforecast",
+    "wwwroot"
+  ],
+  "ignoreWords": [],
+  "import": [
+    "../../.vscode/cspell.json"
+  ]
+}

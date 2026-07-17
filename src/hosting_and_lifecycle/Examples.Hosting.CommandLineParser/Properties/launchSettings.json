@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Examples.Hosting.CommandLineParser": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

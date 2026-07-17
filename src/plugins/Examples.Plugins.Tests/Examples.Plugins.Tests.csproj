@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>$(LatestFramework)</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Examples.Plugins.Tests</RootNamespace>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3.mtp-v2" Version="3.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Examples.Plugins.Abstractions\Examples.Plugins.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\fixtures\Examples.Plugins.Hello\Examples.Plugins.Hello.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\fixtures\Examples.Plugins.Json\Examples.Plugins.Json.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\fixtures\Examples.Plugins.Libuv\Examples.Plugins.Libuv.csproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../../compiler_and_roslyn/Examples.Metaprogramming/Extensions/AssemblyExtensions.cs">
+      <Link>Metaprogramming/Extensions/AssemblyExtensions.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <Target Name="CopyFixturePluginOutputs" AfterTargets="Build">
+    <ItemGroup>
+      <_FixturePlugin Include="Examples.Plugins.Hello">
+        <SourcePath>..\fixtures\Examples.Plugins.Hello\bin\$(Configuration)\$(TargetFramework)</SourcePath>
+      </_FixturePlugin>
+      <_FixturePlugin Include="Examples.Plugins.Json">
+        <SourcePath>..\fixtures\Examples.Plugins.Json\bin\$(Configuration)\$(TargetFramework)</SourcePath>
+      </_FixturePlugin>
+      <_FixturePlugin Include="Examples.Plugins.Libuv">
+        <SourcePath>..\fixtures\Examples.Plugins.Libuv\bin\$(Configuration)\$(TargetFramework)</SourcePath>
+      </_FixturePlugin>
+
+      <_FixturePluginFile Include="%(_FixturePlugin.SourcePath)\**\*.*">
+        <PluginName>%(_FixturePlugin.Identity)</PluginName>
+      </_FixturePluginFile>
+    </ItemGroup>
+
+    <Copy SourceFiles="@(_FixturePluginFile)" DestinationFiles="@(_FixturePluginFile->'$(OutDir)plugins\%(PluginName)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

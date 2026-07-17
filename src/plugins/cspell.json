@@ -1,0 +1,17 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "Cdecl",
+    "Finalizers",
+    "Libuv",
+    "Metaprogramming",
+    "Newtonsoft"
+  ],
+  "ignoreWords": [],
+  "import": [
+    "../../.vscode/cspell.json"
+  ]
+}

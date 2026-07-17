@@ -1,0 +1,21 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "datareader",
+    "datawriter",
+    "ddladmin",
+    "memberprincipalid",
+    "memberprincipalname",
+    "nocount",
+    "roleprincipalid",
+    "roleprincipalname",
+    "sqlcmd"
+  ],
+  "ignoreWords": [],
+  "import": [
+    "../../.vscode/cspell.json"
+  ]
+}

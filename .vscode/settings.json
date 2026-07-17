@@ -1,9 +1,28 @@
 {
+  "[aspnetcorerazor]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
   "[csharp]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit"
     },
     "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "[css][scss][sass]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript][typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json][jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
@@ -14,19 +33,26 @@
     },
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
+  "[razor]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
   "[xml]": {
     "editor.defaultFormatter": "DotJoshJohnson.xml",
     "editor.wordWrap": "off",
-    "files.trimTrailingWhitespace": true,
+    "files.trimTrailingWhitespace": true
   },
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "files.associations": {
-    ".dockerignore": "ignore",
-    "appsettings*.json": "jsonc",
-    "web.config": "xml"
+    ".*ignore": "ignore",
+    "appsettings*.json": "jsonc"
   },
-  "omnisharp.enableEditorConfigSupport": true,
-  "omnisharp.enableMsBuildLoadProjectsOnDemand": true,
-  "xml.format.maxLineWidth": 0
+  "files.watcherExclude": {
+    "**/.git/**": true,
+    "**/bin/**": true,
+    "**/obj/**": true
+  },
+  "xml.format.maxLineWidth": 0,
+  "cSpell.logLevel": "Debug",
+  "cSpell.showStatus": true
 }

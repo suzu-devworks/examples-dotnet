@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+    <EnvironmentVariables>
+      <TEST_ASSETS_PATH>/workspaces/examples-dotnet/src/cryptography/assets</TEST_ASSETS_PATH>
+    </EnvironmentVariables>
+  </RunConfiguration>
+</RunSettings>
