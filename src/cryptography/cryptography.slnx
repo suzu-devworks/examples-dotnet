@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Examples.Cryptography.BouncyCastle.App/Examples.Cryptography.BouncyCastle.App.csproj" />
+  <Project Path="Examples.Cryptography.BouncyCastle.Tests/Examples.Cryptography.BouncyCastle.Tests.csproj" />
+  <Project Path="Examples.Cryptography.BouncyCastle/Examples.Cryptography.BouncyCastle.csproj" />
+  <Project Path="Examples.Cryptography.Tests/Examples.Cryptography.Tests.csproj" />
+  <Project Path="Examples.Cryptography.Xml.Tests/Examples.Cryptography.Xml.Tests.csproj" />
+  <Project Path="Examples.Cryptography/Examples.Cryptography.csproj" />
+</Solution>

@@ -1,0 +1,33 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "Alonso",
+    "Anand",
+    "appsettings",
+    "Contoso",
+    "dbcontext",
+    "Expando",
+    "msdb",
+    "mydb",
+    "Noda",
+    "Npgsql",
+    "nspname",
+    "oakio",
+    "onconfiguring",
+    "polrelid",
+    "relname",
+    "relnamespace",
+    "relrowsecurity",
+    "sqlcmd",
+    "Sqlify",
+    "tempdb",
+    "tmsmith"
+  ],
+  "ignoreWords": [],
+  "import": [
+    "../../.vscode/cspell.json"
+  ]
+}

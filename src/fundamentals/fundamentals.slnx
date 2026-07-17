@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Examples.Fluency.Tests/Examples.Fluency.Tests.csproj" />
+  <Project Path="Examples.Fluency/Examples.Fluency.csproj" />
+  <Project Path="Examples.Various.Benchmark/Examples.Various.Benchmark.csproj" />
+  <Project Path="Examples.Various.Tests/Examples.Various.Tests.csproj" />
+  <Project Path="Examples.Various/Examples.Various.csproj" />
+</Solution>

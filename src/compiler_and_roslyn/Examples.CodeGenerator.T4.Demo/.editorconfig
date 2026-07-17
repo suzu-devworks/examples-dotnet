@@ -1,0 +1,3 @@
+#### .NET disable analyzer ####
+[*.tt]
+dotnet_analyzer_diagnostic.severity = none

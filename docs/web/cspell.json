@@ -1,0 +1,19 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "appsettings",
+    "ASPNETCORE",
+    "HOSTINGSTARTUPASSEMBLIES",
+    "HOSTINGSTARTUPEXCLUDEASSEMBLIES",
+    "Linq",
+    "Nlog",
+    "PREVENTHOSTINGSTARTUP"
+  ],
+  "ignoreWords": [],
+  "import": [
+    "../../.vscode/cspell.json"
+  ]
+}

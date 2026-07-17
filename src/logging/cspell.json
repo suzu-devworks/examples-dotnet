@@ -1,0 +1,25 @@
+{
+  "version": "0.2",
+  "ignorePaths": [
+    "nlog.config"
+  ],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "appsettings",
+    "logconsole",
+    "logfile",
+    "longdate",
+    "maxlevel",
+    "minlevel",
+    "nlog",
+    "Serilog",
+    "shortdate",
+    "threadid",
+    "tostring"
+  ],
+  "ignoreWords": [],
+  "import": [
+    "../../.vscode/cspell.json"
+  ]
+}

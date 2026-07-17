@@ -1,19 +1,124 @@
 <Solution>
-  <Folder Name="/src/">
-    <Project Path="src/Examples.Concurrency.Tests/Examples.Concurrency.Tests.csproj" />
-    <Project Path="src/Examples.Concurrency/Examples.Concurrency.csproj" />
-    <Project Path="src/Examples.Fluency.Tests/Examples.Fluency.Tests.csproj" />
-    <Project Path="src/Examples.Fluency/Examples.Fluency.csproj" />
-    <Project Path="src/Examples.Graphics.SkiaSharp/Examples.Graphics.SkiaSharp.csproj" />
-    <Project Path="src/Examples.Graphics.Tests/Examples.Graphics.Tests.csproj" />
-    <Project Path="src/Examples.Graphics/Examples.Graphics.csproj" />
-    <Project Path="src/Examples.Serialization.Protobuf.Tests/Examples.Serialization.Protobuf.Tests.csproj" />
-    <Project Path="src/Examples.Serialization.Tests/Examples.Serialization.Tests.csproj" />
-    <Project Path="src/Examples.Serialization.Xml.Tests/Examples.Serialization.Xml.Tests.csproj" />
-    <Project Path="src/Examples.Serialization.Yaml.Tests/Examples.Serialization.Yaml.Tests.csproj" />
-    <Project Path="src/Examples.Serialization/Examples.Serialization.csproj" />
-    <Project Path="src/Examples.Various.Benchmark/Examples.Various.Benchmark.csproj" />
-    <Project Path="src/Examples.Various.Tests/Examples.Various.Tests.csproj" />
-    <Project Path="src/Examples.Various/Examples.Various.csproj" />
+  <Folder Name="/src/" />
+  <Folder Name="/src/architecture_and_designs/">
+    <Project Path="src/architecture_and_designs/Examples.Design.Anderson.Tests/Examples.Design.Anderson.Tests.csproj" />
+    <Project Path="src/architecture_and_designs/Examples.Design.Evans.Tests/Examples.Design.Evans.Tests.csproj" />
+    <Project Path="src/architecture_and_designs/Examples.Design.Fowler.Tests/Examples.Design.Fowler.Tests.csproj" />
+    <Project Path="src/architecture_and_designs/Examples.Design.Gof.Tests/Examples.Design.Gof.Tests.csproj" />
+    <Project Path="src/architecture_and_designs/Examples.Design.Microsoft.Tests/Examples.Design.Microsoft.Tests.csproj" />
+    <Project Path="src/architecture_and_designs/Examples.Design.Tests/Examples.Design.Tests.csproj" />
+    <Project Path="src/architecture_and_designs/Examples.Design.Vernon.Tests/Examples.Design.Vernon.Tests.csproj" />
+  </Folder>
+  <Folder Name="/src/compiler_and_roslyn/">
+    <Project Path="src/compiler_and_roslyn/Examples.Analyzer.Roslyn.CodeFixes/Examples.Analyzer.Roslyn.CodeFixes.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.Analyzer.Roslyn.Demo/Examples.Analyzer.Roslyn.Demo.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.Analyzer.Roslyn.Tests/Examples.Analyzer.Roslyn.Tests.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.Analyzer.Roslyn/Examples.Analyzer.Roslyn.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.CodeGenerator.Roslyn.Demo/Examples.CodeGenerator.Roslyn.Demo.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.CodeGenerator.Roslyn.Tests/Examples.CodeGenerator.Roslyn.Tests.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.CodeGenerator.Roslyn/Examples.CodeGenerator.Roslyn.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.CodeGenerator.T4.Demo/Examples.CodeGenerator.T4.Demo.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.Metaprogramming.ExpressionTrees.Tests/Examples.Metaprogramming.ExpressionTrees.Tests.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.Metaprogramming.MonoCecil.Tests/Examples.Metaprogramming.MonoCecil.Tests.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.Metaprogramming.Reflection.Tests/Examples.Metaprogramming.Reflection.Tests.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.Metaprogramming.ReflectionEmit.Tests/Examples.Metaprogramming.ReflectionEmit.Tests.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.Metaprogramming.Tests/Examples.Metaprogramming.Tests.csproj" />
+    <Project Path="src/compiler_and_roslyn/Examples.Metaprogramming/Examples.Metaprogramming.csproj" />
+  </Folder>
+  <Folder Name="/src/concurrency/">
+    <Project Path="src/concurrency/Examples.Concurrency.Tests/Examples.Concurrency.Tests.csproj" />
+    <Project Path="src/concurrency/Examples.Concurrency/Examples.Concurrency.csproj" />
+  </Folder>
+  <Folder Name="/src/cryptography/">
+    <Project Path="src/cryptography/Examples.Cryptography.BouncyCastle.App/Examples.Cryptography.BouncyCastle.App.csproj" />
+    <Project Path="src/cryptography/Examples.Cryptography.BouncyCastle.Tests/Examples.Cryptography.BouncyCastle.Tests.csproj" />
+    <Project Path="src/cryptography/Examples.Cryptography.BouncyCastle/Examples.Cryptography.BouncyCastle.csproj" />
+    <Project Path="src/cryptography/Examples.Cryptography.Tests/Examples.Cryptography.Tests.csproj" />
+    <Project Path="src/cryptography/Examples.Cryptography.Xml.Tests/Examples.Cryptography.Xml.Tests.csproj" />
+    <Project Path="src/cryptography/Examples.Cryptography/Examples.Cryptography.csproj" />
+  </Folder>
+  <Folder Name="/src/databases/">
+    <Project Path="src/databases/ContosoCorporation/ContosoCorporation.csproj" />
+    <Project Path="src/databases/ContosoUniversity/ContosoUniversity.csproj" />
+    <Project Path="src/databases/Examples.Dapper.PostgreSQL.Tests/Examples.Dapper.PostgreSQL.Tests.csproj" />
+    <Project Path="src/databases/Examples.Dapper.SqlServer.Tests/Examples.Dapper.SqlServer.Tests.csproj" />
+    <Project Path="src/databases/Examples.Dapper/Examples.Dapper.csproj" />
+    <Project Path="src/databases/Examples.EntityFrameworkCore.PostgreSQL.Tests/Examples.EntityFrameworkCore.PostgreSQL.Tests.csproj" />
+    <Project Path="src/databases/Examples.EntityFrameworkCore.SqlServer.Tests/Examples.EntityFrameworkCore.SqlServer.Tests.csproj" />
+    <Project Path="src/databases/Examples.EntityFrameworkCore.Tests/Examples.EntityFrameworkCore.Tests.csproj" />
+    <Project Path="src/databases/Examples.EntityFrameworkCore/Examples.EntityFrameworkCore.csproj" />
+    <Project Path="src/databases/Examples.FluentMigrator.PostgreSQL/Examples.FluentMigrator.PostgreSQL.csproj" />
+  </Folder>
+  <Folder Name="/src/fundamentals/">
+    <Project Path="src/fundamentals/Examples.Fluency.Tests/Examples.Fluency.Tests.csproj" />
+    <Project Path="src/fundamentals/Examples.Fluency/Examples.Fluency.csproj" />
+    <Project Path="src/fundamentals/Examples.Various.Benchmark/Examples.Various.Benchmark.csproj" />
+    <Project Path="src/fundamentals/Examples.Various.Tests/Examples.Various.Tests.csproj" />
+    <Project Path="src/fundamentals/Examples.Various/Examples.Various.csproj" />
+  </Folder>
+  <Folder Name="/src/graphics/">
+    <Project Path="src/graphics/Examples.Graphics.SkiaSharp/Examples.Graphics.SkiaSharp.csproj" />
+    <Project Path="src/graphics/Examples.Graphics.Tests/Examples.Graphics.Tests.csproj" />
+    <Project Path="src/graphics/Examples.Graphics/Examples.Graphics.csproj" />
+  </Folder>
+  <Folder Name="/src/hosting_and_lifecycle/">
+    <Project Path="src/hosting_and_lifecycle/Examples.Caching.Extensions.Tests/Examples.Caching.Extensions.Tests.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.Caching.Runtime.Tests/Examples.Caching.Runtime.Tests.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.Caching.Tests/Examples.Caching.Tests.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.Caching/Examples.Caching.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.DependencyInjection.Autofac.Tests/Examples.DependencyInjection.Autofac.Tests.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.DependencyInjection.Extensions.Tests/Examples.DependencyInjection.Extensions.Tests.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.DependencyInjection.Mef.Tests/Examples.DependencyInjection.Mef.Tests.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.DependencyInjection.Tests/Examples.DependencyInjection.Tests.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.DependencyInjection/Examples.DependencyInjection.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.Hosting.CommandLine/Examples.Hosting.CommandLine.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.Hosting.CommandLineParser/Examples.Hosting.CommandLineParser.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.Hosting.Console/Examples.Hosting.Console.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.Hosting.ConsoleAppFramework/Examples.Hosting.ConsoleAppFramework.csproj" />
+    <Project Path="src/hosting_and_lifecycle/Examples.Hosting.Workers/Examples.Hosting.Workers.csproj" />
+  </Folder>
+  <Folder Name="/src/logging/">
+    <Project Path="src/logging/Examples.Logging.Nlog/Examples.Logging.Nlog.csproj" />
+    <Project Path="src/logging/Examples.Logging.Serilog/Examples.Logging.Serilog.csproj" />
+    <Project Path="src/logging/Examples.Logging/Examples.Logging.csproj" />
+  </Folder>
+  <Folder Name="/src/plugins/">
+    <Project Path="src/plugins/Examples.Plugins.Abstractions/Examples.Plugins.Abstractions.csproj" />
+    <Project Path="src/plugins/Examples.Plugins.Tests/Examples.Plugins.Tests.csproj" />
+  </Folder>
+  <Folder Name="/src/plugins/fixtures/">
+    <Project Path="src/plugins/fixtures/Examples.Plugins.Hello/Examples.Plugins.Hello.csproj" />
+    <Project Path="src/plugins/fixtures/Examples.Plugins.Json/Examples.Plugins.Json.csproj" />
+    <Project Path="src/plugins/fixtures/Examples.Plugins.Libuv/Examples.Plugins.Libuv.csproj" />
+  </Folder>
+  <Folder Name="/src/serialization/">
+    <Project Path="src/serialization/Examples.Serialization.Protobuf.Tests/Examples.Serialization.Protobuf.Tests.csproj" />
+    <Project Path="src/serialization/Examples.Serialization.Tests/Examples.Serialization.Tests.csproj" />
+    <Project Path="src/serialization/Examples.Serialization.Xml.Tests/Examples.Serialization.Xml.Tests.csproj" />
+    <Project Path="src/serialization/Examples.Serialization.Yaml.Tests/Examples.Serialization.Yaml.Tests.csproj" />
+    <Project Path="src/serialization/Examples.Serialization/Examples.Serialization.csproj" />
+  </Folder>
+  <Folder Name="/src/web/">
+    <Project Path="src/web/Examples.Web.Authentication.Basic/Examples.Web.Authentication.Basic.csproj" />
+    <Project Path="src/web/Examples.Web.Authentication.Certificate/Examples.Web.Authentication.Certificate.csproj" />
+    <Project Path="src/web/Examples.Web.Authentication.Cookie/Examples.Web.Authentication.Cookie.csproj" />
+    <Project Path="src/web/Examples.Web.Authentication.Identity/Examples.Web.Authentication.Identity.csproj" />
+    <Project Path="src/web/Examples.Web.Authentication.JwtBearer/Examples.Web.Authentication.JwtBearer.csproj" />
+    <Project Path="src/web/Examples.Web.Authentication.Oidc/Examples.Web.Authentication.Oidc.csproj" />
+    <Project Path="src/web/Examples.Web.Blazor.WebApp/Examples.Web.Blazor.WebApp.csproj" />
+    <Project Path="src/web/Examples.Web.Generator.JwtToken/Examples.Web.Generator.JwtToken.csproj" />
+    <Project Path="src/web/Examples.Web.Infrastructure.Assets/Examples.Web.Infrastructure.Assets.csproj" />
+    <Project Path="src/web/Examples.Web.Infrastructure.GrpcClient/Examples.Web.Infrastructure.GrpcClient.csproj" />
+    <Project Path="src/web/Examples.Web.Infrastructure.OpenApi/Examples.Web.Infrastructure.OpenApi.csproj" />
+    <Project Path="src/web/Examples.Web.Infrastructure.Swagger/Examples.Web.Infrastructure.Swagger.csproj" />
+    <Project Path="src/web/Examples.Web.Infrastructure.Tests/Examples.Web.Infrastructure.Tests.csproj" />
+    <Project Path="src/web/Examples.Web.Infrastructure/Examples.Web.Infrastructure.csproj" />
+    <Project Path="src/web/Examples.Web.WebApi.Grpc/Examples.Web.WebApi.Grpc.csproj" />
+    <Project Path="src/web/Examples.Web.WebApi/Examples.Web.WebApi.csproj" />
+    <Project Path="src/web/Examples.Web.WebApp/Examples.Web.WebApp.csproj" />
+  </Folder>
+  <Folder Name="/src/web/fixtures/">
+    <Project Path="src/web/fixtures/Examples.Web.HostingStartup1/Examples.Web.HostingStartup1.csproj" />
+    <Project Path="src/web/fixtures/Examples.Web.HostingStartup2/Examples.Web.HostingStartup2.csproj" />
   </Folder>
 </Solution>

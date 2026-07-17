@@ -1,0 +1,44 @@
+using Examples.Web.Authentication.Basic;
+using Examples.Web.Infrastructure.Containers;
+
+var builder = WebApplication.CreateBuilder(args);
+
+//# Add a configuration provider to read secrets from /run/secrets.
+builder.Configuration.AddContainerSecrets();
+
+// Add services to the container.
+builder.Services.AddRazorPages();
+
+//# Add Basic Authentication.
+builder.Services.AddAuthentication(defaultScheme: BasicDefaults.AuthenticationScheme)
+     .AddCustomBasic(option => builder.Configuration.GetSection("Authentication").Bind(option));
+
+builder.Services.AddControllers();
+
+//# Add Forwarded Headers options.
+builder.Services.AddProxyForwardedHeaders();
+
+var app = builder.Build();
+
+//# Enable Forwarded Headers Middleware.
+app.UseForwardedHeaders();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapRazorPages();
+
+app.Run();

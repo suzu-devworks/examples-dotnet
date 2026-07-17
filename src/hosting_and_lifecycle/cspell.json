@@ -1,0 +1,20 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "appsettings",
+    "Autofac",
+    "barbaz",
+    "bazbaz",
+    "ERRORLEVEL",
+    "guidvalue",
+    "Metaprogramming",
+    "netstandard"
+  ],
+  "ignoreWords": [],
+  "import": [
+    "../../.vscode/cspell.json"
+  ]
+}

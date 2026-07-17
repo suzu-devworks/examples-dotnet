@@ -1,0 +1,33 @@
+{
+  "version": "0.2",
+  "ignorePaths": [],
+  "dictionaryDefinitions": [],
+  "dictionaries": [],
+  "words": [
+    "CCMP",
+    "ciphertext",
+    "Codebook",
+    "Diffie",
+    "Dsig",
+    "ECDH",
+    "EPES",
+    "ETSI",
+    "FIPS",
+    "GMAC",
+    "HMAC",
+    "IDAS",
+    "keystream",
+    "manpages",
+    "noout",
+    "OCSP",
+    "Rijndael",
+    "RSASHA",
+    "Shor's",
+    "Xades",
+    "xscgen"
+  ],
+  "ignoreWords": [],
+  "import": [
+    "../../.vscode/cspell.json"
+  ]
+}

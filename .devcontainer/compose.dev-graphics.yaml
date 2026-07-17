@@ -1,0 +1,19 @@
+services:
+  dev-graphics:
+    build:
+      context: ./graphics/
+      target: "develop-stage"
+    networks:
+      - interconnect
+    tty: true
+    environment:
+      TZ: "Asia/Tokyo"
+    volumes:
+      # Forwards the local Docker socket to the container.
+      - /var/run/docker.sock:/var/run/docker-host.sock
+      # Update this to wherever you want VS Code to mount the folder of your project
+      - ../../:/workspaces:cached
+
+networks:
+  interconnect:
+    driver: bridge

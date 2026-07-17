@@ -1,0 +1,4 @@
+<#@ template language="C#" #>
+<html><body>
+ The date and time now is: <#= DateTime.Now.ToString("O") #>
+</body></html>

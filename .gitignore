@@ -363,7 +363,6 @@ MigrationBackup/
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/cspell.json
-*.code-workspace
 
 # globs
 Makefile.in
@@ -439,12 +438,32 @@ $RECYCLE.BIN/
 .idea/
 *.sln.iml
 
-## User Define
-[Tt]emp/
-.mono/
-.DS_Store
-
-## output image
+## Output image
 *.png
 *.jpg
 *.jpeg
+
+## Certificates and keys
+*.crt
+*.key
+*.pfx
+*.srl
+
+## Database files
+*.db
+*.db-shm
+*.db-wal
+
+
+## User Defines
+[Ll]ogs/
+[Tt]emp/
+.DS_Store
+.mono/
+.devcontainer/.keys/
+assets/
+!*.App/
+.env*
+.password
+.db_password
+.db_password.txt

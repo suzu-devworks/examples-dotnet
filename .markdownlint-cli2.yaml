@@ -3,6 +3,7 @@ globs:
 
 ignores:
   - ".github/instructions/*.md"
+  - "**/AnalyzerReleases.*.md"
 
 gitignore: true
 

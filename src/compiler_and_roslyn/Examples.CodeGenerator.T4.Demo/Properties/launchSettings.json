@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Examples.CodeGenerator.T4": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

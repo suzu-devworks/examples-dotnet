@@ -1,9 +1,11 @@
 #!/bin/sh
-echo "USER:" `whoami`
+script_user=`whoami`
+script_dir=$(realpath "$(dirname "$0")")
 
-# add xunit3 template
-dotnet new install xunit.v3.templates
+echo "USER:" ${script_user}
+echo "DIR:" ${script_dir}
+echo
 
-# Get fonts for PDF generation
-file_dir=$(dirname "$0")
-sh ${file_dir}/scripts/download-fonts.sh
+sh ${script_dir}/scripts/install-xunit-template.sh
+
+dotnet tool restore --ignore-failed-sources
