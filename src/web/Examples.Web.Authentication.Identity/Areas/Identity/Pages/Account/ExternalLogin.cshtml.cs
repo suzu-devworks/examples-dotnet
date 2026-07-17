@@ -97,7 +97,8 @@ namespace Examples.Web.Authentication.Identity.Areas.Identity.Pages.Account
             if (!string.IsNullOrEmpty(remoteError))
             {
                 ErrorMessage = $"Error from external provider: {remoteError}";
-                _logger.LogWarning("External provider returned an error: {RemoteError}", remoteError);
+                var sanitizedRemoteError = remoteError.Replace("\r", string.Empty).Replace("\n", string.Empty);
+                _logger.LogWarning("External provider returned an error: {RemoteError}", sanitizedRemoteError);
             }
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
