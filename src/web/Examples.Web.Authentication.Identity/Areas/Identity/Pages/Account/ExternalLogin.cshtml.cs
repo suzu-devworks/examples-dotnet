@@ -94,10 +94,10 @@ namespace Examples.Web.Authentication.Identity.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnGetCallbackAsync(string returnUrl = null, string remoteError = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
-            if (remoteError != null)
+            if (!string.IsNullOrEmpty(remoteError))
             {
                 ErrorMessage = $"Error from external provider: {remoteError}";
-                return RedirectToPage("./Login", new { ReturnUrl = returnUrl });
+                _logger.LogWarning("External provider returned an error: {RemoteError}", remoteError);
             }
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
