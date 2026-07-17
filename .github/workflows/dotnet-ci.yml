@@ -1,6 +1,13 @@
 name: CI (build and test)
 
 on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "src/**"
+  pull_request:
+    paths:
+      - "src/**"
   workflow_dispatch:
 
 permissions: {}
@@ -10,10 +17,155 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  example:
+  detect-changes:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
       contents: read
+    outputs:
+      projects: ${{ steps.set-matrix.outputs.projects }}
+
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Get the entire history for difference detection
+          fetch-depth: 0
+
+      # Automatically obtain changed folders as a JSON array using the plugin!
+      - name: Get changed directories
+        id: changed-files
+        uses: tj-actions/changed-files@v47
+        with:
+          json: true
+          matrix: true
+          dir_names: true
+          dir_names_max_depth: 2 # src/xxx
+          files: src/**
+
+      # Finalize the array and pass it to the output
+      - name: Set matrix output
+        id: set-matrix
+        run: |
+          # For manual execution (workflow_dispatch), target all projects under src/
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            PROJECTS=$(ls -d src/*/ | cut -d'/' -f2 | jq -R -s -c 'split("\n") | map(select(length > 0))')
+            echo "projects=$PROJECTS" >> $GITHUB_OUTPUT
+          else
+            # json array returned from the plugin (e.g. ["src/AAA", "src/BBB"])
+            CHANGED_DIRS='${{ steps.changed-files.outputs.all_changed_files }}'
+
+            if [ "$CHANGED_DIRS" = "[]" ] || [ -z "$CHANGED_DIRS" ]; then
+              echo "projects=[]" >> $GITHUB_OUTPUT
+            else
+              # Trim to "src/web" -> "web" instantly with jq
+              PROJECTS=$(echo "$CHANGED_DIRS" | jq -c 'map(split("/") | .[1])')
+              echo "projects=$PROJECTS" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+  build:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.projects != '[]' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    name: build-and-test (${{ matrix.project }})
+
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false # Continue other parallel builds even if one project fails
+      max-parallel: 4
+      matrix:
+        project: ${{ fromJson(needs.detect-changes.outputs.projects) }}
+
+    steps:
+      - uses: actions/checkout@v7
+      - name: Log Target Project Info
+        run: |
+          echo "=========================================================="
+          echo "🚀 Processing Project: ${{ matrix.project }}"
+          echo "=========================================================="
+
+      - name: Find Target and Define Assets Path
+        run: |
+          # 1. First, search for the target
+          FIND_PATH="src/${{ matrix.project }}"
+          TARGET=$(find "$FIND_PATH" -maxdepth 2 \( -name "*.slnx" -o -name "*.sln" \) | head -n 1)
+
+          if [ -z "$TARGET" ]; then
+            echo "::error::No .slnx, or .sln found in $FIND_PATH"
+            exit 1
+          fi
+
+          # 2. Get the target's parent directory (e.g., src/web/Web.slnx -> src/web)
+          TARGET_DIR=$(dirname "$TARGET")
+
+          # 3. Set the absolute path for the assets folder within that parent directory
+          # (e.g., /github/workspace/src/web/assets)
+          PROJECT_ASSETS_PATH="${{ github.workspace }}/$TARGET_DIR/assets"
+
+          # Save each to environment variables
+          echo "TARGET_PATH=$TARGET" >> $GITHUB_ENV
+          echo "TEST_ASSETS_PATH=$PROJECT_ASSETS_PATH" >> $GITHUB_ENV
+
+          echo "🎯 Target detected: $TARGET"
+          echo "📂 Test assets will be generated at: $PROJECT_ASSETS_PATH"
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Display .NET info
+        run: dotnet --info
+
+      - name: Auth Github Nuget
+        run: >
+          dotnet nuget update source github
+          --username suzu-devworks --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
+
+      - name: Restore Tools
+        run: dotnet tool restore
+
+      - name: Restore dependencies
+        run: dotnet restore ${{ env.TARGET_PATH }}
+
+      - name: Build ${{ matrix.project }}
+        run: dotnet build ${{ env.TARGET_PATH }} --configuration Release --no-restore
+
+      - name: Run Test Assets Scripts (If exists)
+        run: |
+          SCRIPT_PATH="src/${{ matrix.project }}/scripts/generate-test-assets.sh"
+          if [ -f "$SCRIPT_PATH" ]; then
+            echo "Found asset generation script. Running..."
+            chmod +x "$SCRIPT_PATH"
+            "$SCRIPT_PATH" ${{ env.TEST_ASSETS_PATH }}
+          else
+            echo "No asset generation script found. Skipping."
+          fi
+        timeout-minutes: 1
+
+      - name: Test ${{ matrix.project }}
+        run: >
+          dotnet test ${{ env.TARGET_PATH }}
+          --configuration Release --no-build --verbosity normal
+          --report-xunit-trx --results-directory ./TestResults/${{ matrix.project }}
+        env:
+          TEST_ASSETS_PATH: ${{ env.TEST_ASSETS_PATH }}
+
+      - name: Report Test Results (${{ matrix.project }})
+        uses: dorny/test-reporter@v3
+        if: always()
+        with:
+          name: .NET Tests (${{ matrix.project }})
+          path: ./TestResults/${{ matrix.project }}/*.trx
+          reporter: dotnet-trx
+          fail-on-error: 'true'
+
+      - name: Upload Test Results (${{ matrix.project }})
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: test-results-${{ matrix.project }}
+          path: ./TestResults/${{ matrix.project }}
+          retention-days: 7
