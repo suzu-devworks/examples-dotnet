@@ -1,7 +1,7 @@
 # examples-dotnet
 
 ![Dynamic XML Badge](https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsuzu-devworks%2Fexamples-dotnet%2Frefs%2Fheads%2Fmain%2Fsrc%2FDirectory.Build.props&query=%2F%2FLatestFramework&logo=dotnet&label=Framework&color=%23512bd4)
-[![build](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/dotnet-build.yml/badge.svg)](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/dotnet-build.yml)
+[![CI (build and test)](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/dotnet-ci.yml/badge.svg)](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/dotnet-ci.yml)
 [![CodeQL](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/github-code-scanning/codeql)
 
 ## What is this repository?
