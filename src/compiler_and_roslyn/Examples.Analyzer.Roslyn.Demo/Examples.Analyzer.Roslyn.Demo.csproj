@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -16,15 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.CommandLine" Version="2.0.9" />
+    <PackageReference Include="System.CommandLine" Version="2.0.10" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Examples.Analyzer.Roslyn\Examples.Analyzer.Roslyn.csproj"
-      OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-    <ProjectReference
-      Include="..\Examples.Analyzer.Roslyn.CodeFixes\Examples.Analyzer.Roslyn.CodeFixes.csproj"
-      OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\Examples.Analyzer.Roslyn\Examples.Analyzer.Roslyn.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\Examples.Analyzer.Roslyn.CodeFixes\Examples.Analyzer.Roslyn.CodeFixes.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>

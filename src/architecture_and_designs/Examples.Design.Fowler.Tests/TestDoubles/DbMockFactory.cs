@@ -31,7 +31,7 @@ public static partial class DbMockFactory
         });
 
         // IDataReader[string]
-        mockReader[Arg.Any<string>()].Returns(call => GetValue(dataList, currentRow, call.Arg<string>()));
+        mockReader[Arg.Any<string>()].Returns(call => GetValue(dataList, currentRow, call.Arg<string>()!));
 
         mockReader.Close();
         mockReader.Dispose();

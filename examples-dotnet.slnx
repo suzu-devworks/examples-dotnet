@@ -80,6 +80,7 @@
   <Folder Name="/src/logging/">
     <Project Path="src/logging/Examples.Logging.Nlog/Examples.Logging.Nlog.csproj" />
     <Project Path="src/logging/Examples.Logging.Serilog/Examples.Logging.Serilog.csproj" />
+    <Project Path="src/logging/Examples.Logging.Tests/Examples.Logging.Tests.csproj" />
     <Project Path="src/logging/Examples.Logging/Examples.Logging.csproj" />
   </Folder>
   <Folder Name="/src/plugins/">
