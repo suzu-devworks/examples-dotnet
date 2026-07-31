@@ -17,59 +17,44 @@ Each example is meant as a reference that may help others investigating similar 
 
 This includes a wide variety of projects.
 
-### Fundamentals and Core Concepts
+- [Fundamentals and Core Concepts](./src/fundamentals/)\
+  This includes items that do not fall into specific categories,
+  as well as custom implementations based on the concept of extending core functionality.
 
-This includes items that do not fall into specific categories,
-as well as custom implementations based on the concept of extending core functionality.
+- [Compiler and Roslyn](./src/compiler_and_roslyn/)\
+  This includes examples of a record of small-scale, focused experiments exploring language features,
+  compiler extensibility, runtime technologies, and related tools.
 
-### Architecture and Design Patterns
+- [Concurrency and Parallel Programming](./src/concurrency/)\
+  This includes examples of concurrent and parallel programming using .NET, including multithreading,
+  async/await, and task-based programming.
 
-This includes examples of design patterns and domain-driven design concepts using .NET and C#.
+- [Cryptography and Security](./src/cryptography/)\
+  This includes practical examples of encryption and security features in .NET using
+  `System.Security.Cryptography` and the BouncyCastle library.
 
-### Compiler and Roslyn
+- [Data Access and Databases](./src/databases/)\
+  This includes examples of data access and database interaction using .NET, including Entity Framework Core,
+  ADO.NET, and Dapper.
 
-This includes examples of a record of small-scale, focused experiments exploring language features,
-compiler extensibility, runtime technologies, and related tools.
+- [Graphics and Visualizing](./src/graphics/)\
+  This includes examples of graphics programming using .NET.
 
-### Concurrency and Parallel Programming
+- [Hosting and Lifecycle Management](./src/hosting_and_lifecycle/)\
+  This includes examples using .NET that demonstrate host configuration, dependency injection,
+  configuration management, related runtime patterns.
 
-This includes examples of concurrent and parallel programming using .NET, including multithreading,
-async/await, and task-based programming.
+- [Plugins and Extensions](./src/plugins/)\
+  This includes examples of developing plugins and extensions that use .NET to read assemblies directly.
 
-### Cryptography and Security
+- [Logging](./src/logging/)\
+  This includes examples of logging and monitoring using .NET based on `Microsoft.Extensions.Logging`.
 
-This includes practical examples of encryption and security features in .NET using
-`System.Security.Cryptography` and the BouncyCastle library.
+- [Serialization and Deserialization](./src/serialization/)\
+  This includes examples of serialization and deserialization using .NET, including JSON, XML, and binary formats.
 
-### Data Access and Databases
-
-This includes examples of data access and database interaction using .NET, including Entity Framework Core,
-ADO.NET, and Dapper.
-
-### Graphics
-
-This includes examples of graphics programming using .NET.
-
-### Hosting and Lifecycle Management
-
-This includes examples using .NET that demonstrate host configuration, dependency injection,
-configuration management, related runtime patterns.
-
-### Logging
-
-This includes examples of logging and monitoring using .NET based on `Microsoft.Extensions.Logging`.
-
-### Plugins and Extensions
-
-This includes examples of developing plugins and extensions that use .NET to read assemblies directly.
-
-### Serialization and Deserialization
-
-This includes examples of serialization and deserialization using .NET, including JSON, XML, and binary formats.
-
-### Web Development
-
-This includes examples of web development using .NET, including ASP.NET Core, Blazor, and related technologies.
+- [Web Development](./src/web/)\
+  This includes examples of web development using .NET, including ASP.NET Core, Blazor, and related technologies.
 
 ## What should I prepare before development?
 
