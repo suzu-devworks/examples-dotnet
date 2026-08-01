@@ -13,10 +13,15 @@
   ],
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "postCreateCommand": "/bin/sh ./.devcontainer/postCreateCommand.sh",
+  "remoteUser": "vscode",
   "remoteEnv": {
     "MSSQL_SERVICE": "mssql",
     "POSTGRES_SERVICE": ""
   },
+  "mounts": [
+    "source=${localEnv:HOME}/.copilot/instructions,target=/home/vscode/.copilot/instructions,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/.copilot/skills,target=/home/vscode/.copilot/skills,type=bind,consistency=cached"
+  ],
   "features": {
     "ghcr.io/devcontainers/features/node": {},
     "ghcr.io/devcontainers/features/copilot-cli": {},
@@ -49,7 +54,9 @@
         "SQL-Formatter-VSCode.identifierCase": "lower",
         "SQL-Formatter-VSCode.keywordCase": "upper",
         "SQL-Formatter-VSCode.dialect": "transactsql",
-        "SQL-Formatter-VSCode.expressionWidth": 120
+        "SQL-Formatter-VSCode.expressionWidth": 120,
+        // Enable Copilot Chat code generation to use instruction files
+        "github.copilot.chat.codeGeneration.useInstructionFiles": true
       }
     }
   }

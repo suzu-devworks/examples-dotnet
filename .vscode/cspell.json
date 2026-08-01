@@ -1,13 +1,8 @@
 {
   "version": "0.2",
+  "useGitignore": true,
   "ignorePaths": [
-    "**/.git/**",
-    "**/.github/**",
-    "**/.vscode/**",
-    "**/bin/**",
-    "**/log/**",
-    "**/logs/**",
-    "**/obj/**",
+    "**/.*/**",
     ".editorconfig",
     ".git*",
     ".prettier*",
@@ -20,14 +15,8 @@
     "*.resx",
     "*.slnx",
     "*.xsd",
-    "devcontainer{,*}.json",
-    "Dockerfile{,*}",
-    "compose{,*}.yaml",
-    "cspell.json",
-    "appsettings{,*}.json",
-    "dotnet-tools.json",
-    "global.json",
-    "launchSettings.json"
+    "*.json",
+    "*.yaml"
   ],
   "dictionaryDefinitions": [],
   "dictionaries": [],

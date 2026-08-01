@@ -1,17 +1,16 @@
 # examples-dotnet
 
 ![Dynamic XML Badge](https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsuzu-devworks%2Fexamples-dotnet%2Frefs%2Fheads%2Fmain%2Fsrc%2FDirectory.Build.props&query=%2F%2FLatestFramework&logo=dotnet&label=Framework&color=%23512bd4)
-[![CI (build and test)](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/dotnet-ci.yml/badge.svg)](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/dotnet-ci.yml)
+[![CI (Matrix)](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/dotnet-ci-matrix.yml/badge.svg)](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/dotnet-ci-matrix.yml)
 [![CodeQL](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/suzu-devworks/examples-dotnet/actions/workflows/github-code-scanning/codeql)
 
 ## What is this repository?
 
-This repository explains various types of application development using .NET through small-scale samples that focus on
-specific features.
+This repository serves as my personal workspace and knowledge base for learning various aspects of programming
+with .NET and C#.
 
-It is part of the `examples` collection — a set of repositories that document personal exploration of
-technologies, APIs, and programming techniques.
-Each example is meant as a reference that may help others investigating similar topics.
+While the samples are created for my own learning, I hope they can help others who encounter the same challenges
+or have similar questions.
 
 ## What topics are covered?
 
