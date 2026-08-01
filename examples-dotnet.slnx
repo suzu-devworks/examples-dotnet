@@ -1,14 +1,5 @@
 <Solution>
   <Folder Name="/src/" />
-  <Folder Name="/src/architecture_and_designs/">
-    <Project Path="src/architecture_and_designs/Examples.Design.Anderson.Tests/Examples.Design.Anderson.Tests.csproj" />
-    <Project Path="src/architecture_and_designs/Examples.Design.Evans.Tests/Examples.Design.Evans.Tests.csproj" />
-    <Project Path="src/architecture_and_designs/Examples.Design.Fowler.Tests/Examples.Design.Fowler.Tests.csproj" />
-    <Project Path="src/architecture_and_designs/Examples.Design.Gof.Tests/Examples.Design.Gof.Tests.csproj" />
-    <Project Path="src/architecture_and_designs/Examples.Design.Microsoft.Tests/Examples.Design.Microsoft.Tests.csproj" />
-    <Project Path="src/architecture_and_designs/Examples.Design.Tests/Examples.Design.Tests.csproj" />
-    <Project Path="src/architecture_and_designs/Examples.Design.Vernon.Tests/Examples.Design.Vernon.Tests.csproj" />
-  </Folder>
   <Folder Name="/src/compiler_and_roslyn/">
     <Project Path="src/compiler_and_roslyn/Examples.Analyzer.Roslyn.CodeFixes/Examples.Analyzer.Roslyn.CodeFixes.csproj" />
     <Project Path="src/compiler_and_roslyn/Examples.Analyzer.Roslyn.Demo/Examples.Analyzer.Roslyn.Demo.csproj" />
