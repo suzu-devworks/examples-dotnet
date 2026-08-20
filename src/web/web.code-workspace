@@ -1,6 +1,11 @@
 {
     "folders": [
         {
+            "name": "docs",
+            "path": "../../docs"
+        },
+        {
+            "name": "web",
             "path": "."
         }
     ],
