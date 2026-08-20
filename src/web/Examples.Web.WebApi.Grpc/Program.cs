@@ -1,5 +1,6 @@
 using Examples.Web.Infrastructure.Containers;
 using Examples.Web.Infrastructure.GrpcClient;
+using Examples.Web.WebApi.Grpc.Apis;
 using Examples.Web.WebApi.Grpc.Infrastructure;
 using Examples.Web.WebApi.Grpc.Infrastructure.OpenApi;
 using Examples.Web.WebApi.Grpc.Validation;
@@ -18,6 +19,7 @@ builder.Services.AddGrpc(options =>
 
 }).AddJsonTranscoding();
 builder.Services.AddGrpcSwagger();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "gRPC transcoding", Version = "v1" });
@@ -48,6 +50,7 @@ if (app.Environment.IsDevelopment())
 
 // Configure the HTTP request pipeline.
 app.MapGrpcServicesWithReflection<Program>();
+app.MapDownloadApi();
 app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
 app.Run();
