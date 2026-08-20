@@ -232,9 +232,94 @@ service Inspector {
   return httpBody;
 ```
 
+> [!WARNING]
+> Do not use this unary `HttpBody` implementation for large files. `HttpBody.Data`
+> is a gRPC message field, and `ByteString.FromStreamAsync` reads the entire file
+> into memory before the response is sent. Microsoft documents that gRPC loads a
+> complete message into memory before sending it and recommends avoiding large
+> binary payloads in gRPC messages. See [gRPC performance best practices: large
+> binary payloads](https://learn.microsoft.com/aspnet/core/grpc/performance#grpc-services-and-large-binary-payloads).
+> Use the `FileStream` Minimal API below for large browser downloads.
+
 There are no problems with `attachments`, but when returning `inline`, some PDF
 readers seem to automatically use the filename as the end of the URL path even
 if you set `filename*=`.
+
+#### Verify FileStream downloads
+
+`GET /v1/files/{filename}` is a Minimal API endpoint that returns the physical
+file in `Files/for-study.pdf` using `Results.File(Stream, ...)`. Unlike the
+unary `Download` gRPC method, this endpoint writes the file stream directly to
+the HTTP response and supports range requests.
+
+Start the application:
+
+```shell
+dotnet run --project src/Examples.Web.WebApi.Grpc/ -lp https
+```
+
+Download the file and inspect the response headers:
+
+```shell
+curl -i -k --output /dev/null https://localhost:7271/v1/files/report.pdf
+```
+
+The response should be `200 OK` and include these headers:
+
+```text
+Content-Type: application/pdf
+Content-Disposition: attachment; filename=report.pdf
+Accept-Ranges: bytes
+```
+
+Send a range request to verify resumable downloads:
+
+```shell
+curl -i -k \
+  -H 'Range: bytes=0-31' \
+  --output /dev/null \
+  https://localhost:7271/v1/files/report.pdf
+```
+
+The response should be `206 Partial Content` and include a header similar to:
+
+```text
+Content-Range: bytes 0-31/598
+```
+
+To observe the difference in memory behavior, temporarily replace the sample
+PDF with a large file, then limit the client transfer rate:
+
+```shell
+cp src/Examples.Web.WebApi.Grpc/Files/for-study.pdf /tmp/for-study.pdf
+truncate -s 256M src/Examples.Web.WebApi.Grpc/Files/for-study.pdf
+
+curl -k --limit-rate 1M --output /dev/null \
+  https://localhost:7271/v1/files/report.pdf
+```
+
+While the download is active, inspect the server process memory from another
+terminal:
+
+```shell
+ps -o pid,rss,cmd -C dotnet
+```
+
+The Minimal API endpoint should not retain an amount of managed memory equal to
+the complete file size. Compare it with the unary gRPC JSON transcoding route:
+
+```shell
+curl -k --limit-rate 1M --output /dev/null \
+  https://localhost:7271/v1/downloads/sample/report.pdf
+```
+
+The unary gRPC route calls `ByteString.FromStreamAsync`, which reads the whole
+file into a `ByteString` before it writes the response. Restore the sample file
+when the check is complete:
+
+```shell
+mv /tmp/for-study.pdf src/Examples.Web.WebApi.Grpc/Files/for-study.pdf
+```
 
 ### Fluent Validation
 
