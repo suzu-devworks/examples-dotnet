@@ -5,17 +5,38 @@
 
 version: 2
 updates:
-  - package-ecosystem: "devcontainers" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  # 1. Devcontainers
+  - package-ecosystem: "devcontainers"
+    directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    open-pull-requests-limit: 0
+    groups:
+      devcontainers-security:
+        applies-to: "security-updates"
+        patterns:
+          - "*"
 
-  - package-ecosystem: "github-actions" 
-    directory: "/" 
+  # 2. GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    open-pull-requests-limit: 0
+    groups:
+      actions-security:
+        applies-to: "security-updates"
+        patterns:
+          - "*"
 
-  # - package-ecosystem: "nuget" 
-  #   directory: "/" 
-  #   schedule:
-  #     interval: "weekly"
+  # 5. .NET (C#)
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 0
+    groups:
+      nuget-security:
+        applies-to: "security-updates"
+        patterns:
+          - "*"

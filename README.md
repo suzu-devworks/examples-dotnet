@@ -16,44 +16,59 @@ or have similar questions.
 
 This includes a wide variety of projects.
 
-- [Fundamentals and Core Concepts](./src/fundamentals/)\
-  This includes items that do not fall into specific categories,
-  as well as custom implementations based on the concept of extending core functionality.
+### Fundamentals and Core Concepts
 
-- [Compiler and Roslyn](./src/compiler_and_roslyn/)\
-  This includes examples of a record of small-scale, focused experiments exploring language features,
-  compiler extensibility, runtime technologies, and related tools.
+This includes items that do not fall into specific categories,
+as well as custom implementations based on the concept of extending core functionality.
 
-- [Concurrency and Parallel Programming](./src/concurrency/)\
-  This includes examples of concurrent and parallel programming using .NET, including multithreading,
-  async/await, and task-based programming.
+### Architecture and Design Patterns
 
-- [Cryptography and Security](./src/cryptography/)\
-  This includes practical examples of encryption and security features in .NET using
-  `System.Security.Cryptography` and the BouncyCastle library.
+This includes examples of design patterns and domain-driven design concepts using .NET and C#.
 
-- [Data Access and Databases](./src/databases/)\
-  This includes examples of data access and database interaction using .NET, including Entity Framework Core,
-  ADO.NET, and Dapper.
+### Compiler and Roslyn
 
-- [Graphics and Visualizing](./src/graphics/)\
-  This includes examples of graphics programming using .NET.
+This includes examples of a record of small-scale, focused experiments exploring language features,
+compiler extensibility, runtime technologies, and related tools.
 
-- [Hosting and Lifecycle Management](./src/hosting_and_lifecycle/)\
-  This includes examples using .NET that demonstrate host configuration, dependency injection,
-  configuration management, related runtime patterns.
+### Concurrency and Parallel Programming
 
-- [Plugins and Extensions](./src/plugins/)\
-  This includes examples of developing plugins and extensions that use .NET to read assemblies directly.
+This includes examples of concurrent and parallel programming using .NET, including multithreading,
+async/await, and task-based programming.
 
-- [Logging](./src/logging/)\
-  This includes examples of logging and monitoring using .NET based on `Microsoft.Extensions.Logging`.
+### Cryptography and Security
 
-- [Serialization and Deserialization](./src/serialization/)\
-  This includes examples of serialization and deserialization using .NET, including JSON, XML, and binary formats.
+This includes practical examples of encryption and security features in .NET using
+`System.Security.Cryptography` and the BouncyCastle library.
 
-- [Web Development](./src/web/)\
-  This includes examples of web development using .NET, including ASP.NET Core, Blazor, and related technologies.
+### Data Access and Databases
+
+This includes examples of data access and database interaction using .NET, including Entity Framework Core,
+ADO.NET, and Dapper.
+
+### Graphics
+
+This includes examples of graphics programming using .NET.
+
+### Hosting and Lifecycle Management
+
+This includes examples using .NET that demonstrate host configuration, dependency injection,
+configuration management, related runtime patterns.
+
+### Logging
+
+This includes examples of logging and monitoring using .NET based on `Microsoft.Extensions.Logging`.
+
+### Plugins and Extensions
+
+This includes examples of developing plugins and extensions that use .NET to read assemblies directly.
+
+### Serialization and Deserialization
+
+This includes examples of serialization and deserialization using .NET, including JSON, XML, and binary formats.
+
+### Web Development
+
+This includes examples of web development using .NET, including ASP.NET Core, Blazor, and related technologies.
 
 ## What should I prepare before development?
 
@@ -63,10 +78,21 @@ services, and databases you wish to use.
 - [C# (.NET)](./.devcontainer/): It is used in standard .NET Core development
 - [C# (.NET with Graphics)](./.devcontainer/graphics/): Adding graphics-related native libraries (planned);
   currently, only Japanese fonts are included
-- [C# (.NET with SqlServer)](./.devcontainer/mssql/): Use this when using a SQL Server database
+- [C# (.NET with SQL Server)](./.devcontainer/mssql/): Use this when using a SQL Server database
 - [C# (.NET with PostgreSQL)](./.devcontainer/pgsql/): Use this when using a PostgreSQL database
 - [C# (.NET with Web)](./.devcontainer/web/): The NGINX reverse proxy is started. Configurations
   for SSL certificates and ASP.NET are also already set up.
 
-As the repository houses a large number of projects, opening it directly may make working difficult;
-therefore, we have prepared VSCode workspaces organized by category. Please select the appropriate workspace for your tasks.
+therefore, we have prepared VSCode workspaces organized by category.
+Please select the appropriate workspace for your tasks.
+
+Before starting a devcontainer that includes PostgreSQL or SQL Server, open a shell on your host
+machine, change to the repository root, and run the following script to generate a random database
+password:
+
+```bash
+./.devcontainer/scripts/generate-password.sh
+```
+
+From the repository root, run `./scripts/update-workspace-links.sh` to create or update the
+root configuration links required by these workspaces.

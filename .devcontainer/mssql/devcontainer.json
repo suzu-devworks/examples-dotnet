@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
 {
-  "name": "C# (.NET with SqlServer)",
+  "name": "C# (.NET with SQL Server)",
   "dockerComposeFile": [
     "../compose.yaml",
     "../compose.dev-database.yaml"
@@ -23,9 +23,9 @@
     "source=${localEnv:HOME}/.copilot/skills,target=/home/vscode/.copilot/skills,type=bind,consistency=cached"
   ],
   "features": {
-    "ghcr.io/devcontainers/features/node": {},
-    "ghcr.io/devcontainers/features/copilot-cli": {},
-    "ghcr.io/devcontainers/features/github-cli": {}
+    "ghcr.io/devcontainers/features/node:2": {},
+    "ghcr.io/devcontainers/features/copilot-cli:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "customizations": {
     "vscode": {

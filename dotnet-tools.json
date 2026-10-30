@@ -10,14 +10,14 @@
       "rollForward": false
     },
     "dotnet-ef": {
-      "version": "10.0.10",
+      "version": "10.0.14",
       "commands": [
         "dotnet-ef"
       ],
       "rollForward": false
     },
     "dotnet-xscgen": {
-      "version": "3.0.1270",
+      "version": "3.0.1430",
       "commands": [
         "xscgen"
       ],

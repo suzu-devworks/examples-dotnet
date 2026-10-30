@@ -19,7 +19,6 @@
     },
     "extensions": {
         "recommendations": [
-            "esbenp.prettier-vscode",
             "drblury.protobuf-vsc"
         ]
     }
