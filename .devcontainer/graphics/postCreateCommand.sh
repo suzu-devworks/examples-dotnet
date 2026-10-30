@@ -6,6 +6,9 @@ echo "USER:" ${script_user}
 echo "DIR:" ${script_dir}
 echo
 
+# Change ownership
+sudo chown ${script_user} $HOME/.copilot
+
 sh ${script_dir}/../scripts/install-xunit-template.sh
 sh ${script_dir}/../scripts/download-fonts.sh
 

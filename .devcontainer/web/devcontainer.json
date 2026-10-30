@@ -19,9 +19,9 @@
     "source=${localEnv:HOME}/.copilot/skills,target=/home/vscode/.copilot/skills,type=bind,consistency=cached"
   ],
   "features": {
-    "ghcr.io/devcontainers/features/node": {},
-    "ghcr.io/devcontainers/features/copilot-cli": {},
-    "ghcr.io/devcontainers/features/github-cli": {}
+    "ghcr.io/devcontainers/features/node:2": {},
+    "ghcr.io/devcontainers/features/copilot-cli:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "customizations": {
     "vscode": {
