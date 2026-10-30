@@ -78,10 +78,21 @@ services, and databases you wish to use.
 - [C# (.NET)](./.devcontainer/): It is used in standard .NET Core development
 - [C# (.NET with Graphics)](./.devcontainer/graphics/): Adding graphics-related native libraries (planned);
   currently, only Japanese fonts are included
-- [C# (.NET with SqlServer)](./.devcontainer/mssql/): Use this when using a SQL Server database
+- [C# (.NET with SQL Server)](./.devcontainer/mssql/): Use this when using a SQL Server database
 - [C# (.NET with PostgreSQL)](./.devcontainer/pgsql/): Use this when using a PostgreSQL database
 - [C# (.NET with Web)](./.devcontainer/web/): The NGINX reverse proxy is started. Configurations
   for SSL certificates and ASP.NET are also already set up.
 
-As the repository houses a large number of projects, opening it directly may make working difficult;
-therefore, we have prepared VSCode workspaces organized by category. Please select the appropriate workspace for your tasks.
+therefore, we have prepared VSCode workspaces organized by category.
+Please select the appropriate workspace for your tasks.
+
+Before starting a devcontainer that includes PostgreSQL or SQL Server, open a shell on your host
+machine, change to the repository root, and run the following script to generate a random database
+password:
+
+```bash
+./.devcontainer/scripts/generate-password.sh
+```
+
+From the repository root, run `./scripts/update-workspace-links.sh` to create or update the
+root configuration links required by these workspaces.

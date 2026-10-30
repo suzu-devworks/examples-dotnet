@@ -26,7 +26,8 @@
         "DavidAnson.vscode-markdownlint",
         "ms-dotnettools.csdevkit",
         "aliasadidev.nugetpackagemanagergui",
-        "DotJoshJohnson.xml"
+        "DotJoshJohnson.xml",
+        "esbenp.prettier-vscode"
       ],
       "settings": {
         // Disable CodeLens for tests and references in the web devcontainer to avoid performance issues

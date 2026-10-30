@@ -36,6 +36,7 @@
         "ms-dotnettools.csdevkit",
         "aliasadidev.nugetpackagemanagergui",
         "DotJoshJohnson.xml",
+        "esbenp.prettier-vscode",
         "ms-ossdata.vscode-pgsql",
         "ReneSaarsoo.sql-formatter-vsc"
       ],
