@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="Examples.Design.Anderson.Tests/Examples.Design.Anderson.Tests.csproj" />
+  <Project Path="Examples.Design.Evans.Tests/Examples.Design.Evans.Tests.csproj" />
+  <Project Path="Examples.Design.Fowler.Tests/Examples.Design.Fowler.Tests.csproj" />
+  <Project Path="Examples.Design.Gof.Tests/Examples.Design.Gof.Tests.csproj" />
+  <Project Path="Examples.Design.Microsoft.Tests/Examples.Design.Microsoft.Tests.csproj" />
+  <Project Path="Examples.Design.Tests/Examples.Design.Tests.csproj" />
+  <Project Path="Examples.Design.Vernon.Tests/Examples.Design.Vernon.Tests.csproj" />
+</Solution>
