@@ -20,11 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="xunit.v3.mtp-v2" Version="3.2.2" />
+    <PackageReference Include="xunit.v3.mtp-v2" Version="4.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference
-      Include="..\Examples.CodeGenerator.Roslyn\Examples.CodeGenerator.Roslyn.csproj" />
+    <ProjectReference Include="..\Examples.CodeGenerator.Roslyn\Examples.CodeGenerator.Roslyn.csproj" />
   </ItemGroup>
 </Project>
